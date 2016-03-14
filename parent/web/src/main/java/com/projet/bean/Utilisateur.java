@@ -1,5 +1,10 @@
 package com.projet.bean;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope(value="session")
 public class Utilisateur {
 
 	private String nom;
