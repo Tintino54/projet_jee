@@ -8,8 +8,11 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <p>This is the homepage!</p>
-        <a href="/connexion">Connexion</a>
+        <h1>Identification</h1>
+        <form onsubmit="/check" method="POST">
+        	<input type="text"/>
+        	<input type="password"/>
+        	<input type="submit"/>
+        </form>
     </body>
 </html>

@@ -12,7 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
 	@RequestMapping(value="/")
-	public ModelAndView test(HttpServletResponse response) throws IOException{
+	public ModelAndView home(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
+	}
+	
+	@RequestMapping(value="/connexion")
+	public ModelAndView connexion(HttpServletResponse response) throws IOException{
+		return new ModelAndView("connexion");
 	}
 }
