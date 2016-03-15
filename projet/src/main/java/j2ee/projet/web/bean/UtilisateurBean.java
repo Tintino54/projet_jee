@@ -1,38 +1,19 @@
-package j2ee.projet.domaine;
+package j2ee.projet.web.bean;
 
-import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class UtilisateurBean {
 
-@Entity
-@Table(name = "USERS")
-public class Utilisateur implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5304351969161437813L;
-
-	@Id
 	private int id;
 
-	@Column(name = "NAME")
 	private String nom;
 
-	@Column(name = "FIRSTNAME")
 	private String prenom;
 
-	@Column(name = "MAIL")
 	private String mail;
 
-	@Column(name = "PASSWORD")
 	private String mdp;
 
-	@Column(name = "DOB")
 	private Date dateNaiss;
 
 	public int getId() {
