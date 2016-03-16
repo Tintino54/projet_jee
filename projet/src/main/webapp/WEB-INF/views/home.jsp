@@ -3,13 +3,14 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        <p>This is the homepage!</p>
-        <a href="/projet/connexion">Connexion</a>
-    </body>
+<head>
+<link type="text/css" rel="stylesheet" href="resources/style/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Home</title>
+</head>
+<body>
+	<h1>Hello World!</h1>
+	<p>This is the homepage!</p>
+	<a href="/projet/connexion">Connexion</a>
+</body>
 </html>
