@@ -66,17 +66,29 @@
 		</header>
 		<div id="body" class="container-fluid grey-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-2 col-lg-push-5 white-bg">
-		        <form onsubmit="/check" method="POST" role="form">
-	 		        <h1>Connexion</h1>
+		        <form onsubmit="/inscription" method="POST" role="form">
+	 		        <h1>Inscription</h1>
 					<div class="form-group">
-						<label for="email">Adresse mail:</label>
+						<label for="nom">Nom:</label>
+						<input type="text" class="form-control" id="nom">
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prénom:</label>
+						<input type="text" class="form-control" id="prenom">
+					</div>
+					<div class="form-group">
+						<label for="email">Email:</label>
 						<input type="email" class="form-control" id="email">
 					</div>
 					<div class="form-group">
 						<label for="pwd">Mot de passe:</label>
 						<input type="password" class="form-control" id="pwd">
 					</div>
-					<button type="submit" class="btn btn-default submit">Connexion</button>
+					<div class="form-group">
+						<label for="DOB">Date de naissance:</label>
+						<input type="text" class="form-control" id="DOB">
+					</div>
+					<button type="submit" class="btn btn-default submit">Inscription</button>
 		        </form>
 			</div>
 		</div>

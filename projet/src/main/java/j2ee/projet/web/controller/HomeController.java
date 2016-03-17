@@ -25,4 +25,10 @@ public class HomeController {
 		logger.info("Affichage de la page de connexion");
 		return new ModelAndView("connexion");
 	}
+	
+	@RequestMapping(value="/inscription")
+	public ModelAndView inscription(HttpServletResponse response) throws IOException{
+		logger.info("Affichage de la page de inscription");
+		return new ModelAndView("inscription");
+	}
 }
