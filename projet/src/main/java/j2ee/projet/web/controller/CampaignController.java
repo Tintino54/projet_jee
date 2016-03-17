@@ -19,12 +19,14 @@ public class CampaignController {
 		//Lister les campagnes - Vue
 		@RequestMapping(value="/list", method=RequestMethod.GET)
 		public ModelAndView list(HttpServletResponse response) throws IOException {
+			logger.info("Affichage de la liste des campagnes");
 			return new ModelAndView("Campaign/list");
 		}
 
 		//Créer une campagne -Vue
 		@RequestMapping(value="create", method=RequestMethod.GET)
 		public ModelAndView create(HttpServletResponse response) throws IOException {
+			logger.info("Affichage de la page de création d'une campagne");
 			return new ModelAndView("Campaign/create");
 		}
 
@@ -33,6 +35,7 @@ public class CampaignController {
 		public ModelAndView update(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 			ModelAndView mav = new ModelAndView("Campaign/update");
 			mav.addObject("id", id);
+			logger.info("Affichage de la page de modification de la campagne" + id);
 			return mav;
 		}
 
@@ -41,6 +44,7 @@ public class CampaignController {
 		public ModelAndView show(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 			ModelAndView mav = new ModelAndView("Campaign/show");
 			mav.addObject("id", id);
+			logger.info("Affichage de la campagne" + id);
 			return mav;
 		}
 }
