@@ -25,9 +25,9 @@
 	    <![endif]-->
 	    
 		<!-- Inclusion de Bootstrap DatePicker -->
-		<link rel="stylesheet" media="screen" href="resource/datepicker/css/bootstrap-datetimepicker.min.css">
-		<script src="resource/js/moment-with-locales.min.js"></script>
-		<script src="resource/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+		<link rel="stylesheet" media="screen" href="resources/datepicker/css/bootstrap-datetimepicker.min.css">
+		<script src="resources/js/moment-with-locales.min.js"></script>
+		<script src="resources/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 	    
 	    <!--  Feuille de style perso -->
 	    <link rel="stylesheet" href="resources/style/style.css" />

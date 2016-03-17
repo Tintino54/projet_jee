@@ -16,8 +16,8 @@ public class ConnexionController {
 	@RequestMapping(value="/check")
 	public String identification(@ModelAttribute UtilisateurBean utilisateurBean, Model model)
 	{
-		logger.info("Connexion de : "+utilisateurBean.getMail()+"/"+utilisateurBean.getMdp());
-		model.addAttribute(utilisateurBean);
-		return "list";
+		logger.info("Connexion de : "+utilisateurBean.getEmail()+"/"+utilisateurBean.getPwd());
+		
+		return "Campaign/list";
 	}
 }

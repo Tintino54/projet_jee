@@ -1,66 +1,24 @@
 package j2ee.projet.web.bean;
 
-import java.sql.Date;
-
 public class UtilisateurBean {
 
-	private int id;
+	private String email;
 
-	private String nom;
+	private String pwd;
 
-	private String prenom;
-
-	private String mail;
-
-	private String mdp;
-
-	private Date dateNaiss;
-
-	public int getId() {
-		return id;
+	public String getEmail() {
+		return email;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public String getPrenom() {
-		return prenom;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getMail() {
-		return mail;
-	}
-
-	public String getMdp() {
-		return mdp;
-	}
-
-	public Date getDateNaiss() {
-		return dateNaiss;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
-	}
-
-	public void setDateNaiss(Date dateNaiss) {
-		this.dateNaiss = dateNaiss;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 }

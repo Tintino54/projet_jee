@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import j2ee.projet.web.bean.UtilisateurBean;
+
 @Controller
 public class HomeController {
 
@@ -24,13 +26,7 @@ public class HomeController {
 	@RequestMapping(value="/connexion", method=RequestMethod.GET)
 	public ModelAndView connexion(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de la page de connexion");
-		return new ModelAndView("connexion");
-	}
-	
-	@RequestMapping(value="/connexion", method=RequestMethod.POST)
-	public ModelAndView processConnexion(HttpServletResponse response) throws IOException{
-		logger.info("Action de connexion");
-		return new ModelAndView("home");
+		return new ModelAndView("connexion","command",new UtilisateurBean());
 	}
 
 	@RequestMapping(value="/inscription")
