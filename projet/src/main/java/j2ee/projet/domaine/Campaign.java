@@ -14,7 +14,7 @@ public class Campaign implements Serializable {
 	/**
 	 * 
 	 */
-	//private static final long serialVersionUID = mettre un nombre ici 
+	private static final long serialVersionUID = -5116225850894993173L;
 
 	@Id
 	private int id;

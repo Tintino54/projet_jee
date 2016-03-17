@@ -1,5 +1,7 @@
 package j2ee.projet.dao;
 
-public class ParticipantDAO {
+import j2ee.projet.domaine.Participant;
+
+public class ParticipantDAO extends BaseDAO<Participant> {
 
 }

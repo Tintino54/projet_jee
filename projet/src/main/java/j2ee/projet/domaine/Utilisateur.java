@@ -6,10 +6,12 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
+@NamedQuery(name="rechercherUtilisateur", query="select nom from Utilisateur")
 public class Utilisateur implements Serializable {
 
 	/**

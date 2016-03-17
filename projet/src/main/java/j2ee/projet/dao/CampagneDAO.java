@@ -1,5 +1,7 @@
 package j2ee.projet.dao;
 
-public class CampagneDAO {
+import j2ee.projet.domaine.Campaign;
+
+public class CampagneDAO extends BaseDAO<Campaign>{
 
 }
