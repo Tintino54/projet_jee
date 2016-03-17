@@ -5,6 +5,7 @@
 <tiles-definitions>
   <definition name="myapp.homepage" template="layouts/classic.jsp">
     <put-attribute name="title" value="Mon super site" />
+    <put-attribute name="header" value=""/>
     <put-attribute name="nav" value="/WEB-INF/views/tiles/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/views/tiles/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
