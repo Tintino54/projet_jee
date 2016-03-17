@@ -3,9 +3,8 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="myapp.homepage" template="layouts/classic.jsp">
+  <definition name="myapp.homepage" template="/WEB-INF/views/layouts/classic.jsp">
     <put-attribute name="title" value="Mon super site" />
-    <put-attribute name="header" value=""/>
     <put-attribute name="nav" value="/WEB-INF/views/tiles/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/views/tiles/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />

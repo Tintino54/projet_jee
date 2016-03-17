@@ -35,5 +35,17 @@ public class HomeController {
 		return new ModelAndView("inscription");
 	}
 	
+	@RequestMapping(value="/nouveau")
+	public ModelAndView nouveau(HttpServletResponse response) throws IOException{
+		logger.info("Affichage de la page de création de projet");
+		return new ModelAndView("nouveau");
+	}
+	
+	@RequestMapping(value="/projets")
+	public ModelAndView projets(HttpServletResponse response) throws IOException{
+		logger.info("Affichage de la page de création de projet");
+		return new ModelAndView("projets");
+	}
+	
 
 }

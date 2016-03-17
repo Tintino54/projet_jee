@@ -15,9 +15,9 @@
 			<div class="collapse navbar-collapse" id="collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/projet/">Accueil</a></li>
-					<li><a href="/projet/list/">Tout les projets</a></li>
-					<li><a href="#">Lancer mon projet</a></li>
-					<li><a href="#">Comment ça marche ?</a></li>
+					<li><a href="/projet/projets">Tout les projets</a></li>
+					<li><a href="/projet/nouveau">Lancer mon projet</a></li>
+					<li><a href="projet/principe">Comment ça marche ?</a></li>
 				</ul>   
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/projet/connexion"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>

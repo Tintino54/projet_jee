@@ -190,6 +190,15 @@ footer nav .container-fluid
 }
 
 /********************************************************
+*                 Page Inscription                      *
+********************************************************/
+#body.suscribe-bg
+{
+	background-image: url('../images/teamhelp.jpg');
+	background-size: cover;
+}
+
+/********************************************************
 *                  Page Connexion                       *
 ********************************************************/
 #body.grey-bg
@@ -199,7 +208,7 @@ footer nav .container-fluid
 
 #body.login-bg
 {
-	background-image: url('../images/teamhelp.jpg');
+	background-image: url('../images/teamwork2.jpg');
 	background-size: cover;
 }
 
@@ -213,7 +222,7 @@ form
 	color: #555;
 }
 
-.submit 
+.submit, .btn-default
 {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -251,7 +260,23 @@ form h1
 	text-align: center;
 	color: #00A6F0;
 }
-
+/********************************************************
+*                  Nouveau projet                       *
+********************************************************/
+#body.project-bg
+{
+	background-image: url('../images/project.jpg');
+	background-size: cover;
+}
+/********************************************************
+*                       Projets                         *
+********************************************************/
+.project-square
+{
+	box-shadow: 10px 10px 5px #888888;
+	background-color: white;
+	margin: 5px;
+}
 /********************************************************
 *                     Caroussel                         *
 ********************************************************/
