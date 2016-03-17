@@ -60,9 +60,6 @@ html, body
 	min-height: 100%;
 	overflow: auto;
 	padding: 75px 0;
-	background: url('../images/minions.jpg');
-    background-attachment: fixed;
-    background-size: cover;
 }
 
 .white-bg
