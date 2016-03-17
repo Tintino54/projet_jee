@@ -10,17 +10,11 @@
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="resources/js/jquery-2.2.1.min.js"></script>
-
-		<!-- Latest compiled and minified CSS -->
+		
+		<!-- Inclusion de Bootstrap -->
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css" />
-		
-		<!-- Optional theme -->
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css" />
-		
-		<!--  Font Awesome -->
 		<link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css" />
-		
-		<!-- Latest compiled and minified JavaScript -->
 		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	    
 	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -29,6 +23,12 @@
 	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
+	    
+		<!-- Inclusion de Bootstrap DatePicker -->
+		<link rel="stylesheet" media="screen" href="resources/datepicker/css/bootstrap-datetimepicker.min.css">
+		<script src="resources/js/moment-with-locales.min.js"></script>
+		<script src="resources/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+	    
 	    <!--  Feuille de style perso -->
 	    <link rel="stylesheet" href="resources/style/style.css" />
 	    
@@ -64,6 +64,7 @@
 				</div>
 			</nav>
 		</header>
+		<script src="resources/js/datepicker.js"></script>
 		<div id="body" class="container-fluid grey-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-2 col-lg-push-5 white-bg">
 		        <form onsubmit="/inscription" method="POST" role="form">
@@ -84,10 +85,21 @@
 						<label for="pwd">Mot de passe:</label>
 						<input type="password" class="form-control" id="pwd">
 					</div>
-					<div class="form-group">
-						<label for="DOB">Date de naissance:</label>
-						<input type="text" class="form-control" id="DOB">
-					</div>
+	       			 <!-- Champ date de naissance (datePicker) -->
+			        <div class="form-group">
+			        	<label for="datetimepicker">Date de naissance:</label>
+			            <div class='input-group date' id='datetimepicker'>
+			                <input type='text' class="form-control" id="user_datetimepicker" />
+			                <span class="input-group-addon">
+			                <span class="glyphicon glyphicon-calendar">
+			                </span>
+			                </span>
+			            </div>
+			        </div>
+			        <!-- Champ date de naissance (auto-généré) -->
+			        <div class="form-group hidden">
+			            <input type="date" class="form-control" id="DOB">
+			        </div>
 					<button type="submit" class="btn btn-default submit">Inscription</button>
 		        </form>
 			</div>
