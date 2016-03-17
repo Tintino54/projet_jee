@@ -197,6 +197,12 @@ footer nav .container-fluid
 	background-color: #EEE;
 }
 
+#body.login-bg
+{
+	background-image: url('../images/teamhelp.jpg');
+	background-size: cover;
+}
+
 form
 {
 	font-size: 20px;

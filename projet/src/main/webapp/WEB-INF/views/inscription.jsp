@@ -65,7 +65,7 @@
 			</nav>
 		</header>
 		<script src="resources/js/datepicker.js"></script>
-		<div id="body" class="container-fluid grey-bg">
+		<div id="body" class="container-fluid login-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-2 col-lg-push-5 white-bg">
 		        <form onsubmit="/inscription" method="POST" role="form">
 	 		        <h1>Inscription</h1>
