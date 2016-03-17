@@ -16,9 +16,9 @@ public class HomeController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ModelAndView home(HttpServletResponse response) throws IOException{
+	public String home(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de home.jsp");
-		return new ModelAndView("home");
+		return "home";
 	}
 	
 	@RequestMapping(value="/connexion", method=RequestMethod.GET)
