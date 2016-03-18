@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
-@NamedQuery(name="rechercherUtilisateur", query="select nom from Utilisateur")
+@NamedQuery(name="rechercherUtilisateurParMailEtMdp", query="select u.nom from Utilisateur u where u.mail like :mail and u.mdp like :mdp")
 public class Utilisateur implements Serializable {
 
 	/**

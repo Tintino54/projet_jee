@@ -4,16 +4,21 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Utilisateur;
 
-@Component
+@Repository("utilisateurDao")
+@Transactional(propagation = Propagation.REQUIRED)
 public class UtilisateurDAO extends BaseDAO<Utilisateur>{
 	
-	public List<String> rechercherUtilisateur()
+	public List<String> rechercherUtilisateurParMailEtMdp(String mail, String mdp)
 	{
-		TypedQuery<String> query = getEntityManager().createNamedQuery("rechercherUtilisateur",String.class);
+		TypedQuery<String> query = getEntityManager().createNamedQuery("rechercherUtilisateurParMailEtMdp",String.class);
+		query.setParameter("mail", mail);
+		query.setParameter("mdp", mdp);
 		return query.getResultList();
 	}
 }
