@@ -19,8 +19,10 @@ public class CampaignController {
 		//Lister les campagnes - Vue
 		@RequestMapping(value="/liste", method=RequestMethod.GET)
 		public ModelAndView list(HttpServletResponse response) throws IOException {
+			ModelAndView mav = new ModelAndView("Campaign/list");
+//			mav.addObject("campagnes", campagnes);
 			logger.info("Affichage de la liste des campagnes");
-			return new ModelAndView("Campaign/list");
+			return mav;
 		}
 
 		//Créer une campagne -Vue
