@@ -1,6 +1,7 @@
 package j2ee.projet.web.controller;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,9 @@ public class ConnexionController {
 	
 	final static Logger logger = Logger.getLogger(ConnexionController.class);
 
+	@Autowired
+	Identification identification;
+	
 	@RequestMapping(value="/check")
 	public String identification(@ModelAttribute UtilisateurBean utilisateurBean, Model model)
 	{
@@ -23,7 +27,6 @@ public class ConnexionController {
 		String mdp = passwordEncoder.encode(utilisateurBean.getPwd());
 		logger.info("Connexion de : "+mail+"/"+mdp);
 		
-		Identification identification = new Identification();
 		identification.verification(mail, mdp);
 		return "Campaign/list";
 	}

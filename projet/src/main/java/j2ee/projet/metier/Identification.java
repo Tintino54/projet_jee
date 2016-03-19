@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import j2ee.projet.dao.UtilisateurDAO;
 
-@Component
+@Service
 public class Identification {
 	
 	@Autowired

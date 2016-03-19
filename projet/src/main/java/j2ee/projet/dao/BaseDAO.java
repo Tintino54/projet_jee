@@ -2,12 +2,13 @@ package j2ee.projet.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public class BaseDAO<T> {
-	@PersistenceContext(unitName = "entityManager")
+	@PersistenceContext(unitName = "entityManagerFactoryBean", type=PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
 
 	public EntityManager getEntityManager() {
