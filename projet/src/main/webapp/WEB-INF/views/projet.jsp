@@ -5,16 +5,14 @@
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid project-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
-			<c:forEach var="listValue" items="${lists}">
 				<div class="col-lg-3 project-square">
-						<h3>${listValue.title}</h3>
+						<h3><c:out value="${projet.title}"/></h3>
 						<img />
-						<p>${listValue.description}</p>
-						<div>${listValue.expectedamount}</div>
-						<div>${listValue.expectedamount}</div>
+						<p><c:out value="${projet.description}"/></p>
+						<div><c:out value="${projet.expectedamount}"/></div>
+						<div><c:out value="${projet.expectedamount}"/></div>
 						<a href="#" class="btn btn-default">Voir</a>
 				</div>
-			</c:forEach>
 			</div>
 		</div>
     </tiles:putAttribute>
