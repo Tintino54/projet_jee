@@ -1,0 +1,6 @@
+#body.project-bg
+{
+	background-image: url('../../images/project.jpg');
+	background-size: cover;
+    background-attachment: fixed;
+}

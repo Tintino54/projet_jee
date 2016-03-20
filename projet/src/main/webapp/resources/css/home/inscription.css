@@ -1,0 +1,6 @@
+#body.suscribe-bg
+{
+	background-image: url('../../images/teamhelp.jpg');
+	background-size: cover;
+    background-attachment: fixed;
+}

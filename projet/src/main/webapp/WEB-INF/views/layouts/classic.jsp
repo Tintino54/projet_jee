@@ -1,4 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -9,13 +11,13 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="resources/js/jquery-2.2.1.min.js"></script>
+		<script src="<c:url value="/resources/js/jquery-2.2.1.min.js"/>"></script>
 		
 		<!-- Inclusion de Bootstrap -->
-		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css" />
-		<link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css" />
-		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>" />
+		<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css"/>" />
+		<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/font-awesome.min.css"/>" />
+		<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
 	    
 	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,12 +27,14 @@
 	    <![endif]-->
 	    
 		<!-- Inclusion de Bootstrap DatePicker -->
-		<link rel="stylesheet" media="screen" href="resources/datepicker/css/bootstrap-datetimepicker.min.css">
-		<script src="resources/js/moment-with-locales.min.js"></script>
-		<script src="resources/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+		<link rel="stylesheet" media="screen" href="<c:url value="/resources/datepicker/css/bootstrap-datetimepicker.min.css"/>">
+		<script src="<c:url value="/resources/js/moment-with-locales.min.js"/>"></script>
+		<script src="<c:url value="/resources/datepicker/js/bootstrap-datetimepicker.min.js"/>"></script>
 	    
-	    <!--  Feuille de style perso -->
-	    <link rel="stylesheet" href="resources/style/style.css" />
+	    <!--  Feuille de style principale -->
+	    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
+	    <!--  Feuille de style propre à la page -->
+	    <tiles:getAsString name="pagecss" defaultValue="" />
 	    
 		<title><tiles:getAsString name="title"/></title>
 	</head>

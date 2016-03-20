@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <header>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -8,20 +10,20 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-					<a href="/projet/">
-						<span><img src="resources/images/logo.png" /><span class="brandName"></span></span>
+					<a href="<c:url value="/" />">
+						<span><img src="<c:url value="/resources/images/logo.png"/>" /><span class="brandName"></span></span>
 					</a>
 			</div>
 			<div class="collapse navbar-collapse" id="collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/projet/">Accueil</a></li>
-					<li><a href="/projet/projets">Tout les projets</a></li>
-					<li><a href="/projet/nouveau">Lancer mon projet</a></li>
-					<li><a href="projet/principe">Comment ça marche ?</a></li>
+					<li><a href="<c:url value="/" />">Accueil</a></li>
+					<li><a href="<c:url value="/projet/liste" />">Tous les projets</a></li>
+					<li><a href="<c:url value="/projet/nouveau" />">Lancer mon projet</a></li>
+					<li><a href="<c:url value="/principe" />">Comment Ã§a marche ?</a></li>
 				</ul>   
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/projet/connexion"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
-					<li><a href="/projet/inscription"><span class="glyphicon glyphicon-log-in"></span> Inscription</a></li>
+					<li><a href="<c:url value="/connexion" />"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li><a href="<c:url value="/inscription" />"><span class="glyphicon glyphicon-log-in"></span> Inscription</a></li>
 				</ul>          
 			</div>
 		</div>

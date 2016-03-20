@@ -72,6 +72,10 @@ html, body
 	border-radius: 0;
 }
 
+.badge {
+    background-color: mediumturquoise;
+}
+
 /********************************************************
 *                     Boutons                           *
 ********************************************************/
@@ -142,6 +146,16 @@ nav
     vertical-align: middle;
 }
 
+#body.grey-bg
+{
+	background-color: #EEE;
+}
+
+#body.login-bg
+{
+	background-image: url('../images/teamwork2.jpg');
+	background-size: cover;
+}
 
 
 /********************************************************
@@ -189,94 +203,7 @@ footer nav .container-fluid
 	}
 }
 
-/********************************************************
-*                 Page Inscription                      *
-********************************************************/
-#body.suscribe-bg
-{
-	background-image: url('../images/teamhelp.jpg');
-	background-size: cover;
-}
 
-/********************************************************
-*                  Page Connexion                       *
-********************************************************/
-#body.grey-bg
-{
-	background-color: #EEE;
-}
-
-#body.login-bg
-{
-	background-image: url('../images/teamwork2.jpg');
-	background-size: cover;
-}
-
-form
-{
-	font-size: 20px;
-}
-
-.form-group label, form h1, input.form-control
-{
-	color: #555;
-}
-
-.submit, .btn-default
-{
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    border: none;
-    background: #00A6F0;
-    color: white;
-    font-weight: bold;
-    height: 50px;
-    width: 100%;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
-    opacity: 0.9;
-    margin-bottom: 20px;
-    display: inline-block;
-    /* line-height: 50px; */
-    text-align: center;
-    font-size: 20px;
-}
-
-.submit:hover
-{
-    background: #087DB1;
-    color: white;
-}
-
-form input.form-control
-{
-	height: 50px;
-}
-
-
-
-form h1
-{
-	text-align: center;
-	color: #00A6F0;
-}
-/********************************************************
-*                  Nouveau projet                       *
-********************************************************/
-#body.project-bg
-{
-	background-image: url('../images/project.jpg');
-	background-size: cover;
-}
-/********************************************************
-*                       Projets                         *
-********************************************************/
-.project-square
-{
-	box-shadow: 10px 10px 5px #888888;
-	background-color: white;
-	margin: 5px;
-}
 /********************************************************
 *                     Caroussel                         *
 ********************************************************/
@@ -305,4 +232,11 @@ form h1
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img
 {
     max-width: initial;
+}
+
+.project-bg
+{
+	background-image: url('../images/project.jpg');
+	background-size: cover;
+    background-attachment: fixed;
 }
