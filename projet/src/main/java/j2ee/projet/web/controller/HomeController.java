@@ -59,12 +59,27 @@ public class HomeController {
 	@RequestMapping(value="/projet")
 	public ModelAndView projet1(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de la page du projet");
-		Campaign c =  getProject();
 		
+		SecureRandom random = new SecureRandom();
+		List<String> user = new ArrayList<String>();
+		List<String> texte = new ArrayList<String>();
+		List<Date> date = new ArrayList<Date>();
+		for(int i = 0; i < 50; i++)
+		{
+			String u = new String(new BigInteger(130, random).toString(10));
+			user.add(u);
+			String t = new String(new BigInteger(130, random).toString(255));
+			texte.add(t);
+			java.sql.Date d = new java.sql.Date(11,01,1991);
+			date.add(d);
+		}
 		ModelAndView model = new ModelAndView("projet");
-		model.addObject("projet", c);
+		model.addObject("users", user);
+		model.addObject("textes", texte);
+		model.addObject("dates", date);
 		return model;
 	}
+	
 	
 	private List<Campaign> getList() {
 		SecureRandom random = new SecureRandom();
