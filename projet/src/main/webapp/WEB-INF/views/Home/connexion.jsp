@@ -1,5 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
 	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/home/connexion.css"></tiles:putAttribute>
     <tiles:putAttribute name="title">Connexion</tiles:putAttribute>

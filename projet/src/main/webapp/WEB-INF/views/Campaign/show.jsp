@@ -36,16 +36,35 @@
 							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
 						</div>
 						<div id="comments" class="tab-pane fade">
-							<h3>Menu 3</h3>
-							<c:forEach var="listValue" items="${textes}">
-								<div class="col-lg-12">
-										<h3>${listValue}</h3>
-										<img />
-										<p>${listValue}</p>
-										<div>${listValue}</div>
-										<hr>
-								</div>
-							</c:forEach>
+							<div class="row">
+								<h2 class="center">Commentaires</h2>
+							</div>							
+							<div id="page-content">
+							</div>
+							<div id="comment1" class="hidden">
+							ceci est comment1
+							</div>
+							<div id="comment2" class="hidden">
+							ceci est comment2
+							</div>
+							<div id="all-comments">
+								<c:forEach var="listValue" items="${textes}">
+									<div class="comment col-lg-12">
+										<div class="col-lg-2">
+											<img class="avatar" src="<c:url value="/resources/images/avatars/female.png"/>"/>
+										</div>
+										<div class="col-lg-8">
+											<h3>${listValue}</h3>
+											<p>${listValue}</p>
+											<div>${listValue}</div>
+										</div>
+										<div class="col-lg-2">
+											11 janvier 1991
+										</div>
+										<div class="col-lg-12"><hr></div>
+									</div>
+								</c:forEach>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -75,7 +94,24 @@
 							</div>
 						</div>
 						<div class="col-lg-12">
-							<a class="btn btn-default">Soutenir ce projet</a>
+							<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#sendPayment">Soutenir ce projet</button>
+							<div id="sendPayment" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Faire une donation</h4>
+									</div>
+									<div class="modal-body">
+										<p>Mettre le formulaire ici</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+									</div>
+								</div>
+							</div>
+						</div>
 							Vos contributions vous seront automatiquement remboursées si le projet n'atteint pas son objectif
 						</div>
 					</div>

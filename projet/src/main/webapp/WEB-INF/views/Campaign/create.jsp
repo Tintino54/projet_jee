@@ -1,12 +1,13 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
 	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/campaign/create.css"></tiles:putAttribute>
-    <tiles:putAttribute name="title">Créer mon projet</tiles:putAttribute>
+    <tiles:putAttribute name="title">CrÃ©er mon projet</tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid project-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3 white-bg">
 				<form action="/projet/check" method="POST" role="form">
-					<h1>Créer mon projet</h1>
+					<h1>CrÃ©er mon projet</h1>
 					<div class="form-group">
 						<label for="name">Nom du projet:</label>
 						<input type="text" class="form-control" id="name" path="name" />
@@ -26,7 +27,7 @@
 			                </span>
 			            </div>
 			        </div>
-			        <!-- Champ date de fin (auto-généré) -->
+			        <!-- Champ date de fin (auto-gÃ©nÃ©rÃ©) -->
 			        <div class="form-group hidden">
 			            <input type="date_fin" class="form-control" id="date_fin">
 			        </div>
@@ -34,7 +35,7 @@
 						<label for="desc">Description du projet:</label>
 						<textarea class="form-control" rows="10" id="desc"></textarea>
 					</div>
-					<input type="submit" class="btn btn-default submit" value="Créer"/>
+					<input type="submit" class="btn btn-default submit" value="CrÃ©er"/>
 				</form>
 			</div>
 		</div>

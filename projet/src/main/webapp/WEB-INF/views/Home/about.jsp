@@ -1,45 +1,59 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
+   	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/home/about.css"></tiles:putAttribute>
     <tiles:putAttribute name="title">Inscription</tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<script src="resources/js/datepicker.js"></script>
 		<div id="body" class="container-fluid suscribe-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 white-bg">
-		        <form onsubmit="/inscription" method="POST" role="form">
-	 		        <h1>Inscription</h1>
-					<div class="form-group">
-						<label for="nom">Nom:</label>
-						<input type="text" class="form-control" id="nom">
+				<h1>Equipe du site</h1>
+				<div class="row">
+					<div class="col-lg-3">
+						<img class="team" src="<c:url value="/resources/images/team/valentin.jpg"/>"/>
 					</div>
-					<div class="form-group">
-						<label for="prenom">Prénom:</label>
-						<input type="text" class="form-control" id="prenom">
+					<div class="col-lg-9">
+						<h3>Valentin GINISTY</h3>
+						<p>Conception des modÃ¨les</p>
 					</div>
-					<div class="form-group">
-						<label for="email">Email:</label>
-						<input type="email" class="form-control" id="email">
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<img class="team" src="<c:url value="/resources/images/team/kenny.jpg"/>"/>
 					</div>
-					<div class="form-group">
-						<label for="pwd">Mot de passe:</label>
-						<input type="password" class="form-control" id="pwd">
+					<div class="col-lg-9">
+						<h3>Kenny GUIOUGOU</h3>
+						<p>Front-end</p>
 					</div>
-       			 	<!-- Champ date de naissance (datePicker) -->
-			        <div class="form-group">
-			        	<label for="datetimepicker">Date de naissance:</label>
-			            <div class='input-group date' id='datetimepicker'>
-			                <input type='text' class="form-control" id="user_datetimepicker" />
-			                <span class="input-group-addon">
-			                <span class="glyphicon glyphicon-calendar">
-			                </span>
-			                </span>
-			            </div>
-			        </div>
-			        <!-- Champ date de naissance (auto-généré) -->
-			        <div class="form-group hidden">
-			            <input type="date" class="form-control" id="DOB">
-			        </div>
-					<button type="submit" class="btn btn-default submit">Inscription</button>
-		        </form>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<img class="team" src="<c:url value="/resources/images/team/florentin.jpg"/>"/>
+					</div>
+					<div class="col-lg-9">
+						<h3>Florentin NOÃ‹L</h3>
+						<p>Configuration de Maven et Hibernate</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<img class="team" src="<c:url value="/resources/images/team/ugo.jpg"/>"/>
+					</div>
+					<div class="col-lg-9">
+						<h3>Ugo RAYER</h3>
+						<p>Chef de projet et CEO de My Eggplant Company</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<img class="team" src="<c:url value="/resources/images/team/morgane.jpg"/>"/>
+					</div>
+					<div class="col-lg-9">
+						<h3>Morgane TROYSI</h3>
+						<p>Conception des controllers</p>
+					</div>
+				</div>
 			</div>
 		</div>
     </tiles:putAttribute>

@@ -11,13 +11,12 @@
 				<span class="icon-bar"></span>
 				</button>
 					<a href="<c:url value="/" />">
-						<span><img src="<c:url value="/resources/images/logo.png"/>" /><span class="brandName"></span></span>
+						<span class="spanbrand"><img src="<c:url value="/resources/images/logo.png"/>" /><span class="brandName"></span></span>
 					</a>
 			</div>
 			<div class="collapse navbar-collapse" id="collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="<c:url value="/" />">Accueil</a></li>
-					<li><a href="<c:url value="/projet/liste" />">Tous les projets</a></li>
+					<li><a href="<c:url value="/projet/liste" />">Voir les projets</a></li>
 					<li><a href="<c:url value="/projet/nouveau" />">Lancer mon projet</a></li>
 					<li><a href="<c:url value="/principe" />">Comment ça marche ?</a></li>
 				</ul>   

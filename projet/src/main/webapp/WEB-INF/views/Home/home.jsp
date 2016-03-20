@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %> 
+<%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
     <tiles:putAttribute name="title">Accueil</tiles:putAttribute>
     <tiles:putAttribute name="body">
@@ -11,22 +12,33 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="resources/images/walter.jpg" style="min-width: 100%;background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;background-attachment:fixed;" alt="First slide">
+                        <img src="resources/images/slider/walter.jpg" style="min-width: 100%;background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;background-attachment:fixed;" alt="First slide">
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>Sauvez Walter White !</h1>
-                                <p>Aidez Walter dans sa collecte pour pouvoir se payer une chimiothÈrapie</p>
+                                <p>Aidez Walter dans sa collecte pour pouvoir se payer une chimioth√©rapie</p>
                             </div>
                         </div>
                     </div>                  
                     <div class="item">
-                        <img src="resources/images/naruto.jpg" style="min-width: 100%;background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;background-attachment:fixed;" data-src="" alt="Second slide">
+                        <img src="resources/images/slider/naruto.jpg" style="min-width: 100%;background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;background-attachment:fixed;" data-src="" alt="Second slide">
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>
                                     Reconstruction de Konoha
                                 </h1>
-                                <p>Aidez-nous ‡ reconstruire notre prÈcieux village dÈtruit par l'akatsuki</p>
+                                <p>Aidez-nous √† reconstruire notre pr√©cieux village d√©truit par l'akatsuki</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="resources/images/slider/herocorp.jpg" style="min-width: 100%;background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;background-attachment:fixed;" data-src="" alt="third slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>
+                                    Financement de la saison 5 de Hero Corp
+                                </h1>
+                                <p>Donnez-nous un coup de main afin de r√©aliser une derni√®re saison dans des conditions acceptables</p>
                             </div>
                         </div>
                     </div>

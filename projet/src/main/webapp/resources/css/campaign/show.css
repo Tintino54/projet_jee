@@ -24,3 +24,13 @@
 {
 	padding-right: 30px;
 }
+#body, #body > .row
+{
+    min-height: 100%;
+}
+
+#comments img.avatar
+{
+	width: 150px;
+	height: auto;
+}

@@ -76,6 +76,37 @@ html, body
     background-color: mediumturquoise;
 }
 
+.submit, .btn-default
+{
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    background: #00A6F0;
+    color: white;
+    font-weight: bold;
+    height: 50px;
+    width: 100%;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+    opacity: 0.9;
+    margin-bottom: 20px;
+    display: inline-block;
+    /* line-height: 50px; */
+    text-align: center;
+    font-size: 20px;
+}
+
+.submit:hover, .btn-default:hover
+{
+    background: #087DB1;
+    color: white;
+}
+
+.fadeInBlock
+{
+    opacity: 0;
+}
+
 /********************************************************
 *                     Boutons                           *
 ********************************************************/
@@ -139,11 +170,14 @@ nav
 	color: crimson;
 }
 
-.brandName
+.spanbrand img
 {	
-	font-size: 24px;
-	padding: 0 10px;
-    vertical-align: middle;
+	vertical-align: initial;
+}
+
+.spanbrand
+{
+	line-height: 50px;
 }
 
 #body.grey-bg
@@ -155,6 +189,11 @@ nav
 {
 	background-image: url('../images/teamwork2.jpg');
 	background-size: cover;
+}
+
+textarea
+{
+	resize: none;
 }
 
 
@@ -220,7 +259,7 @@ footer nav .container-fluid
 .carousel-caption
 {
     position: absolute;
-    bottom: 350px;
+    bottom: 420px;
     font-size: 30px;    
 }
 

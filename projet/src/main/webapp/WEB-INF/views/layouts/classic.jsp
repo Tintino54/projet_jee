@@ -31,11 +31,15 @@
 		<script src="<c:url value="/resources/js/moment-with-locales.min.js"/>"></script>
 		<script src="<c:url value="/resources/datepicker/js/bootstrap-datetimepicker.min.js"/>"></script>
 	    
+	    <!-- Inclusion de Bootstrap Paginator -->
+	    <script src="<c:url value="/resources/pagination/jquery.twbsPagination.min.js"/>"></script>
+	    
 	    <!--  Feuille de style principale -->
 	    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
 	    <!--  Feuille de style propre à la page -->
 	    <tiles:getAsString name="pagecss" defaultValue="" />
 	    
+	    <link rel="icon" type="image/png" href="<c:url value="/resources/images/favicon.png"/>"  />
 		<title><tiles:getAsString name="title"/></title>
 	</head>
 	<body>

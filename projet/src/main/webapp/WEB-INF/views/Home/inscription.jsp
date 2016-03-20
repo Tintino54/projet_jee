@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
 	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/home/inscription.css"></tiles:putAttribute>
     <tiles:putAttribute name="title">Inscription</tiles:putAttribute>
@@ -13,7 +14,7 @@
 						<input type="text" class="form-control" id="nom">
 					</div>
 					<div class="form-group">
-						<label for="prenom">Prénom:</label>
+						<label for="prenom">PrÃ©nom:</label>
 						<input type="text" class="form-control" id="prenom">
 					</div>
 					<div class="form-group">
@@ -35,7 +36,7 @@
 			                </span>
 			            </div>
 			        </div>
-			        <!-- Champ date de naissance (auto-généré) -->
+			        <!-- Champ date de naissance (auto-gÃ©nÃ©rÃ©) -->
 			        <div class="form-group hidden">
 			            <input type="date" class="form-control" id="DOB">
 			        </div>
