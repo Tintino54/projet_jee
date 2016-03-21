@@ -33,7 +33,17 @@
 						</div>
 						<div id="entries" class="tab-pane fade">
 							<h3>Menu 2</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+														<!-- Content div. The child elements will be used for paginating(they don't have to be all the same,  
+							    you can use divs, paragraphs, spans, or whatever you like mixed together). '-->  
+							<div id='content-dons'>  
+								<c:forEach var="dons" items="${dons}">
+									<div class="don col-lg-2">
+										<div class="col-lg-12">${dons.title}</div>
+										<div class="col-lg-12"><img class="avatar" src="<c:url value="/resources/images/avatars/female.png"/>"/></div>
+										<div class="col-lg-12">${dons.expectedamount} €</div>
+									</div>
+								</c:forEach>
+							</div>  
 						</div>
 						<div id="comments" class="tab-pane fade">
 							<div class="row">

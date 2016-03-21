@@ -29,7 +29,7 @@
     min-height: 100%;
 }
 
-#comments img.avatar
+#comments img.avatar, .don img.avatar
 {
 	width: 100%;
 	height: auto;

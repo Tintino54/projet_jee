@@ -89,6 +89,10 @@ public class CampaignController {
 			model.addObject("users", user);
 			model.addObject("textes", texte);
 			model.addObject("dates", date);
+			
+			
+			List<Campaign> dons = getDons();
+			model.addObject("dons", dons);
 			return model;
 		}
 		
@@ -102,6 +106,25 @@ public class CampaignController {
 				c.setTitle(new BigInteger(130, random).toString(10));
 				c.setDescription(new BigInteger(130, random).toString(255));
 				c.setExpectedamount(Double.parseDouble(new BigInteger(10, random).toString()) );
+
+				c.setDeadline(new java.sql.Date(11,01,1991));
+				list.add(c);
+			}
+
+			return list;
+
+		}
+		
+		private List<Campaign> getDons() {
+			SecureRandom random = new SecureRandom();
+			
+			List<Campaign> list = new ArrayList<Campaign>();
+			for(int i = 0; i < 83; i++)
+			{
+				Campaign c = new Campaign();
+				c.setTitle(new BigInteger(10, random).toString(10));
+				c.setDescription(new BigInteger(10, random).toString(10));
+				c.setExpectedamount(Double.parseDouble(new BigInteger(2, random).toString()) );
 
 				c.setDeadline(new java.sql.Date(11,01,1991));
 				list.add(c);
