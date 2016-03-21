@@ -28,14 +28,18 @@
 					<a href="#" class="btn btn-default">Voir</a>
 						</div>
 						<div id="news" class="tab-pane fade">
-							<h3>Menu 1</h3>
+							<h3>News</h3>
 							<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						</div>
 						<div id="entries" class="tab-pane fade">
-							<h3>Menu 2</h3>
-														<!-- Content div. The child elements will be used for paginating(they don't have to be all the same,  
+							<h3>Contributions</h3>
+							<!-- the input fields that will hold the variables we will use -->  
+							<input type='hidden' id='current_page_dons' />  
+							<input type='hidden' id='show_per_page_dons' />  
+							  
+							<!-- Content_dons div. The child elements will be used for paginating(they don't have to be all the same,  
 							    you can use divs, paragraphs, spans, or whatever you like mixed together). '-->  
-							<div id='content-dons'>  
+							<div id='content_dons'>  
 								<c:forEach var="dons" items="${dons}">
 									<div class="don col-lg-2">
 										<div class="col-lg-12">${dons.title}</div>
@@ -44,6 +48,93 @@
 									</div>
 								</c:forEach>
 							</div>  
+							  
+							<!-- An empty div which will be populated using jQuery -->  
+							<ul id='page_navigation_dons' class="pagination"></ul>  					
+							<script>
+							$(document).ready(function(){  
+								  
+							    //how much items per page to show  
+							    var show_per_page_dons = 18;  
+							    //getting the amount of elements inside content_dons div  
+							    var number_of_items_dons = $('#content_dons').children().size();  
+							    //calculate the number of pages we are going to have  
+							    var number_of_pages_dons = Math.ceil(number_of_items_dons/show_per_page_dons);  
+							  
+							    //set the value of our hidden input fields  
+							    $('#current_page_dons').val(0);  
+							    $('#show_per_page_dons').val(show_per_page_dons);  
+							  
+							    //now when we got all we need for the navigation let's make it '  
+							  
+							    /* 
+							    what are we going to have in the navigation? 
+							        - link to previous page 
+							        - links to specific pages 
+							        - link to next page 
+							    */  
+							    var navigation_html = '<li><a class="previous_link" href="javascript:previousPage_dons();">Prec.</a></li>';  
+							    var current_link = 0;  
+							    while(number_of_pages_dons > current_link){  
+							        navigation_html += '<li><a class="page_link" href="javascript:go_to_page_dons(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a></li>';  
+							        current_link++;  
+							    }  
+							    navigation_html += '<li><a class="next_link" href="javascript:nextPage_dons(' + number_of_pages_dons + ');">Suiv.</a></li>';  
+							  
+							    $('#page_navigation_dons').html(navigation_html);  
+							  
+							    //add active_page class to the first page link  
+							    $('#page_navigation_dons .page_link:first').addClass('active_page');  
+							  
+							    //hide all the elements inside content_dons div  
+							    $('#content_dons').children().css('display', 'none');  
+							  
+							    //and show the first n (show_per_page_dons) elements  
+							    $('#content_dons').children().slice(0, show_per_page_dons).css('display', 'block');  
+							  
+							});  
+							  
+							function previousPage_dons(){  
+							  
+							    new_page = parseInt($('#current_page_dons').val()) - 1;  
+							    //if there is an item before the current active link run the function  
+							    console.log(new_page > 0);
+							    if(new_page >= 0){
+							        go_to_page_dons(new_page);  
+							    }  
+							  
+							}  
+							  
+							function nextPage_dons(number_of_pages_dons){  
+							    new_page = parseInt($('#current_page_dons').val()) + 1;  
+							    //if there is an item after the current active link run the function
+							    console.log(new_page < number_of_pages_dons);
+							    if(new_page < number_of_pages_dons){
+							        go_to_page_dons(new_page);  
+							    }  
+							  
+							}  
+							function go_to_page_dons(page_num){  
+							    //get the number of items shown per page  
+							    var show_per_page_dons = parseInt($('#show_per_page_dons').val());  
+							  
+							    //get the element number where to start the slice from  
+							    start_from = page_num * show_per_page_dons;  
+							  
+							    //get the element number where to end the slice  
+							    end_on = start_from + show_per_page_dons;  
+							  
+							    //hide all children elements of content_dons div, get specific items and show them  
+							    $('#content_dons').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');  
+							  
+							    /*get the page link that has longdesc attribute of the current page and add active_page class to it 
+							    and remove that class from previously active page link*/  
+							    $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');  
+							  
+							    //update the current page input field  
+							    $('#current_page_dons').val(page_num);  
+							}  
+							</script>
 						</div>
 						<div id="comments" class="tab-pane fade">
 							<div class="row">
