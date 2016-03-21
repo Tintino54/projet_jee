@@ -17,7 +17,7 @@
 						<label for="pwd">Mot de passe:</label>
 						<form:input type="password" class="form-control" id="pwd" path="pwd" />
 					</div>
-					<input type="submit" class="btn btn-default submit" value="Connexion"/>
+					<input type="submit" class="btn btn-aqua" value="Connexion"/>
 				</form:form>
 			</div>
 		</div>

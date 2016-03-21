@@ -40,7 +40,7 @@
 			        <div class="form-group hidden">
 			            <input type="date" class="form-control" id="DOB">
 			        </div>
-					<button type="submit" class="btn btn-default submit">Inscription</button>
+					<button type="submit" class="btn btn-aqua">Inscription</button>
 		        </form>
 			</div>
 		</div>

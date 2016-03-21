@@ -72,26 +72,25 @@ html, body
 	border-radius: 0;
 }
 
-.badge {
-    background-color: mediumturquoise;
+.badge,.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .btn-aqua, .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    background-color: mediumaquamarine;
 }
 
-.submit, .btn-default
-{
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    border: none;
-    background: #00A6F0;
+item.active>.badge, .nav-pills>.active>a>.badge, a, .pagination>li>a, .pagination>li>span {
+    color: mediumaquamarine;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
     color: white;
-    font-weight: bold;
+}
+
+
+.btn-full
+{
     height: 50px;
     width: 100%;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
-    opacity: 0.9;
     margin-bottom: 20px;
     display: inline-block;
-    /* line-height: 50px; */
     text-align: center;
     font-size: 20px;
 }
@@ -110,29 +109,20 @@ html, body
 /********************************************************
 *                     Boutons                           *
 ********************************************************/
-.btn-red, .btn-nav, .btn-table
+.btn-aqua
 {
-	background-color: firebrick;
+	background-color: mediumaquamarine;
 	color: white;
 	border-radius: 0;
-	margin: 10px;
     line-height: 1.3333333;
-}
-
-.btn-table
-{
-	margin: 0;
-}
-
-.btn-red
-{
-	padding: 10px 16px;
+   	padding: 10px 16px;
     font-size: 18px;
+    opacity: 1;
 }
 
-.btn-red:hover, .btn-nav:hover, .btn-table:hover
+.btn-aqua:hover
 {
-	background-color: crimson;
+	background-color: lightseagreen;
 	color: white;
 }
 
@@ -146,7 +136,7 @@ nav.navbar
 
 nav.navbar li:hover
 {
-	background-color: PowderBlue;
+	background-color: mediumaquamarine;
 }
 
 .navbar-default .navbar-nav>li:hover>a

@@ -36,7 +36,7 @@
 						<label for="desc">Description du projet :</label>
 						<textarea class="form-control" th:field="*{description}" rows="10" id="desc"></textarea>
 					</div>
-					<input type="submit" class="btn btn-default submit" value="Créer"/>
+					<input type="submit" class="btn btn-aqua" value="Créer"/>
 				</form>
 			</div>
 		</div>

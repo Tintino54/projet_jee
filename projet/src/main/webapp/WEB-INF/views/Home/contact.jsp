@@ -20,7 +20,7 @@
 						<label for="desc">Votre message:</label>
 						<textarea class="form-control" rows="10" id="desc"></textarea>
 					</div>
-					<button type="submit" class="btn btn-default submit">Envoyer</button>
+					<button type="submit" class="btn btn-default btn-aqua">Envoyer</button>
 		        </form>
 			</div>
 		</div>
