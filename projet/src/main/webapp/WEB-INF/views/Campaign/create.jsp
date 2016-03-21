@@ -7,7 +7,7 @@
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid project-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3 white-bg">
-				<form action="/projet/check" th:action="@{/nouveau}" th:object="${campaign}" method="POST" role="form">
+				<form action="" th:action="@{projet/nouveau}" th:object="${campaign}" method="POST" role="form">
 					<h1>Créer mon projet</h1>
 					<div class="form-group">
 						<label for="name">Nom du projet :</label>
