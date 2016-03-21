@@ -48,16 +48,16 @@
 							<div id='content'>  
 								<c:forEach var="listValue" items="${textes}">
 									<div class="comment col-lg-12">
-										<div class="col-lg-2">
+										<div class="col-xs-9 col-lg-1">
 											<img class="avatar" src="<c:url value="/resources/images/avatars/female.png"/>"/>
 										</div>
-										<div class="col-lg-8">
+										<div class="col-xs-3 col-lg-2">
+											11 janvier 1991
+										</div>
+										<div class="col-xs-12 col-lg-9">
 											<h3>${listValue}</h3>
 											<p>${listValue}</p>
 											<div>${listValue}</div>
-										</div>
-										<div class="col-lg-2">
-											11 janvier 1991
 										</div>
 										<div class="col-lg-12"><hr></div>
 									</div>
@@ -70,7 +70,7 @@
 							$(document).ready(function(){  
 								  
 							    //how much items per page to show  
-							    var show_per_page = 5;  
+							    var show_per_page = 4;  
 							    //getting the amount of elements inside content div  
 							    var number_of_items = $('#content').children().size();  
 							    //calculate the number of pages we are going to have  
