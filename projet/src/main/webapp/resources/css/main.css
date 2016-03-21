@@ -88,17 +88,27 @@ item.active>.badge, .nav-pills>.active>a>.badge, a, .pagination>li>a, .paginatio
 .nav>li>a:focus, .nav>li>a:hover {
     background-color: lightseagreen;
 }
-.nav-pills>li, .nav-pills>li>a, .nav-pills>li.active .badge
-{
-	background-color: mediumaquamarine;
-	color: white;
+.nav-pills>li, .nav-pills>li>a, .nav-pills>li.active .badge {
+    background-color: mediumaquamarine;
+    color: white;
+    border-left: 1px solid lightseagreen;
 }
-
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .badge
 {
 	background-color: white;
 	color:  mediumaquamarine;
+}
+
+.progress-bar
+{
+	background-image: none;
+	background-color: lightgreen;
+}
+
+.progress-bar-red
+{
+	background-color: lightsalmon;
 }
 
 .btn-full

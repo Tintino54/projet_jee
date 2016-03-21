@@ -103,8 +103,8 @@ public class CampaignController {
 			for(int i = 0; i < 20; i++)
 			{
 				Campaign c = new Campaign();
-				c.setTitle(new BigInteger(130, random).toString(10));
-				c.setDescription(new BigInteger(130, random).toString(255));
+				c.setTitle("tototototootot");
+				c.setDescription("aubergineuuuuuuuuuuuh");
 				c.setExpectedamount(Double.parseDouble(new BigInteger(10, random).toString()) );
 
 				c.setDeadline(new java.sql.Date(11,01,1991));
