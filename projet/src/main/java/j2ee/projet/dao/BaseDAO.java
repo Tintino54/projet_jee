@@ -8,7 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public class BaseDAO<T> {
-	@PersistenceContext(unitName = "entityManagerFactoryBean", type=PersistenceContextType.EXTENDED)
+	
+	@PersistenceContext(unitName = "entityManagerFactory", type=PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
 
 	public EntityManager getEntityManager() {

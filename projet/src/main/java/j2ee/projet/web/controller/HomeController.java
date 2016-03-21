@@ -1,11 +1,6 @@
 package j2ee.projet.web.controller;
-import java.security.SecureRandom;
-import java.math.BigInteger;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -14,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import j2ee.projet.domaine.Campaign;
 import j2ee.projet.web.bean.UtilisateurBean;
 
 @Controller

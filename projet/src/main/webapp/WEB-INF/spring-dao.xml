@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="
-      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation=" 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd 
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:annotation-config />
 
-	<context:component-scan base-package="j2ee.projet" />
+	<bean class="org.springframework.orm.jpa.JpaTransactionManager"
+		id="transactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
 
-	<bean id="entityManagerFactoryBean"
+	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="j2ee.projet.domaine"></property>
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="j2ee.projet.domaine" />
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-		</property>
-		<property name="jpaProperties">
-			<props>
-				<prop key="hibernate.archive.autodetection">class,hbm</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-			</props>
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="false" />
+				<property name="generateDdl" value="true" />
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+			</bean>
 		</property>
 	</bean>
 
 	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://db4free.net:3306/aubergine" />
-		<property name="username" value="aubergine" />
-		<property name="password" value="aubergine" />
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="org.h2.Driver" />
+		<property name="url"
+			value="jdbc:h2:db/aubergine;MODE=MYSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
 	</bean>
-
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactoryBean" />
-	</bean>
-
-	<tx:annotation-driven />
-
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:init.sql" />
+	</jdbc:initialize-database>
 </beans>

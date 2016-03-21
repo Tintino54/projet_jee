@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS USERS;
+
+
+CREATE TABLE `USERS` (
+  `ID_USER` int(11) NOT NULL AUTO_INCREMENT,
+  `LOGIN` varchar(15) NOT NULL,
+  `PASSWORD` varchar(60) NOT NULL,
+  `FIRSTNAME` varchar(30) NOT NULL,
+  `LASTNAME` varchar(30) NOT NULL,
+  `MAILADRESS` varchar(30) NOT NULL,
+  `BIRTHDATE` date NOT NULL,
+  `SEX` int(11) NOT NULL
+);
+
+
+INSERT INTO `USERS` (`LOGIN`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `MAILADRESS`, `BIRTHDATE`, `SEX`) VALUES
+('aubergine', '$2a$10$oXWjKM23jFbLSpk/ZNzX1u5bytUQ2e7T0Br8FiQBF/.Kl/2JbMNnq', 'aubergine', '', 'aubergine@jardin.fr', CURRENT_TIMESTAMP, 0),
+('radis', '$2a$10$hF9yMKVMIZxIxdmB5kdZIOQ5kVC5RJe58EM1OOr54zF/dejYQnjFe', 'radis', '', 'radis@jardin.fr', CURRENT_TIMESTAMP, 0);
+
+ALTER TABLE `USERS`
+  ADD PRIMARY KEY (`ID_USER`);
