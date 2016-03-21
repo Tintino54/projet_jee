@@ -72,9 +72,10 @@ html, body
 	border-radius: 0;
 }
 
-.badge,.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .btn-aqua, .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+.btn-aqua, .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
     background-color: mediumaquamarine;
 }
+
 
 item.active>.badge, .nav-pills>.active>a>.badge, a, .pagination>li>a, .pagination>li>span {
     color: mediumaquamarine;
@@ -84,6 +85,21 @@ item.active>.badge, .nav-pills>.active>a>.badge, a, .pagination>li>a, .paginatio
     color: white;
 }
 
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: lightseagreen;
+}
+.nav-pills>li, .nav-pills>li>a, .nav-pills>li.active .badge
+{
+	background-color: mediumaquamarine;
+	color: white;
+}
+
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .badge
+{
+	background-color: white;
+	color:  mediumaquamarine;
+}
 
 .btn-full
 {
