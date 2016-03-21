@@ -6,12 +6,16 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
-@NamedQuery(name="rechercherUtilisateurParMailEtMdp", query="select u.nom from Utilisateur u where u.mail like :mail and u.mdp like :mdp")
+@NamedQueries(value={
+		@NamedQuery(name="rechercherUtilisateurParMailEtMdp", query="select u.nom from Utilisateur u where u.mail like :mail and u.mdp like :mdp"),
+		@NamedQuery(name="rechercherUtilisateurParId", query="selec u from Utilisateur where u.id like :idUser")
+})
 public class Utilisateur implements Serializable {
 
 	/**

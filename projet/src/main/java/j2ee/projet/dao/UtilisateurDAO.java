@@ -25,4 +25,13 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur>{
 		query.setParameter("mdp", mdp);
 		return query.getResultList();
 	}
+	
+	public List<Utilisateur> rechercherUtilisateurParId(int idUser)
+	{
+		if (getEntityManager()==null)
+			logger.info("entityManager null");
+		TypedQuery<Utilisateur> query = getEntityManager().createNamedQuery("rechercherUtilisateurParId",Utilisateur.class);
+		query.setParameter("id",idUser);
+		return query.getResultList();
+	}
 }

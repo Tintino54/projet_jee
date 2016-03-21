@@ -76,7 +76,7 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="project-highlight"><i class="fa fa-users"></i> 36 926</div>
-							<div class="project-highlight-down">Contributeurs</div>
+							<div class="project-highlight-down">Contributions</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="project-highlight">16 000 <i class="fa fa-eur"></i></div>

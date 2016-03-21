@@ -6,10 +6,25 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PARTICIPANTS")
+@NamedQueries(value={
+		@NamedQuery(name="listingParticipations", query="select p from Participant where id_projet = :idprojet")
+})
+/**
+ * NOTA BENE : une incompréhension s'est glissée dans nos documents
+ * conduisant la table Participations à devenir la table Participants.
+ * 
+ * Nous conserverons cette confusion sur le nom de classe et de fichier
+ *  par manque de temps. En revanche, il sera fait référence aux partcipations 
+ * et aux contributeurs dans les requêtes.
+ * 
+ *
+ */
 public class Participant implements Serializable {
 	
 
