@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PARTICIPANTS")
 @NamedQueries(value={
-		@NamedQuery(name="listingParticipations", query="select p from Participant where id_projet = :idprojet")
+		@NamedQuery(name="listingParticipations", query="select p from Participant p where id_projet = :idprojet")
 })
 /**
  * NOTA BENE : une incompréhension s'est glissée dans nos documents

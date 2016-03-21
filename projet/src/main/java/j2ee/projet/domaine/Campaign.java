@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CAMPAIGNS")
 @NamedQueries(value={
-	@NamedQuery(name="rechercherCampagneParId", query="select c from Campaign c u where c.id like :id"),
-	@NamedQuery(name="listingCampagnes", query="selec c from Campaign c")
+	@NamedQuery(name="rechercherCampagneParId", query="select c from Campaign c where c.id like :id"),
+	@NamedQuery(name="listingCampagnes", query="select c from Campaign c")
 })
 public class Campaign implements Serializable {
 	/**
