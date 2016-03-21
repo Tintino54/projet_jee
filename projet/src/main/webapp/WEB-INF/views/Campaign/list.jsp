@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <tiles:insertDefinition name="myapp.homepage">
 	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/campaign/list.css"></tiles:putAttribute>
-    <tiles:putAttribute name="title">Créer mon projet</tiles:putAttribute>
+    <tiles:putAttribute name="title">Voir les projets</tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid project-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1">
