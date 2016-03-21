@@ -29,8 +29,8 @@
     min-height: 100%;
 }
 
-#comments img.avatar
+#comments img.avatar, .don img.avatar
 {
-	width: 150px;
+	width: 100%;
 	height: auto;
 }

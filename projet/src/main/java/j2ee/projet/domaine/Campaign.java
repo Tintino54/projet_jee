@@ -6,12 +6,16 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "CAMPAIGNS")
-@NamedQuery(name="rechercherCampagneParId", query="select c from Campaign c where c.id like :id")
+@NamedQueries(value={
+	@NamedQuery(name="rechercherCampagneParId", query="select c from Campaign c u where c.id like :id"),
+	@NamedQuery(name="listingCampagnes", query="selec c from Campaign c")
+})
 public class Campaign implements Serializable {
 	/**
 	 * 

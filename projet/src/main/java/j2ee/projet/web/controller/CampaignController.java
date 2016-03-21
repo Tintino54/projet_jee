@@ -4,24 +4,31 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.domaine.Campaign;
+import j2ee.projet.dao.CampagneDAO;;
 
 @Controller
 @RequestMapping("/projet")
 public class CampaignController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
+	
+	@Autowired
+	private CampagneDAO campagneDAO;
 	
 		//Lister les campagnes - Vue
 		@RequestMapping(value="/liste", method=RequestMethod.GET)
@@ -33,10 +40,20 @@ public class CampaignController {
 			return model;
 		}
 
-		//Créer une campagne -Vue
+		//Créer une campagne - Vue
 		@RequestMapping(value="/nouveau", method=RequestMethod.GET)
-		public ModelAndView create(HttpServletResponse response) throws IOException {
+		public ModelAndView create(Model model) throws IOException {
 			logger.info("Affichage de la page de création d'une campagne");
+			model.addAttribute("campaign", new Campaign());
+			return new ModelAndView("Campaign/create", model.asMap());
+		}
+		
+		//Créer une campagne - Action
+		@RequestMapping(value="/nouveau", method=RequestMethod.POST)
+		public ModelAndView createSubmit(@ModelAttribute Campaign campaign) throws IOException {
+			logger.info("Soumission du formulaire de création d'une campagne");
+//			Persister la campagne dans la BDD :
+			campagneDAO.insert(campaign);
 			return new ModelAndView("Campaign/create");
 		}
 
@@ -72,6 +89,10 @@ public class CampaignController {
 			model.addObject("users", user);
 			model.addObject("textes", texte);
 			model.addObject("dates", date);
+			
+			
+			List<Campaign> dons = getDons();
+			model.addObject("dons", dons);
 			return model;
 		}
 		
@@ -85,6 +106,25 @@ public class CampaignController {
 				c.setTitle(new BigInteger(130, random).toString(10));
 				c.setDescription(new BigInteger(130, random).toString(255));
 				c.setExpectedamount(Double.parseDouble(new BigInteger(10, random).toString()) );
+
+				c.setDeadline(new java.sql.Date(11,01,1991));
+				list.add(c);
+			}
+
+			return list;
+
+		}
+		
+		private List<Campaign> getDons() {
+			SecureRandom random = new SecureRandom();
+			
+			List<Campaign> list = new ArrayList<Campaign>();
+			for(int i = 0; i < 83; i++)
+			{
+				Campaign c = new Campaign();
+				c.setTitle(new BigInteger(10, random).toString(10));
+				c.setDescription(new BigInteger(10, random).toString(10));
+				c.setExpectedamount(Double.parseDouble(new BigInteger(2, random).toString()) );
 
 				c.setDeadline(new java.sql.Date(11,01,1991));
 				list.add(c);

@@ -13,9 +13,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USERS")
 @NamedQueries(value={
-	@NamedQuery(name="rechercherUtilisateurParMailEtMdp", query="select u.nom from Utilisateur u where u.mail like :mail and u.mdp like :mdp")
+		@NamedQuery(name="rechercherUtilisateurParMailEtMdp", query="select u.nom from Utilisateur u where u.mail like :mail and u.mdp like :mdp"),
+		@NamedQuery(name="rechercherUtilisateurParId", query="selec u from Utilisateur where u.id like :idUser")
 })
-
 public class Utilisateur implements Serializable {
 
 	/**
@@ -45,6 +45,7 @@ public class Utilisateur implements Serializable {
 	@Column(name = "BIRTHDATE")
 	private Date dateNaiss;
 	
+	//0 pour les femmes, 1 pour les hommes
 	@Column(name = "SEX")
 	private int sexe;
 
@@ -111,6 +112,4 @@ public class Utilisateur implements Serializable {
 	public void setSexe(int sexe) {
 		this.sexe = sexe;
 	}
-
-	
 }
