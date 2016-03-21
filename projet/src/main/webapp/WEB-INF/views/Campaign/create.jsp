@@ -1,6 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html xmlns:th="http://www.thymeleaf.org">
 <tiles:insertDefinition name="myapp.homepage">
 	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/campaign/create.css"></tiles:putAttribute>
     <tiles:putAttribute name="title">Créer mon projet</tiles:putAttribute>
