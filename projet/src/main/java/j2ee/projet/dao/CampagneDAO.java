@@ -26,5 +26,11 @@ public class CampagneDAO extends BaseDAO<Campaign>{
 		return query.getResultList();
 	}
 
-
+	public List<Campaign> listingCampagnes()
+	{
+		if (getEntityManager()==null)
+			logger.info("entityManager null");
+		TypedQuery<Campaign> query = getEntityManager().createNamedQuery("rechercherCampagneParId",Campaign.class);
+		return query.getResultList();
+	}
 }
