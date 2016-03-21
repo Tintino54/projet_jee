@@ -36,6 +36,11 @@ public class Utilisateur implements Serializable {
 
 	@Column(name = "DOB")
 	private Date dateNaiss;
+	
+	
+	//0 pour les femmes, 1 pour les hommes
+	@Column(name = "SEX")
+	private int sex;
 
 	public int getId() {
 		return id;
@@ -83,5 +88,13 @@ public class Utilisateur implements Serializable {
 
 	public void setDateNaiss(Date dateNaiss) {
 		this.dateNaiss = dateNaiss;
+	}
+
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
 	}
 }

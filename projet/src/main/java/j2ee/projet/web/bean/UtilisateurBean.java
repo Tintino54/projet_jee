@@ -1,10 +1,23 @@
 package j2ee.projet.web.bean;
 
+import java.sql.Date;
+
+import javax.persistence.Column;
+
 public class UtilisateurBean {
 
+	private String nom;
+
+	private String prenom;
+
+	private Date dateNaiss;
+	
 	private String email;
 
 	private String pwd;
+	
+	//0 pour les femmes, 1 pour les hommes
+	private int sexe;
 
 	public String getEmail() {
 		return email;
@@ -20,5 +33,37 @@ public class UtilisateurBean {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public Date getDateNaiss() {
+		return dateNaiss;
+	}
+
+	public void setDateNaiss(Date dateNaiss) {
+		this.dateNaiss = dateNaiss;
+	}
+
+	public int getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(int sexe) {
+		this.sexe = sexe;
 	}
 }
