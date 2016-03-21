@@ -25,7 +25,6 @@
 					<p><c:out value="${projet.description}"/></p>
 					<div><c:out value="${projet.expectedamount}"/></div>
 					<div><c:out value="${projet.expectedamount}"/></div>
-					<a href="#" class="btn btn-default">Voir</a>
 						</div>
 						<div id="news" class="tab-pane fade">
 							<h3>News</h3>
