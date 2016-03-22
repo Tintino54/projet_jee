@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
 	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/campaign/create.css"></tiles:putAttribute>
@@ -8,6 +9,12 @@
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3 white-bg">
 				<form action="" th:action="@{projet/nouveau}" th:object="${campaign}" method="POST" role="form">
 					<h1 class="titre">Créer mon projet</h1>
+					<c:if test="${not empty sucessMessage}" >
+						<h1 class="titre">Déja crée</h1>
+					</c:if>
+					<c:if test="${empty sucessMessage}" >
+						<h1 class="titre">Success message vide</h1>
+					</c:if>
 					<div class="form-group">
 						<label for="name">Nom du projet :</label>
 						<input type="text" class="form-control" th:field="*{nom}" id="name" path="name" />
