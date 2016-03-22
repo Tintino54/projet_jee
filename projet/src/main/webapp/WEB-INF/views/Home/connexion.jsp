@@ -6,7 +6,7 @@
     <tiles:putAttribute name="title">Connexion</tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid login-bg">
-			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 white-bg">
+			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 white-bg fadeInBlock">
 				<form:form action="/projet/check" method="POST" role="form">
 					<h1 class="titre">Connexion</h1>
 					<div class="form-group">

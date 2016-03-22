@@ -1,5 +1,28 @@
 img.team
 {
-	width: 150px;
+	width: 100%;
 	height: auto;
+}
+
+#body.friendship-bg
+{
+	background-image: url('../../images/friendship.jpg');
+	background-size: cover;
+    background-attachment: fixed;
+}
+
+@media(min-width:992px){
+	
+	.staff
+	{
+	    min-height: 380px;
+	}
+}
+
+@media(min-width:1200px){
+	.staff
+	{
+	    min-height: 200px;
+	}
+	
 }

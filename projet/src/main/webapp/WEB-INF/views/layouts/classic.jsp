@@ -39,6 +39,9 @@
 	    <!--  Feuille de style propre à la page -->
 	    <tiles:getAsString name="pagecss" defaultValue="" />
 	    
+   	    <!--  JS commun -->
+	    <script src="<c:url value="/resources/js/main.js"/>"></script>
+	    
 	    <link rel="icon" type="image/png" href="<c:url value="/resources/images/favicon.png"/>"  />
 		<title><tiles:getAsString name="title"/></title>
 	</head>
