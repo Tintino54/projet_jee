@@ -20,20 +20,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import j2ee.projet.dao.CampagneDAO;
-import j2ee.projet.domaine.Campagne;;
+import j2ee.projet.domaine.Campagne;
+import j2ee.projet.domaine.Participation;
+import j2ee.projet.metier.CampagneService;;
 
 @Controller
 public class CampaignController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
-
+	
 	@Autowired
-	private CampagneDAO campagneDAO;
-
+	CampagneService campServ;
+	
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView liste(HttpServletResponse response) throws IOException {
-		List<Campagne> list = getList();
+		List<Campagne> list = campServ.getList();
 
 		ModelAndView model = new ModelAndView("Campaign/list");
 		model.addObject("lists", list);
@@ -43,7 +44,7 @@ public class CampaignController {
 	// Cr√©er une campagne - Vue
 	@RequestMapping(value = "/nouveau", method = RequestMethod.GET)
 	public ModelAndView create(Model model) throws IOException {
-		logger.info("Affichage de la page de cr√©ation d'une campagne");
+		logger.info("Affichage de la page de crÈation d'une campagne");
 		model.addAttribute("campaign", new Campagne());
 		return new ModelAndView("Campaign/create", model.asMap());
 	}
@@ -51,19 +52,18 @@ public class CampaignController {
 	// Cr√©er une campagne - Action
 	@RequestMapping(value = "/nouveau", method = RequestMethod.POST)
 	public ModelAndView createSubmit(@ModelAttribute Campagne campaign) throws IOException {
-		logger.info("Soumission du formulaire de cr√©ation d'une campagne");
+		logger.info("Soumission du formulaire de crÈation d'une campagne");
 		// Persister la campagne dans la BDD :
 		try {
-			campagneDAO.insert(campaign);
+			campServ.ajouter(campaign);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        String sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien √©t√© cr√©e";
-        
-        ModelAndView model = new ModelAndView("Campaign/create");
-        model.addObject("sucessMessage", sucessMessage);
-        return model;
+		String sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien ÈtÈ crÈÈ";
+
+		ModelAndView model = new ModelAndView("Campaign/create");
+		model.addObject("sucessMessage", sucessMessage);
+		return model;
 	}
 
 	// Modifier une campagne -Vue
@@ -100,51 +100,10 @@ public class CampaignController {
 		model.addObject("textes", texte);
 		model.addObject("dates", date);
 
-		List<Campagne> dons = getDons();
+		List<Participation> dons = campServ.getDons(Integer.parseInt(id));
 		model.addObject("dons", dons);
 		return model;
 	}
 
-	private List<Campagne> getList() {
-		SecureRandom random = new SecureRandom();
-
-		List<Campagne> list = new ArrayList<Campagne>();
-		for (int i = 0; i < 20; i++) {
-			Campagne c = new Campagne();
-			c.setTitle("tototototootot");
-			c.setDescription("aubergineuuuuuuuuuuuh");
-			c.setExpectedamount(Double.parseDouble(new BigInteger(10, random).toString()));
-
-			Calendar cal = Calendar.getInstance();
-			cal.set(1991, 01, 11);
-			Date d = new Date(cal.getTimeInMillis());
-			c.setDeadline(d);
-
-			list.add(c);
-		}
-
-		return list;
-
-	}
-
-	private List<Campagne> getDons() {
-		SecureRandom random = new SecureRandom();
-
-		List<Campagne> list = new ArrayList<Campagne>();
-		for (int i = 0; i < 83; i++) {
-			Campagne c = new Campagne();
-			c.setTitle(new BigInteger(10, random).toString(10));
-			c.setDescription(new BigInteger(10, random).toString(10));
-			c.setExpectedamount(Double.parseDouble(new BigInteger(2, random).toString()));
-
-			Calendar cal = Calendar.getInstance();
-			cal.set(1991, 01, 11);
-			Date d = new Date(cal.getTimeInMillis());
-			c.setDeadline(d);
-			list.add(c);
-		}
-
-		return list;
-
-	}
+	
 }

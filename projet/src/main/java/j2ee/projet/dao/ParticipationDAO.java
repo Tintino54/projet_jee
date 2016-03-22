@@ -15,11 +15,11 @@ import j2ee.projet.domaine.Participation;
 public class ParticipationDAO extends BaseDAO<Participation> {
 final static Logger logger = Logger.getLogger(CommentaireDAO.class);
 	
-	public List<Participation> listingParticipations(int idprojet) 
+	public List<Participation> rechercherParticipationParIdProjet(int idprojet) 
 	{
 		if (getEntityManager()==null)
 			logger.info("entityManager null");
-		TypedQuery<Participation> query = getEntityManager().createNamedQuery("listingParticipations",Participation.class);
+		TypedQuery<Participation> query = getEntityManager().createNamedQuery("rechercherParticipationParIdProjet",Participation.class);
 		query.setParameter("idprojet", idprojet);
 		return query.getResultList();
 	}

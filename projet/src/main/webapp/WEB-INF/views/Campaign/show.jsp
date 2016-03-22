@@ -37,17 +37,20 @@
 							<input type='hidden' id='show_per_page_dons' />  
 							  
 							<!-- Content_dons div. The child elements will be used for paginating(they don't have to be all the same,  
-							    you can use divs, paragraphs, spans, or whatever you like mixed together). '-->  
-							<div id='content_dons'>  
+							    you can use divs, paragraphs, spans, or whatever you like mixed together). '-->
+							<div id='content_dons'>
 								<c:forEach var="dons" items="${dons}">
 									<div class="don col-lg-2">
 										<div class="col-lg-12">${dons.title}</div>
-										<div class="col-lg-12"><img class="avatar" src="<c:url value="/resources/images/avatars/female.png"/>"/></div>
-										<div class="col-lg-12">${dons.expectedamount} €</div>
+										<div class="col-lg-12">
+											<img class="avatar"
+												src="<c:url value="/resources/images/avatars/female.png"/>" />
+										</div>
+										<div class="col-lg-12">${dons.expectedamount}€</div>
 									</div>
 								</c:forEach>
-							</div>  
-							  
+							</div>
+
 							<!-- An empty div which will be populated using jQuery -->  
 							<ul id='page_navigation_dons' class="pagination"></ul>  					
 							<script>

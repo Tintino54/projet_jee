@@ -53,5 +53,16 @@ ALTER TABLE `USERS_ROLES`
   
   
 INSERT INTO `USERS` (`LOGIN`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `MAILADRESS`, `BIRTHDATE`, `SEX`) VALUES
-('aubergine', '$2a$10$oXWjKM23jFbLSpk/ZNzX1u5bytUQ2e7T0Br8FiQBF/.Kl/2JbMNnq', 'aubergine', '', 'aubergine@jardin.fr', CURRENT_TIMESTAMP, 0),
-('radis', '$2a$10$hF9yMKVMIZxIxdmB5kdZIOQ5kVC5RJe58EM1OOr54zF/dejYQnjFe', 'radis', '', 'radis@jardin.fr', CURRENT_TIMESTAMP, 0);
+('aubergine', '$2a$10$oXWjKM23jFbLSpk/ZNzX1u5bytUQ2e7T0Br8FiQBF/.Kl/2JbMNnq', 'aubergine', '', 'aubergine@jardin.fr', '1989-02-12', 0),
+('radis', '$2a$10$hF9yMKVMIZxIxdmB5kdZIOQ5kVC5RJe58EM1OOr54zF/dejYQnjFe', 'radis', '', 'radis@jardin.fr', '1975-02-12', 0);
+  
+INSERT INTO `CAMPAIGNS` (`TITLE`,`EXPECTEDAMOUNT`,`DESCRIPTION`,`DEADLINE`,`ID_USER`) VALUES
+('Croisiere',2000,'budget croisiere','2016-03-31',1),
+('Album',900,'Pour la création de mon nouvel album','2016-04-12',2),
+('Court-métrage',15000,'Création d un court-métrage pour mon école','2016-05-12',1);
+
+INSERT INTO `PARTICIPATIONS` (`ID_PROJET`,`ID_USER`,`DATEPARTICIPATION`,`DONATION`,`MESSAGE`) VALUES
+(1,1,'2016-03-22',20,'Bon voyage les amoureux'),
+(1,2,'2016-03-22',50,'Amusez-vous bien la bas !'),
+(2,1,'2016-03-22',10,'Tellement hate que cet album arrive !');
+

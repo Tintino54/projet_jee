@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PARTICIPATIONS")
 @NamedQueries(value={
-		@NamedQuery(name="listingParticipations", query="select p from Participation p where id_projet = :idprojet")
+		@NamedQuery(name="rechercherParticipationParIdProjet", query="select p from Participation p where id_projet = :idprojet")
 })
 public class Participation implements Serializable {
 	
