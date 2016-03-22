@@ -1,5 +1,6 @@
 package j2ee.projet.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -45,6 +46,8 @@ public class UtilisateurDAOTest {
 		utilisateur.setLogin("toto");
 		utilisateur.setEmail("toto@jardin.fr");
 		utilisateur.setPwd("mdp");
+		Date date = new Date(10);
+		utilisateur.setDateNaiss(date);
 		utilisateur.setNom("cerise");
 		utilisateur.setPrenom("tomate");
 		utilisateur.setSexe(0);

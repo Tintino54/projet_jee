@@ -12,7 +12,7 @@ import j2ee.projet.domaine.Participation;
 
 @Repository
 @Transactional
-public class ParticipantDAO extends BaseDAO<Participation> {
+public class ParticipationDAO extends BaseDAO<Participation> {
 final static Logger logger = Logger.getLogger(CommentaireDAO.class);
 	
 	public List<Participation> listingParticipations(int idprojet) 

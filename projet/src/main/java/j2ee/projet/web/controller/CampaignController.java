@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import j2ee.projet.domaine.Campaign;
-import j2ee.projet.dao.CampagneDAO;;
+import j2ee.projet.dao.CampagneDAO;
+import j2ee.projet.domaine.Campaign;;
 
 @Controller
 @RequestMapping("/projet")
@@ -53,7 +53,12 @@ public class CampaignController {
 		public ModelAndView createSubmit(@ModelAttribute Campaign campaign) throws IOException {
 			logger.info("Soumission du formulaire de création d'une campagne");
 //			Persister la campagne dans la BDD :
-			campagneDAO.insert(campaign);
+			try {
+				campagneDAO.insert(campaign);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return new ModelAndView("Campaign/create");
 		}
 

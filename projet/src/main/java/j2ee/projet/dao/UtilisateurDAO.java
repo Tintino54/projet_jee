@@ -51,7 +51,13 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 		utilisateur.setNom(uBean.getNom());
 		utilisateur.setPrenom(uBean.getPrenom());
 		utilisateur.setSexe(uBean.getSexe());
+		utilisateur.setDateNaiss(uBean.getDateNaiss());
 		
-		insert(utilisateur);
+		try {
+			insert(utilisateur);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
