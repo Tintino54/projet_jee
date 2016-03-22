@@ -273,6 +273,7 @@ Pour vous aider dans la gestion et l’envoie de vos contreparties, nous mettons
 </ul>
 <h2 id="chap-projetfinancé">Mon projet a été financé ! Réussir son SAV !</h2>
 <h2 class="titre">Comment puis-je récupérer mon argent ?</h2>
+
 <p>
 Une fois la date de fin de collecte atteinte, l’argent de la jauge vous sera reversé sur votre 
     <strong>Crédit MMC</strong> dans un délai de 14 jours <a href="https://www.mymajorcompany.com/terms">(Cf. CGU – 12. Droit de rétraction)</a>. Vous devrez ensuite certifier votre compte MMC pour demander un <strong>virement bancaire</strong>. Pour ce faire, nous vous invitons à vous rendre dans votre espace « Mon compte », à la rubrique « Paramètres du compte » et dans l’onglet « Certification ». Il vous sera alors demandé d’envoyer une copie d’un document justifiant votre identité (Carte d’Identité Nationale, Passeport, Permis de conduire). Il est indispensable que les coordonnées de vos Paramètres soient celles de la personne, association ou entreprise qui recevra l’argent sur son compte !
