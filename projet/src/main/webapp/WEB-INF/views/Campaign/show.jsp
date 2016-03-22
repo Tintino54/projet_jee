@@ -300,17 +300,60 @@
 									</div>
 								</div>
 							</div>
-							<button type="button" class="btn btn-aqua" data-toggle="modal" data-target="#chart">Voir la progression&nbsp;<i class="fa fa-bar-chart-o"></i></button>	
+							<button type="button" class="btn btn-aqua" data-toggle="modal" data-target="#chart">Répartition des dons&nbsp;<i class="fa fa-bar-chart-o"></i></button>	
 							<div id="chart" class="modal fade" role="dialog">
-								<div class="modal-dialog">
+								<div class="modal-dialog modal-lg">
 									<!-- Modal content-->
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">Progression des dons</h4>
+											<h4 class="modal-title">Répartition des dons</h4>
 										</div>
 										<div class="modal-body">
-											<p>Mettre le formulaire ici</p>
+											<script src="https://code.highcharts.com/highcharts.js"></script>
+											<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+											<script src="https://code.highcharts.com/modules/exporting.js"></script>
+											<div id="container_chart"></div>
+											<script>
+											$(function () {
+											    $('#container_chart').highcharts({
+											        chart: {
+											            type: 'pie',
+											            options3d: {
+											                enabled: true,
+											                alpha: 45
+											            }
+											        },
+											        credits: {
+											            enabled: false
+											        },
+											        title: {
+											            text: 'Répartition des montants des donations'
+											        },
+											        subtitle: {
+											            text: 'Répartition des montants des donations'
+											        },
+											        plotOptions: {
+											            pie: {
+											                innerSize: 100,
+											                depth: 45
+											            }
+											        },
+											        series: [{
+											            name: 'Nombre de dons',
+											            data: [
+											                ['5 €', 8],
+											                ['Entre 5€ et 10€', 3],
+											                ['Entre 10€ et 20€', 1],
+											                ['Entre 20€ et 30€', 6],
+											                ['Entre 30€ et 40€', 8],
+											                ['Entre 40€ et 50€', 4],
+											                ['Plus de 50€', 4]
+											            ]
+											        }]
+											    });											    
+											});
+											</script>											
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-aqua" data-dismiss="modal">Fermer</button>

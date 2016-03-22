@@ -46,3 +46,17 @@
 	margin-bottom: 20px;
 	padding: 0 15px;
 }
+
+#container_chart
+{
+	width: 850px;
+}
+
+@media(max-width:767px){
+	
+	#container_chart
+	{
+		width: 550px;
+	}
+	
+}
