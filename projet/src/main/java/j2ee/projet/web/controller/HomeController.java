@@ -31,7 +31,11 @@ public class HomeController {
 	@RequestMapping(value="/inscription")
 	public ModelAndView inscription(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de la page de inscription");
-		return new ModelAndView("Home/inscription");
+		String sucessMessage = "Inscription réussie";
+		
+		ModelAndView model = new ModelAndView("Home/inscription");
+		model.addObject("sucessMessage", sucessMessage);
+		return model;
 	}
 	
 	@RequestMapping(value="/principe")
@@ -49,6 +53,10 @@ public class HomeController {
 	@RequestMapping(value="/contact")
 	public ModelAndView contact(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de la page de contact");
-		return new ModelAndView("Home/contact");
+		String sucessMessage = "Le message a bien été envoyé";
+		
+		ModelAndView model = new ModelAndView("Home/contact");
+		model.addObject("sucessMessage", sucessMessage);
+		return model;
 	}
 }

@@ -60,7 +60,11 @@ public class CampaignController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new ModelAndView("Campaign/create");
+        String sucessMessage = "Le projet a bien été crée";
+        
+        ModelAndView model = new ModelAndView("Campaign/create");
+        model.addObject("sucessMessage", sucessMessage);
+        return model;
 	}
 
 	// Modifier une campagne -Vue
