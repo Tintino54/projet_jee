@@ -6,15 +6,22 @@
     <tiles:putAttribute name="title">Créer mon projet</tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid project-bg">
+			<div class="row">
+				<div class="row">
+					<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3">
+						<c:if test="${not empty sucessMessage}" >
+							<div class="alert alert-success">
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								${sucessMessage}
+							</div>
+						</c:if>
+					</div>
+				</div>
+			</div>
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3 white-bg">
 				<form action="" th:action="@{/nouveau}" th:object="${campaign}" method="POST" role="form">
 					<h1 class="titre">Créer mon projet</h1>
-					<c:if test="${not empty sucessMessage}" >
-						<h1 class="titre">Déja crée</h1>
-					</c:if>
-					<c:if test="${empty sucessMessage}" >
-						<h1 class="titre">Success message vide</h1>
-					</c:if>
+
 					<div class="form-group">
 						<label for="name">Nom du projet :</label>
 						<input type="text" class="form-control" th:field="*{nom}" id="name" path="name" />

@@ -59,7 +59,7 @@ public class CampaignController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        String sucessMessage = "Le projet a bien été crée";
+        String sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien été crée";
         
         ModelAndView model = new ModelAndView("Campaign/create");
         model.addObject("sucessMessage", sucessMessage);
@@ -103,8 +103,8 @@ public class CampaignController {
 		List<Campagne> dons = getDons();
 		model.addObject("dons", dons);
 		return model;
-	} 
- 
+	}
+
 	private List<Campagne> getList() {
 		SecureRandom random = new SecureRandom();
 
@@ -145,38 +145,6 @@ public class CampaignController {
 		}
 
 		return list;
-
-	}
-
-	private Campagne getProject() {
-		SecureRandom random = new SecureRandom();
-
-		Campagne c = new Campagne();
-		c.setTitle("Mon super titre");
-		c.setDescription(
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae diam turpis. Aenean ornare hendrerit ."
-						+ "Cras non nisi commodo, tempus lorem ac, lacinia turpis. Donec consequat tristique  at convallis. Mauris dolor "
-						+ "purus, blandit ut magna convallis, varius posuere lorem. Ut sit amet gravida felis. Vestibulum rutrum tortor vestibulum "
-						+ "rhoncus viverra.Cras sapien enim, vulputate a fringilla in, vehicula at ligula. Duis fermentum, mauris id "
-						+ " tempor accumsan, elit quam dapibus sapien, at vestibulum dolor metus sed arcu. Etiam ipsum leo, posuere nec laoreet a, "
-						+ "faucibus vitae nisi. Proin varius tortor vitae urna sodales ullamcorper sit amet vel arcu. Maecenas vulputate nisl odio,"
-						+ "quis suscipit enim malesuada a. Donec nec erat viverra, iaculis leo quis, efficitur nisl. Pellentesque sed sagittis"
-						+ "lectus. Phasellus tempor orci non viverra finibus. Aenean ac magna fringilla felis tincidunt vestibulum. Nam viverra"
-						+ "condimentum risus mollis maximus. Donec finibus tortor nunc, id placerat quam mollis sit amet. Nullam sed  ex."
-						+ "Maecenas id nulla ac justo pellentesque dapibus. Duis fringilla malesuada purus, pharetra suscipit felis  id. Aliquam "
-						+ "quis faucibus justo. In semper nulla non mattis laoreet. Cum sociis natoque penatibus et magnis dis parturient montes,"
-						+ "nascetur ridiculus mus. Praesent mattis pellentesque ex, id venenatis lorem tincidunt et. In gravida dui tortor,"
-						+ "ut ultrices justo fermentum non. Morbi vel dui tincidunt, dapibus massa vel, feugiat dui. Vestibulum ante ipsum primis"
-						+ "in faucibus orci luctus et ultrices posuere cubilia Curae;");
-
-		c.setExpectedamount(500000);
-
-		Calendar cal = Calendar.getInstance();
-		cal.set(1991, 01, 11);
-		Date d = new Date(cal.getTimeInMillis());
-		c.setDeadline(d);
-
-		return c;
 
 	}
 }
