@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.dao.CampagneDAO;
-import j2ee.projet.domaine.Campaign;;
+import j2ee.projet.domaine.Campagne;;
 
 @Controller
 @RequestMapping("/projet")
@@ -34,7 +34,7 @@ public class CampaignController {
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView liste(HttpServletResponse response) throws IOException {
-		List<Campaign> list = getList();
+		List<Campagne> list = getList();
 
 		ModelAndView model = new ModelAndView("Campaign/list");
 		model.addObject("lists", list);
@@ -45,13 +45,13 @@ public class CampaignController {
 	@RequestMapping(value = "/nouveau", method = RequestMethod.GET)
 	public ModelAndView create(Model model) throws IOException {
 		logger.info("Affichage de la page de création d'une campagne");
-		model.addAttribute("campaign", new Campaign());
+		model.addAttribute("campaign", new Campagne());
 		return new ModelAndView("Campaign/create", model.asMap());
 	}
 
 	// Créer une campagne - Action
 	@RequestMapping(value = "/nouveau", method = RequestMethod.POST)
-	public ModelAndView createSubmit(@ModelAttribute Campaign campaign) throws IOException {
+	public ModelAndView createSubmit(@ModelAttribute Campagne campaign) throws IOException {
 		logger.info("Soumission du formulaire de création d'une campagne");
 		// Persister la campagne dans la BDD :
 		try {
@@ -97,17 +97,17 @@ public class CampaignController {
 		model.addObject("textes", texte);
 		model.addObject("dates", date);
 
-		List<Campaign> dons = getDons();
+		List<Campagne> dons = getDons();
 		model.addObject("dons", dons);
 		return model;
 	}
 
-	private List<Campaign> getList() {
+	private List<Campagne> getList() {
 		SecureRandom random = new SecureRandom();
 
-		List<Campaign> list = new ArrayList<Campaign>();
+		List<Campagne> list = new ArrayList<Campagne>();
 		for (int i = 0; i < 20; i++) {
-			Campaign c = new Campaign();
+			Campagne c = new Campagne();
 			c.setTitle("tototototootot");
 			c.setDescription("aubergineuuuuuuuuuuuh");
 			c.setExpectedamount(Double.parseDouble(new BigInteger(10, random).toString()));
@@ -124,12 +124,12 @@ public class CampaignController {
 
 	}
 
-	private List<Campaign> getDons() {
+	private List<Campagne> getDons() {
 		SecureRandom random = new SecureRandom();
 
-		List<Campaign> list = new ArrayList<Campaign>();
+		List<Campagne> list = new ArrayList<Campagne>();
 		for (int i = 0; i < 83; i++) {
-			Campaign c = new Campaign();
+			Campagne c = new Campagne();
 			c.setTitle(new BigInteger(10, random).toString(10));
 			c.setDescription(new BigInteger(10, random).toString(10));
 			c.setExpectedamount(Double.parseDouble(new BigInteger(2, random).toString()));
@@ -145,10 +145,10 @@ public class CampaignController {
 
 	}
 
-	private Campaign getProject() {
+	private Campagne getProject() {
 		SecureRandom random = new SecureRandom();
 
-		Campaign c = new Campaign();
+		Campagne c = new Campagne();
 		c.setTitle("Mon super titre");
 		c.setDescription(
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae diam turpis. Aenean ornare hendrerit ."

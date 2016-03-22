@@ -8,31 +8,31 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import j2ee.projet.domaine.Campaign;
+import j2ee.projet.domaine.Campagne;
 
 @Repository
 @Transactional
-public class CampagneDAO extends BaseDAO<Campaign> {
+public class CampagneDAO extends BaseDAO<Campagne> {
 
 	final static Logger logger = Logger.getLogger(CampagneDAO.class);
 
-	public List<Campaign> rechercherCampagneParId(int id) {
+	public List<Campagne> rechercherCampagneParId(int id) {
 		if (getEntityManager() == null) {
 			logger.info("entityManager null");
 			return null;
 		} else {
-			TypedQuery<Campaign> query = getEntityManager().createNamedQuery("rechercherCampagneParId", Campaign.class);
+			TypedQuery<Campagne> query = getEntityManager().createNamedQuery("rechercherCampagneParId", Campagne.class);
 			query.setParameter("id", id);
 			return query.getResultList();
 		}
 	}
 
-	public List<Campaign> rechercherCampagne() {
+	public List<Campagne> rechercherCampagne() {
 		if (getEntityManager() == null) {
 			logger.info("entityManager null");
 			return null;
 		} else {
-			TypedQuery<Campaign> query = getEntityManager().createNamedQuery("rechercherCampagne", Campaign.class);
+			TypedQuery<Campagne> query = getEntityManager().createNamedQuery("rechercherCampagne", Campagne.class);
 			return query.getResultList();
 		}
 	}

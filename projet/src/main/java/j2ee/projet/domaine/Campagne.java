@@ -16,7 +16,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="rechercherCampagneParId", query="select c from Campaign c where c.id like :id"),
 	@NamedQuery(name="rechercherCampagne", query="select c from Campaign c")
 })
-public class Campaign implements Serializable {
+public class Campagne implements Serializable {
 	/**
 	 * 
 	 */
