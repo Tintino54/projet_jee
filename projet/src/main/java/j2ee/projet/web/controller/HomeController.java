@@ -27,11 +27,19 @@ public class HomeController {
 		logger.info("Affichage de la page de connexion");
 		return new ModelAndView("Home/connexion","command",new UtilisateurBean());
 	}
-
-	@RequestMapping(value="/inscription")
+	
+	@RequestMapping(value="/inscription", method=RequestMethod.GET)
 	public ModelAndView inscription(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de la page de inscription");
-		String sucessMessage = "Inscription réussie";
+		ModelAndView model = new ModelAndView("Home/inscription");
+		return model;
+	}
+
+	@RequestMapping(value="/inscription", method=RequestMethod.POST)
+	public ModelAndView inscriptionSubmit(HttpServletResponse response) throws IOException{
+		logger.info("Affichage de la page de inscription");
+		String username = "<à compléter>";
+		String sucessMessage = "Merci pour votre inscription <strong>" + username + "</strong>.<br>Vous pouvez maintenant vous connecter";
 		
 		ModelAndView model = new ModelAndView("Home/inscription");
 		model.addObject("sucessMessage", sucessMessage);
@@ -50,8 +58,15 @@ public class HomeController {
 		return new ModelAndView("Home/about");
 	}
 	
-	@RequestMapping(value="/contact")
+	@RequestMapping(value="/contact", method=RequestMethod.GET)
 	public ModelAndView contact(HttpServletResponse response) throws IOException{
+		logger.info("Affichage de la page de contact");
+		ModelAndView model = new ModelAndView("Home/contact");
+		return model;
+	}
+	
+	@RequestMapping(value="/contact", method=RequestMethod.POST)
+	public ModelAndView contactSubmit(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de la page de contact");
 		String sucessMessage = "Le message a bien été envoyé";
 		
