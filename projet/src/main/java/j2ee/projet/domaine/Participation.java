@@ -24,6 +24,7 @@ public class Participation implements Serializable {
 	private static final long serialVersionUID = 678044766339709713L;
 
 	@Id
+	@Column(name = "ID_PARTICIPATION") 
 	private int id;
 
 	@Column(name = "ID_PROJET")
@@ -39,7 +40,7 @@ public class Participation implements Serializable {
 	private double donation;
 
 	@Column(name = "MESSAGE")
-	private int message;
+	private String message;
 
 	public int getId() {
 		return id;
@@ -81,11 +82,11 @@ public class Participation implements Serializable {
 		this.donation = donation;
 	}
 
-	public int getMessage() {
+	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(int message) {
+	public void setMessage(String message) {
 		this.message = message;
 	}
 	
