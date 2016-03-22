@@ -16,8 +16,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="<c:url value="/projet/liste" />">Voir les projets</a></li>
-					<li><a href="<c:url value="/projet/nouveau" />">Lancer mon projet</a></li>
+					<li><a href="<c:url value="/liste" />">Voir les projets</a></li>
+					<li><a href="<c:url value="/nouveau" />">Lancer mon projet</a></li>
 					<li><a href="<c:url value="/principe" />">Comment ça marche ?</a></li>
 				</ul>   
 				<ul class="nav navbar-nav navbar-right">

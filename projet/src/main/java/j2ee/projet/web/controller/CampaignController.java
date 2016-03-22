@@ -24,7 +24,6 @@ import j2ee.projet.dao.CampagneDAO;
 import j2ee.projet.domaine.Campagne;;
 
 @Controller
-@RequestMapping("/projet")
 public class CampaignController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
 
@@ -104,8 +103,8 @@ public class CampaignController {
 		List<Campagne> dons = getDons();
 		model.addObject("dons", dons);
 		return model;
-	}
-
+	} 
+ 
 	private List<Campagne> getList() {
 		SecureRandom random = new SecureRandom();
 
