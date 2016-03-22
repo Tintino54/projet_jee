@@ -253,7 +253,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 grey-bg project-aside white-bg">
+				<div class="col-lg-3 project-aside white-bg">
 					<div class="row">
 						<div class="row" id="stats-projet">
 							<div class="col-lg-6">
