@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "CAMPAIGNS")
 @NamedQueries(value={
 	@NamedQuery(name="rechercherCampagneParId", query="select c from Campaign c where c.id like :id"),
-	@NamedQuery(name="listingCampagnes", query="select c from Campaign c")
+	@NamedQuery(name="rechercherCampagne", query="select c from Campaign c")
 })
 public class Campaign implements Serializable {
 	/**
@@ -23,6 +23,7 @@ public class Campaign implements Serializable {
 	private static final long serialVersionUID = -5116225850894993173L;
 
 	@Id
+	@Column(name = "ID_CAMPAIGN")
 	private int id;
 
 	@Column(name = "TITLE")

@@ -203,7 +203,6 @@
 
 
 	<build>
-		<!-- Add this directly after the <build>-opening tag -->
 		<resources>
 			<resource>
 				<filtering>true</filtering>

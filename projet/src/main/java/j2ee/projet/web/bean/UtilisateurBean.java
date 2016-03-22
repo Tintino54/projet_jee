@@ -2,9 +2,9 @@ package j2ee.projet.web.bean;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-
 public class UtilisateurBean {
+
+	private String login;
 
 	private String nom;
 
@@ -19,6 +19,15 @@ public class UtilisateurBean {
 	//0 pour les femmes, 1 pour les hommes
 	private int sexe;
 
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

@@ -6,8 +6,8 @@
     <tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/campaign/show.css"></tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid project-bg">
-			<div class="row white-bg">
-				<div class="col-lg-9">
+			<div class="row">
+				<div class="col-lg-9 white-bg">
 					<div class="row">
 						<ul class="nav nav-pills nav-justified">
 							<li class="active"><a data-toggle="pill" href="#home">Le projet</a></li>
@@ -253,24 +253,27 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 grey-bg project-aside">
+				<div class="col-lg-3 grey-bg project-aside white-bg">
 					<div class="row">
-						<div class="col-lg-6">
-							<div class="project-highlight">36 926 <i class="fa fa-eur"></i></div>
-							<div class="project-highlight-down">Collectés</div>
+						<div class="row" id="stats-projet">
+							<div class="col-lg-6">
+								<div class="project-highlight">36 926 <i class="fa fa-eur"></i></div>
+								<div class="project-highlight-down">Collectés</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="project-highlight"><i class="fa fa-users"></i> 36 926</div>
+								<div class="project-highlight-down">Contributeurs</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="project-highlight">16 000 <i class="fa fa-eur"></i></div>
+								<div class="project-highlight-down">Objectif</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="project-highlight"><i class="fa fa-calendar-o"></i> 2</div>
+								<div class="project-highlight-down">Jours</div>
+							</div>
 						</div>
-						<div class="col-lg-6">
-							<div class="project-highlight"><i class="fa fa-users"></i> 36 926</div>
-							<div class="project-highlight-down">Contributeurs</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="project-highlight">16 000 <i class="fa fa-eur"></i></div>
-							<div class="project-highlight-down">Objectif</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="project-highlight"><i class="fa fa-calendar-o"></i> 2</div>
-							<div class="project-highlight-down">Jours</div>
-						</div>
+
 						<div class="col-lg-12">
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 100%;">
@@ -279,31 +282,95 @@
 							</div>
 						</div>
 						<div class="col-lg-12">
-						<div class="col-lg-12">
 							<button type="button" class="btn btn-full btn-aqua" data-toggle="modal" data-target="#sendPayment">Soutenir ce projet</button>	
-						</div>
 							<div id="sendPayment" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<!-- Modal content-->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Faire une donation</h4>
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Faire une donation</h4>
+										</div>
+										<div class="modal-body">
+											<p>Mettre le formulaire ici</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-aqua" data-dismiss="modal">Fermer</button>
+										</div>
 									</div>
-									<div class="modal-body">
-										<p>Mettre le formulaire ici</p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-aqua" data-dismiss="modal">Fermer</button>
+								</div>
+							</div>
+							<button type="button" class="btn btn-aqua" data-toggle="modal" data-target="#chart">Répartition des dons&nbsp;<i class="fa fa-bar-chart-o"></i></button>	
+							<div id="chart" class="modal fade" role="dialog">
+								<div class="modal-dialog modal-lg">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Répartition des dons</h4>
+										</div>
+										<div class="modal-body">
+											<script src="https://code.highcharts.com/highcharts.js"></script>
+											<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+											<script src="https://code.highcharts.com/modules/exporting.js"></script>
+											<div id="container_chart"></div>
+											<script>
+											$(function () {
+											    $('#container_chart').highcharts({
+											        chart: {
+											            type: 'pie',
+											            options3d: {
+											                enabled: true,
+											                alpha: 45
+											            }
+											        },
+											        credits: {
+											            enabled: false
+											        },
+											        title: {
+											            text: 'Répartition des montants des donations'
+											        },
+											        subtitle: {
+											            text: 'Répartition des montants des donations'
+											        },
+											        plotOptions: {
+											            pie: {
+											                innerSize: 100,
+											                depth: 45
+											            }
+											        },
+											        series: [{
+											            name: 'Nombre de dons',
+											            data: [
+											                ['5 €', 8],
+											                ['Entre 5€ et 10€', 3],
+											                ['Entre 10€ et 20€', 1],
+											                ['Entre 20€ et 30€', 6],
+											                ['Entre 30€ et 40€', 8],
+											                ['Entre 40€ et 50€', 4],
+											                ['Plus de 50€', 4]
+											            ]
+											        }]
+											    });											    
+											});
+											</script>											
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-aqua" data-dismiss="modal">Fermer</button>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-							Vos contributions vous seront automatiquement remboursées si le projet n'atteint pas son objectif
+						<div class="col-lg-12">
+							<ul>
+								<li>Si la jauge n'atteint pas les 3 000 € avant le 31/03/2016, votre participation sera automatiquement recréditée</li>
+								<li>Vous pouvez annuler votre participation tant que la jauge n'a pas atteint les 100%</li>
+							</ul>
 						</div>
 					</div>
 
-				</div>				
+				</div>	
 			</div>
 		</div>
     </tiles:putAttribute>

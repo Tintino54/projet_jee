@@ -50,6 +50,46 @@ html, body
 	height: 100%;
 }
 
+.titre:before
+{
+    padding: 1px 6px;
+    content: "";
+    background: mediumaquamarine;
+    margin-right: 10px;
+    margin-left: -10px;
+}
+
+.titre
+{
+    margin: 20px;
+    color: #444;
+}
+
+form h1.titre
+{
+	text-align: center;
+}
+
+form input[type=submit]
+{
+	margin-bottom: 10px;
+}
+
+.form-control, .input-group-addon
+{
+	border-radius: 0;
+}
+
+form input.form-control {
+    height: 50px;
+    font-size: 135%;
+}
+
+textarea.form-control
+{
+	font-size: 115%;
+}
+
 .center
 {
 	text-align: center
@@ -88,17 +128,28 @@ item.active>.badge, .nav-pills>.active>a>.badge, a, .pagination>li>a, .paginatio
 .nav>li>a:focus, .nav>li>a:hover {
     background-color: lightseagreen;
 }
-.nav-pills>li, .nav-pills>li>a, .nav-pills>li.active .badge
-{
-	background-color: mediumaquamarine;
-	color: white;
+.nav-pills>li, .nav-pills>li>a, .nav-pills>li.active .badge {
+    background-color: mediumaquamarine;
+    color: white;
+    border-left: 1px solid lightseagreen;
 }
-
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .badge
 {
 	background-color: white;
 	color:  mediumaquamarine;
+}
+
+
+.progress-bar
+{
+	background-image: none;
+	background-color: lightgreen;
+}
+
+.progress-bar-red
+{
+	background-color: lightsalmon;
 }
 
 .btn-full
