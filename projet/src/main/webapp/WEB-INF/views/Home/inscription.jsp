@@ -8,7 +8,7 @@
 		<div id="body" class="container-fluid suscribe-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 white-bg">
 		        <form onsubmit="/inscription" method="POST" role="form">
-	 		        <h1>Inscription</h1>
+	 		        <h1 class="titre">Inscription</h1>
 					<div class="form-group">
 						<label for="nom">Nom:</label>
 						<input type="text" class="form-control" id="nom">
@@ -29,18 +29,18 @@
 			        <div class="form-group">
 			        	<label for="datetimepicker">Date de naissance:</label>
 			            <div class='input-group date' id='datetimepicker'>
-			                <input type='text' class="form-control" id="user_datetimepicker" />
 			                <span class="input-group-addon">
 			                <span class="glyphicon glyphicon-calendar">
 			                </span>
 			                </span>
+			                <input type='text' class="form-control" id="user_datetimepicker" />
 			            </div>
 			        </div>
 			        <!-- Champ date de naissance (auto-généré) -->
 			        <div class="form-group hidden">
 			            <input type="date" class="form-control" id="DOB">
 			        </div>
-					<button type="submit" class="btn btn-aqua">Inscription</button>
+					<input type="submit" class="btn btn-aqua" value="Inscription">
 		        </form>
 			</div>
 		</div>
