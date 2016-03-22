@@ -38,15 +38,15 @@
 							  
 							<!-- Content_dons div. The child elements will be used for paginating(they don't have to be all the same,  
 							    you can use divs, paragraphs, spans, or whatever you like mixed together). '-->
-							<div id='content_dons'>
+							<div id='content_dons' class="row">
 								<c:forEach var="dons" items="${dons}">
 									<div class="don col-lg-2">
-										<div class="col-lg-12">${dons.title}</div>
+										<div class="col-lg-12">${dons.dateParticipation}</div>
 										<div class="col-lg-12">
 											<img class="avatar"
 												src="<c:url value="/resources/images/avatars/female.png"/>" />
 										</div>
-										<div class="col-lg-12">${dons.expectedamount}€</div>
+										<div class="col-lg-12">${dons.donation}€</div>
 									</div>
 								</c:forEach>
 							</div>
@@ -148,7 +148,7 @@
 							  
 							<!-- Content div. The child elements will be used for paginating(they don't have to be all the same,  
 							    you can use divs, paragraphs, spans, or whatever you like mixed together). '-->  
-							<div id='content'>  
+							<div id='content' class="row">  
 								<c:forEach var="listValue" items="${textes}">
 									<div class="comment col-lg-12">
 										<div class="col-xs-9 col-lg-1">

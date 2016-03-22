@@ -6,7 +6,7 @@
     <tiles:putAttribute name="title">Inscription</tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid friendship-bg">
-			<div class="col-xs-12 col-xs-push-0 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 white-bg">
+			<div class="col-xs-12 col-xs-push-0 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 white-bg fadeInBlock">
 				<h1 class="titre">Equipe du site</h1>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 staff">
 					<div class="col-lg-4">

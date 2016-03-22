@@ -9,7 +9,7 @@
 			<c:forEach var="listValue" items="${lists}">
 				<div class="col-lg-2 project-square fadeInBlockList">
 					<div class="col-lg-12">
-						<img class="fullwidth" src="<c:url value="/resources/images/avatars/unknown.png"/>"/>
+						<img class="fullwidth" src="<c:url value="/resources/images/avatars/unknown.jpg"/>"/>
 					</div>						
 					<h3>${listValue.title}</h3>						
 					<p>${listValue.description}</p>
