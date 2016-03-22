@@ -1,6 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <tiles:insertDefinition name="myapp.homepage">
-	<tiles:putAttribute name="title">Inscription</tiles:putAttribute>
+	<tiles:putAttribute name="title">Comment ça marche</tiles:putAttribute>
 	<tiles:putAttribute name="body">
 		<script src="resources/js/datepicker.js"></script>
 		<div id="body" class="container-fluid project-bg">
