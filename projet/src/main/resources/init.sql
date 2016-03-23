@@ -53,7 +53,7 @@ ALTER TABLE `USERS_ROLES`
   
   
 INSERT INTO `USERS` (`LOGIN`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `MAILADRESS`, `BIRTHDATE`, `SEX`) VALUES
-('aubergine', '$2a$10$oXWjKM23jFbLSpk/ZNzX1u5bytUQ2e7T0Br8FiQBF/.Kl/2JbMNnq', 'aubergine', '', 'aubergine@jardin.fr', '1989-02-12', 0),
+('aubergine', '$2a$10$oXWjKM23jFbLSpk/ZNzX1u5bytUQ2e7T0Br8FiQBF/.Kl/2JbMNnq', 'aubergine', '', 'aubergine@jardin.fr', '1989-02-12', 1),
 ('radis', '$2a$10$hF9yMKVMIZxIxdmB5kdZIOQ5kVC5RJe58EM1OOr54zF/dejYQnjFe', 'radis', '', 'radis@jardin.fr', '1975-02-12', 0);
   
 INSERT INTO `CAMPAIGNS` (`TITLE`,`EXPECTEDAMOUNT`,`DESCRIPTION`,`DEADLINE`,`ID_USER`) VALUES

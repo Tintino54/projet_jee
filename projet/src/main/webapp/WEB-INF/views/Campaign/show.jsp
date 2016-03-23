@@ -43,8 +43,12 @@
 										<div class="don col-lg-2">
 											<div class="col-lg-12">${dons.utilisateur.login}</div>
 											<div class="col-lg-12">
-												<img class="avatar"
-													src="<c:url value="/resources/images/avatars/female.png"/>" />
+												<c:if test="${dons.utilisateur.sexe == 1}">
+													<img class="avatar"	src="<c:url value="/resources/images/avatars/male.png"/>" />
+												</c:if>
+												<c:if test="${dons.utilisateur.sexe == 0}">
+													<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
+												</c:if>
 											</div>
 											<div class="col-lg-12">${dons.donation}€</div>
 										</div>
