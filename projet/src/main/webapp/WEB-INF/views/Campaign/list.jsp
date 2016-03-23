@@ -26,7 +26,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-xs-push-0 col-sm-10 col-sm-push-2 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3">
+						<div class="col-xs-12 col-xs-push-0 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3 blocButton">
 							<a href="<c:url value="/show/${listValue.id}"/>" class="btn btn-full btn-aqua">Voir</a>
 						</div>						
 					</div>
