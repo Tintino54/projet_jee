@@ -14,8 +14,8 @@
 						<img class="fullwidth" src="<c:url value="/resources/images/avatars/unknown.jpg"/>"/>
 					</div>											
 					<p>Rajouter description courte</p>
-					<div>${listValue.expectedamount} €</div>
-					<div>${listValue.expectedamount} €</div>
+					<div><span class="currency">${listValue.expectedamount.intValue()}</span> €</div>
+					<div><span class="currency">${listValue.expectedamount.intValue()}</span> €</div>
 					<a href="<c:url value="/show/${listValue.id}"/>" class="btn btn-full btn-aqua">Voir</a>
 				</div>
 				</div>

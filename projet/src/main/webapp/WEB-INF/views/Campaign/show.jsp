@@ -309,7 +309,7 @@
 					<div class="row">
 						<div class="row" id="stats-projet">
 							<div class="col-lg-6">
-								<div class="project-highlight">${montantCollecte} <i class="fa fa-eur"></i></div>
+								<div class="project-highlight"><span class="currency">${montantCollecte.intValue()}</span> <i class="fa fa-eur"></i></div>
 								<div class="project-highlight-down">Collectés</div>
 							</div>
 							<div class="col-lg-6">
@@ -317,7 +317,7 @@
 								<div class="project-highlight-down">Contributeurs</div>
 							</div>
 							<div class="col-lg-6">
-								<div class="project-highlight">${campagne.expectedamount.intValue()} <i class="fa fa-eur"></i></div>
+								<div class="project-highlight"><span class="currency">${campagne.expectedamount.intValue()}</span> <i class="fa fa-eur"></i></div>
 								<div class="project-highlight-down">Objectif</div>
 							</div>
 							<div class="col-lg-6">
@@ -428,7 +428,7 @@
 						<div class="col-lg-12">
 							<ul>
 								<c:if test="${!termine && (percent < 100)}">
-									<li>Si la jauge n'atteint pas les <c:out value="${campagne.expectedamount.intValue()}"/> € avant le <c:out value="${dateString}"/>, votre participation sera automatiquement recréditée</li>
+									<li>Si la jauge n'atteint pas les <span class="currency">${campagne.expectedamount.intValue()}</span> € avant le <c:out value="${dateString}"/>, votre participation sera automatiquement recréditée</li>
 									<li>Vous pouvez annuler votre participation tant que la jauge n'a pas atteint les 100%</li>
 								</c:if>
 								<c:if test="${termine}">
