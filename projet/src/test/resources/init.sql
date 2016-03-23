@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS USERS;
 DROP TABLE IF EXISTS CAMPAIGNS;
 DROP TABLE IF EXISTS PARTICIPATIONS;
 DROP TABLE IF EXISTS USERS_ROLES;
+DROP TABLE IF EXISTS COMMENTS;
+
 
 CREATE TABLE `USERS` (
   `ID_USER` int(11) NOT NULL AUTO_INCREMENT,
@@ -38,6 +40,15 @@ CREATE TABLE `USERS_ROLES` (
   `ROLE` varchar(10) NOT NULL
 );
 
+CREATE TABLE `COMMENTS` (
+  `ID_COMMENTS` int(11) NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(15) NOT NULL,
+  `MESSAGE` text NOT NULL,
+  `PUBLISHED` date NOT NULL,
+  `ID_USER` int(11) NOT NULL,
+  `ID_CAMPAIGN` int(11) NOT NULL
+);
+
 
 ALTER TABLE `USERS`
   ADD PRIMARY KEY (`ID_USER`);
@@ -50,16 +61,26 @@ ALTER TABLE `PARTICIPATIONS`
 
 ALTER TABLE `USERS_ROLES`
   ADD PRIMARY KEY (`USER_ROLE_ID`);
+
+ALTER TABLE `COMMENTS`
+  ADD PRIMARY KEY (`ID_COMMENTS`);
   
   
 INSERT INTO `USERS` (`LOGIN`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `MAILADRESS`, `BIRTHDATE`, `SEX`) VALUES
-('aubergine', '$2a$10$oXWjKM23jFbLSpk/ZNzX1u5bytUQ2e7T0Br8FiQBF/.Kl/2JbMNnq', 'aubergine', '', 'aubergine@jardin.fr', '1989-02-12', 0),
+('aubergine', '$2a$10$oXWjKM23jFbLSpk/ZNzX1u5bytUQ2e7T0Br8FiQBF/.Kl/2JbMNnq', 'aubergine', '', 'aubergine@jardin.fr', '1989-02-12', 1),
 ('radis', '$2a$10$hF9yMKVMIZxIxdmB5kdZIOQ5kVC5RJe58EM1OOr54zF/dejYQnjFe', 'radis', '', 'radis@jardin.fr', '1975-02-12', 0);
   
 INSERT INTO `CAMPAIGNS` (`TITLE`,`EXPECTEDAMOUNT`,`DESCRIPTION`,`DEADLINE`,`ID_USER`) VALUES
-('Croisiere',2000,'budget croisiere','2016-02-12',1);
+('Croisiere',2000,'budget croisiere','2016-03-24',1),
+('Album',900,'Pour la création de mon nouvel album','2016-04-12',2),
+('Court-métrage',15000,'Création d''un court-métrage pour mon école','2016-05-12',1);
 
 INSERT INTO `PARTICIPATIONS` (`ID_PROJET`,`ID_USER`,`DATEPARTICIPATION`,`DONATION`,`MESSAGE`) VALUES
-(1,1,'2016-03-22',4000,'Bon voyage les amoureux'),
+(1,1,'2016-03-22',400,'Bon voyage les amoureux'),
 (1,2,'2016-03-22',50,'Amusez-vous bien la bas !'),
 (2,1,'2016-03-22',10,'Tellement hate que cet album arrive !');
+
+INSERT INTO `COMMENTS` (`TITLE`, `MESSAGE`,`PUBLISHED`,`ID_USER`,`ID_CAMPAIGN`) VALUES
+('Top !','Vous en avez de la chance !!','2016-03-22',1,1),
+('Woah !!!','Ca c''est un bien beau voyage ma foi','2016-03-22',2,1),
+('Top !','Vous en avez de la chance !!','2016-03-22',1,2);
