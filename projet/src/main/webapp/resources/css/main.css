@@ -70,7 +70,7 @@ form h1.titre
 	text-align: center;
 }
 
-form input[type=submit]
+form input[type=submit], form div.btn-aqua
 {
 	margin-bottom: 10px;
 }
