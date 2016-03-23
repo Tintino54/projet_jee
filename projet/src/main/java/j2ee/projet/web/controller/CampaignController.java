@@ -1,8 +1,6 @@
 package j2ee.projet.web.controller;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,9 +38,51 @@ public class CampaignController {
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView liste(HttpServletResponse response) throws IOException {
+		
+		
+		ModelAndView model = new ModelAndView("Campaign/list");
+		
 		List<Campagne> list = campServ.getList();
 
-		ModelAndView model = new ModelAndView("Campaign/list");
+		List<Integer> totaux = new ArrayList<Integer>();
+		List<Integer> percent = new ArrayList<Integer>();
+		List<Integer> barWidth = new ArrayList<Integer>();
+		List<String> classBar = new ArrayList<String>();
+		for(int i = 0; i < list.size(); i++)
+		{
+			
+			List<Participation> dons = campServ.getDons(list.get(i).getId());
+			Double montantCollecte = 0.0;			
+			for(int j = 0; j < dons.size(); j++)
+			{
+				Double montant = dons.get(j).getDonation();
+				montantCollecte += montant;
+			}
+			Integer inte = montantCollecte.intValue();
+			totaux.add(inte);
+			
+			// Pourcentage
+			Double d = montantCollecte / list.get(i).getExpectedamount() * 100;
+			model.addObject("d", d);
+			percent.add(d.intValue());
+			model.addObject("percent", percent);
+			if(percent.get(i) >= 100)
+			{
+				barWidth.add(100);
+				classBar.add("progress-bar");
+			}
+			else
+			{
+				barWidth.add(percent.get(i));
+				classBar.add("progress-bar progress-bar-red");
+			}
+			
+		}
+		model.addObject("totaux", totaux);		
+		model.addObject("percent", percent);	
+		model.addObject("barWidth", barWidth);
+		model.addObject("classBar", classBar);		
+
 		model.addObject("lists", list);
 		return model;
 	}

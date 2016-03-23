@@ -41,6 +41,18 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 		}
 	}
 	
+	public Utilisateur rechercherUtilisateurParLogin(String login) {
+		if (getEntityManager() == null) {
+			logger.info("entityManager null");
+			return null;
+		} else {
+			TypedQuery<Utilisateur> query = getEntityManager().createNamedQuery("rechercherUtilisateurParLogin",
+					Utilisateur.class);
+			query.setParameter("login", login);
+			return query.getSingleResult();
+		}
+	}
+	
 	public void ajouterUtilisateur(Utilisateur utilisateur)
 	{
 		try {

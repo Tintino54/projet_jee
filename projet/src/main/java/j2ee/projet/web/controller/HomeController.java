@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -25,12 +24,7 @@ public class HomeController {
 		return "Home/home";
 	}
 	
-	@RequestMapping(value="/connexion", method=RequestMethod.GET)
-	@ModelAttribute("user")
-	public ModelAndView connexion(HttpServletResponse response) throws IOException{
-		logger.info("Affichage de la page de connexion");
-		return new ModelAndView("Home/connexion");
-	}
+	
 	
 	@RequestMapping(value="/inscription", method=RequestMethod.GET)
 	public ModelAndView inscription(HttpServletResponse response) throws IOException{

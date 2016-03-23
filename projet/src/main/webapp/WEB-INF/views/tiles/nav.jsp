@@ -25,7 +25,7 @@
 					<c:choose>
 						<c:when test="${empty user}">
 							<ul class="nav navbar-nav navbar-right">	
-								<li><a href="<c:url value="/connexion" />"><span
+								<li><a href="<c:url value="/login" />"><span
 										class="glyphicon glyphicon-user"></span> Connexion</a></li>
 								<li><a href="<c:url value="/inscription" />"><span
 										class="glyphicon glyphicon-log-in"></span> Inscription</a></li>
@@ -39,7 +39,7 @@
 							</ul>
 						</c:otherwise>
 					</c:choose>
-				
+				</ul>
 			</div>
 		</div>
 	</nav>

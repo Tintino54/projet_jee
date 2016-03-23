@@ -29,7 +29,7 @@ public class UtilisateurDAOTest {
 	@Test
 	public void testRechercherUtilisateurParMailEtMdp() {
 		String mail = "aubergine@jardin.fr";
-		String mdp = "$2a$10$hb/vglJ3X47nfu.Md9vpcunA2C1ALSPibFSdVNn5d0pGln/7mZFwm";
+		String mdp = "617562657267696e65";
 		Utilisateur res = uDao.rechercherUtilisateurParMailEtMdp(mail, mdp);
 		Assert.assertNotNull(res);
 	}
