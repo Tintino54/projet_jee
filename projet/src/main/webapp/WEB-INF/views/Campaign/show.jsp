@@ -160,12 +160,12 @@
 											<img class="avatar" src="<c:url value="/resources/images/avatars/female.png"/>"/>
 										</div>
 										<div class="col-xs-3 col-lg-2">
-											11 janvier 1991
+											${listValue.published}
 										</div>
 										<div class="col-xs-12 col-lg-9">
-											<h3>${listValue}</h3>
-											<p>${listValue}</p>
-											<div>${listValue}</div>
+											<h3>${listValue.title}</h3>
+											<p>par ${listValue.utilisateur.login}</p>
+											<div>${listValue.message}</div>
 										</div>
 										<div class="col-lg-12"><hr></div>
 									</div>
