@@ -171,7 +171,6 @@
 													</c:if>
 											</div>
 											<div class="col-xs-3 col-lg-2">
-												 
 												${DATE_FORMAT.format(listValue.published)}
 											</div>
 											<div class="col-xs-12 col-lg-9">
@@ -185,7 +184,9 @@
 								</div>  
 								  
 								<!-- An empty div which will be populated using jQuery -->  
-								<ul id='page_navigation' class="pagination"></ul>  					
+								<div class="row">
+									<ul id='page_navigation' class="pagination"></ul>  
+								</div>		
 								<script>
 								$(document).ready(function(){  
 									  
@@ -271,8 +272,9 @@
 								}  
 								</script>
 							</c:if>
-							<button class="btn btn-aqua" id="toggleComment">Ecrire un commentaire</button>
-							<div id="formComment">
+							<button class="btn btn-aqua btn-full" id="toggleComment">Ecrire un commentaire</button>
+							<div class="col-lg-12" id="formComment">
+								<hr>
 								<h2 class="titre">Poster un commentaire</h2>
 					        	<form method="POST" role="form">
 									<div class="form-group">
