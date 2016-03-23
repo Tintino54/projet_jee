@@ -47,6 +47,9 @@ public class CampaignController {
 		List<Campagne> list = campServ.getList();
 
 		List<Integer> totaux = new ArrayList<Integer>();
+		List<Integer> percent = new ArrayList<Integer>();
+		List<Integer> barWidth = new ArrayList<Integer>();
+		List<String> classBar = new ArrayList<String>();
 		for(int i = 0; i < list.size(); i++)
 		{
 			
@@ -59,8 +62,28 @@ public class CampaignController {
 			}
 			Integer inte = montantCollecte.intValue();
 			totaux.add(inte);
+			
+			// Pourcentage
+			Double d = montantCollecte / list.get(i).getExpectedamount() * 100;
+			model.addObject("d", d);
+			percent.add(d.intValue());
+			model.addObject("percent", percent);
+			if(percent.get(i) >= 100)
+			{
+				barWidth.add(100);
+				classBar.add("progress-bar");
+			}
+			else
+			{
+				barWidth.add(percent.get(i));
+				classBar.add("progress-bar progress-bar-red");
+			}
+			
 		}
 		model.addObject("totaux", totaux);		
+		model.addObject("percent", percent);	
+		model.addObject("barWidth", barWidth);
+		model.addObject("classBar", classBar);		
 
 		model.addObject("lists", list);
 		return model;

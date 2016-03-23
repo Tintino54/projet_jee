@@ -3,15 +3,67 @@
 	box-shadow: 10px 10px 5px #888888;
 	background-color: white;
 	margin: 5px;
+	height: 560px;
 }
+@media(min-width:768px){
+	.project-square
+	{
+		height: 600px;
+	}
+}
+
+@media(min-width:992px){
+	.project-square
+	{
+	    height: 600px;
+	}
+}
+
+@media(min-width:1200px){
+	.project-square
+	{
+	    height: 580px;
+	}
+}
+
 img.fullwidth
 {
+	/*
 	width: 100%;
 	height: auto;
     max-height: 280px;
+    */
+    width: auto;
+    height: auto;
+    height: 280px;
+    max-width: 100%;
 }
 
 .fadeInBlockList
 {
 	opacity: 0;
+}
+
+p, .objectif
+{
+    text-align: center;
+    color: #444;
+}
+
+.objectif
+{
+	margin-bottom: 10px;
+	font-size: 115%;	
+}
+
+.progress
+{
+    height: 35px;
+    border-radius: 0;
+}
+
+.progress-bar
+{
+	font-size: 1.2em;
+    line-height: 35px;
 }
