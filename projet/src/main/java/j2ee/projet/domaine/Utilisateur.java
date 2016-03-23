@@ -2,12 +2,14 @@ package j2ee.projet.domaine;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -48,6 +50,9 @@ public class Utilisateur implements Serializable {
 	//0 pour les femmes, 1 pour les hommes
 	@Column(name = "SEX")
 	private int sexe;
+	
+	@OneToMany(mappedBy="utilisateur")
+	private List<Participation> listDons;
 
 	public int getId() {
 		return id;

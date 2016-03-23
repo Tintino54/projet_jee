@@ -58,3 +58,8 @@ INSERT INTO `USERS` (`LOGIN`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `MAILADRESS`,
   
 INSERT INTO `CAMPAIGNS` (`TITLE`,`EXPECTEDAMOUNT`,`DESCRIPTION`,`DEADLINE`,`ID_USER`) VALUES
 ('Croisiere',2000,'budget croisiere','2016-02-12',1);
+
+INSERT INTO `PARTICIPATIONS` (`ID_PROJET`,`ID_USER`,`DATEPARTICIPATION`,`DONATION`,`MESSAGE`) VALUES
+(1,1,'2016-03-22',4000,'Bon voyage les amoureux'),
+(1,2,'2016-03-22',50,'Amusez-vous bien la bas !'),
+(2,1,'2016-03-22',10,'Tellement hate que cet album arrive !');

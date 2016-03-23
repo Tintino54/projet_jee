@@ -3,6 +3,7 @@ package j2ee.projet.dao;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,8 @@ import j2ee.projet.web.bean.UtilisateurBean;
 @TransactionConfiguration(defaultRollback=true)
 public class UtilisateurDAOTest {
 
+	final static Logger logger = Logger.getLogger(UtilisateurDAOTest.class);
+	
 	@Autowired
 	UtilisateurDAO uDao;
 

@@ -13,14 +13,17 @@ import j2ee.projet.domaine.Participation;
 @Repository
 @Transactional
 public class ParticipationDAO extends BaseDAO<Participation> {
-final static Logger logger = Logger.getLogger(CommentaireDAO.class);
-	
-	public List<Participation> rechercherParticipationParIdProjet(int idprojet) 
-	{
-		if (getEntityManager()==null)
+	final static Logger logger = Logger.getLogger(CommentaireDAO.class);
+
+	public List<Participation> rechercherParticipationParIdProjet(int idprojet) {
+		if (getEntityManager() == null) {
 			logger.info("entityManager null");
-		TypedQuery<Participation> query = getEntityManager().createNamedQuery("rechercherParticipationParIdProjet",Participation.class);
-		query.setParameter("idprojet", idprojet);
-		return query.getResultList();
+			return null;
+		} else {
+			TypedQuery<Participation> query = getEntityManager().createNamedQuery("rechercherParticipationParIdProjet",
+					Participation.class);
+			query.setParameter("idprojet", idprojet);
+			return query.getResultList();
+		}
 	}
 }

@@ -41,7 +41,7 @@
 								<div id='content_dons' class="row">
 									<c:forEach var="dons" items="${dons}">
 										<div class="don col-lg-2">
-											<div class="col-lg-12">${dons.dateParticipation}</div>
+											<div class="col-lg-12">${dons.utilisateur.login}</div>
 											<div class="col-lg-12">
 												<img class="avatar"
 													src="<c:url value="/resources/images/avatars/female.png"/>" />

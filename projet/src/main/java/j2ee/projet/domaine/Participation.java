@@ -6,6 +6,8 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -42,8 +44,20 @@ public class Participation implements Serializable {
 	@Column(name = "MESSAGE")
 	private String message;
 
+	@ManyToOne
+	@JoinColumn(name="id_user")
+	private Utilisateur utilisateur;
+	
 	public int getId() {
 		return id;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	public void setId(int id) {

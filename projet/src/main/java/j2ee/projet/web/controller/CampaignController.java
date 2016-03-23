@@ -24,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 import j2ee.projet.domaine.Campagne;
 import j2ee.projet.domaine.Participation;
 import j2ee.projet.metier.CampagneService;
-import j2ee.projet.dao.CampagneDAO;
 
 @Controller
 public class CampaignController {
