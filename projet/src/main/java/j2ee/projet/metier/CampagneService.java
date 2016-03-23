@@ -43,6 +43,27 @@ public class CampagneService {
 
 		return list;
 	}
+	
+	public Campagne getCampagneFromID(int id) {
+		Campagne campagne;
+
+		campagne = campagneDAO.rechercherCampagneParId(id).get(0);
+		/*list = new ArrayList<Campagne>();
+		SecureRandom random = new SecureRandom();
+		for (int i = 0; i < 83; i++) {
+			Campagne c = new Campagne();
+			c.setTitle(new BigInteger(10, random).toString(10));
+			c.setDescription(new BigInteger(10, random).toString(10));
+			c.setExpectedamount(Double.parseDouble(new BigInteger(2, random).toString()));
+
+			Calendar cal = Calendar.getInstance();
+			cal.set(1991, 01, 11);
+			Date d = new Date(cal.getTimeInMillis());
+			c.setDeadline(d);
+			list.add(c);
+		}*/
+		return campagne;
+	}
 
 	public List<Participation> getDons(int idprojet) {
 		List<Participation> list;

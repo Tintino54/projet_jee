@@ -15,7 +15,7 @@
 					<p>${listValue.description}</p>
 					<div>${listValue.expectedamount}</div>
 					<div>${listValue.expectedamount}</div>
-					<a href="<c:url value="/show/1"/>" class="btn btn-full btn-aqua">Voir</a>
+					<a href="<c:url value="/show/${listValue.id}"/>" class="btn btn-full btn-aqua">Voir</a>
 				</div>
 			</c:forEach>
 			</div>
