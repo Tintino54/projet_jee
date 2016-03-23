@@ -7,15 +7,17 @@
 		<div id="body" class="container-fluid project-bg">
 			<div class="col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1">
 			<c:forEach var="listValue" items="${lists}">
-				<div class="col-lg-2 project-square fadeInBlockList">
+				<div class="col-lg-4">
+								<div class="col-lg-12 project-square fadeInBlockList">
+					<h3 class="titre">${listValue.title}</h3>	
 					<div class="col-lg-12">
 						<img class="fullwidth" src="<c:url value="/resources/images/avatars/unknown.jpg"/>"/>
-					</div>						
-					<h3>${listValue.title}</h3>						
+					</div>											
 					<p>${listValue.description}</p>
 					<div>${listValue.expectedamount}</div>
 					<div>${listValue.expectedamount}</div>
 					<a href="<c:url value="/show/${listValue.id}"/>" class="btn btn-full btn-aqua">Voir</a>
+				</div>
 				</div>
 			</c:forEach>
 			</div>

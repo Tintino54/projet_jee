@@ -154,7 +154,7 @@ public class CampaignController {
 		long diff = campagne.getDeadline().getTime( ) - today.getTime()  ;
 		Long jours = diff / (1000*60*60*24);
 		jours += 1;
-		if(jours < 0)
+		if(jours <= 0)
 			termine = true;
 		model.addObject("temps", jours.intValue());
 		model.addObject("termine", termine);
