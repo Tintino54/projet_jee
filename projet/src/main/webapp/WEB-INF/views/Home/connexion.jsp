@@ -1,25 +1,29 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <tiles:insertDefinition name="myapp.homepage">
-	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/home/connexion.css"></tiles:putAttribute>
-    <tiles:putAttribute name="title">Connexion</tiles:putAttribute>
-    <tiles:putAttribute name="body">
+	<tiles:putAttribute name="pagecss">
+		<link rel="stylesheet" media="screen"
+			href="${pageContext.request.contextPath}/resources/css/home/connexion.css">
+	</tiles:putAttribute>
+	<tiles:putAttribute name="title">Connexion</tiles:putAttribute>
+	<tiles:putAttribute name="body">
 		<div id="body" class="container-fluid login-bg">
-			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 white-bg fadeInBlock">
-				<form:form action="/projet/check" method="POST" role="form">
+			<div
+				class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 white-bg fadeInBlock">
+				<form:form action="/projet/check" method="POST">
 					<h1 class="titre">Connexion</h1>
 					<div class="form-group">
-						<label for="email">Adresse mail:</label>
-						<form:input type="email" class="form-control" id="email" path="email" />
+						<label for="email">Adresse mail:</label> <input type="email"
+							class="form-control" id="email" name="email"/>
 					</div>
 					<div class="form-group">
-						<label for="pwd">Mot de passe:</label>
-						<form:input type="password" class="form-control" id="pwd" path="pwd" />
+						<label for="pwd">Mot de passe:</label> <input type="password"
+							class="form-control" id="pwd" name="pwd"/>
 					</div>
-					<input type="submit" class="btn btn-aqua" value="Connexion"/>
+					<input type="submit" class="btn btn-aqua" value="Connexion" />
 				</form:form>
 			</div>
 		</div>
-    </tiles:putAttribute>
+	</tiles:putAttribute>
 </tiles:insertDefinition>

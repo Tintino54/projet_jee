@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Utilisateur;
-import j2ee.projet.web.bean.UtilisateurBean;
 
 @Repository
 @Transactional
@@ -17,16 +16,16 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 
 	final static Logger logger = Logger.getLogger(UtilisateurDAO.class);
 
-	public List<String> rechercherUtilisateurParMailEtMdp(String mail, String mdp) {
+	public Utilisateur rechercherUtilisateurParMailEtMdp(String mail, String mdp) {
 		if (getEntityManager() == null) {
 			logger.info("entityManager null");
 			return null;
 		} else {
-			TypedQuery<String> query = getEntityManager().createNamedQuery("rechercherUtilisateurParMailEtMdp",
-					String.class);
+			TypedQuery<Utilisateur> query = getEntityManager().createNamedQuery("rechercherUtilisateurParMailEtMdp",
+					Utilisateur.class);
 			query.setParameter("mail", mail);
 			query.setParameter("mdp", mdp);
-			return query.getResultList();
+			return query.getSingleResult();
 		}
 	}
 
@@ -42,17 +41,8 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 		}
 	}
 	
-	public void ajouterUtilisateur(UtilisateurBean uBean)
+	public void ajouterUtilisateur(Utilisateur utilisateur)
 	{
-		Utilisateur utilisateur = new Utilisateur();
-		utilisateur.setLogin(uBean.getLogin());
-		utilisateur.setMail(uBean.getEmail());
-		utilisateur.setMdp(uBean.getPwd());
-		utilisateur.setNom(uBean.getNom());
-		utilisateur.setPrenom(uBean.getPrenom());
-		utilisateur.setSexe(uBean.getSexe());
-		utilisateur.setDateNaiss(uBean.getDateNaiss());
-		
 		try {
 			insert(utilisateur);
 		} catch (Exception e) {

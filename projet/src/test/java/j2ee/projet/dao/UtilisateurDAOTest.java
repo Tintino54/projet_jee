@@ -14,7 +14,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Utilisateur;
-import j2ee.projet.web.bean.UtilisateurBean;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring-test.xml"})
@@ -30,8 +29,8 @@ public class UtilisateurDAOTest {
 	@Test
 	public void testRechercherUtilisateurParMailEtMdp() {
 		String mail = "aubergine@jardin.fr";
-		String mdp = "$2a$10$3craKxVzieLQe4TrOs5PxepoqKpMoDDKH6PmkUalKT4vGJm2H0eJC";
-		List<String> res = uDao.rechercherUtilisateurParMailEtMdp(mail, mdp);
+		String mdp = "$2a$10$hb/vglJ3X47nfu.Md9vpcunA2C1ALSPibFSdVNn5d0pGln/7mZFwm";
+		Utilisateur res = uDao.rechercherUtilisateurParMailEtMdp(mail, mdp);
 		Assert.assertNotNull(res);
 	}
 	
@@ -45,10 +44,10 @@ public class UtilisateurDAOTest {
 	@Test
 	public void testAjouterUtilisateur()
 	{
-		UtilisateurBean utilisateur = new UtilisateurBean();
+		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setLogin("toto");
-		utilisateur.setEmail("toto@jardin.fr");
-		utilisateur.setPwd("mdp");
+		utilisateur.setMail("toto@jardin.fr");
+		utilisateur.setMdp("mdp");
 		Date date = new Date(10);
 		utilisateur.setDateNaiss(date);
 		utilisateur.setNom("cerise");
@@ -57,7 +56,7 @@ public class UtilisateurDAOTest {
 		
 		uDao.ajouterUtilisateur(utilisateur);
 		
-		List<String> res = uDao.rechercherUtilisateurParMailEtMdp("toto@jardin.fr", "mdp");
+		Utilisateur res = uDao.rechercherUtilisateurParMailEtMdp("toto@jardin.fr", "mdp");
 		Assert.assertNotNull(res);
 	}
 }
