@@ -91,11 +91,11 @@ INSERT INTO `CAMPAIGNS` (`TITLE`,`EXPECTEDAMOUNT`,`DESCRIPTION`,`DEADLINE`,`ID_U
  * DONS
  */
 INSERT INTO `PARTICIPATIONS` (`ID_PROJET`,`ID_USER`,`DATEPARTICIPATION`,`DONATION`,`MESSAGE`) VALUES
-(1,1,'2016-03-22',400,'Bon voyage les amoureux'),
-(1,2,'2016-03-22',50,'Amusez-vous bien la bas !'),
-(2,1,'2016-03-22',10,'Tellement hate que cet album arrive !');
+(1,1,'2016-03-22',400,'Trop hâte que cette série revienne !'),
+(1,2,'2016-03-22',50,'Le retour :D'),
+(2,1,'2016-03-22',10,'Say my name :'')');
 
 INSERT INTO `COMMENTS` (`TITLE`, `MESSAGE`,`PUBLISHED`,`ID_USER`,`ID_CAMPAIGN`) VALUES
-('Top !','Vous en avez de la chance !!','2016-03-22',1,1),
-('Woah !!!','Ca c''est un bien beau voyage ma foi','2016-03-22',2,1),
-('Top !','Vous en avez de la chance !!','2016-03-22',1,2);
+('Top !','Ce serait géniale que cette série revienne :p','2016-03-22',1,1),
+('Woah !!!','J''en peux plus d''attendre !!','2016-03-22',2,1),
+('Help','Il a besoin de nous !!','2016-03-22',1,2);

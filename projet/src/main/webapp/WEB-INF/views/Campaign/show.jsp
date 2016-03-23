@@ -157,7 +157,12 @@
 								<c:forEach var="listValue" items="${textes}">
 									<div class="comment col-lg-12">
 										<div class="col-xs-9 col-lg-1">
-											<img class="avatar" src="<c:url value="/resources/images/avatars/female.png"/>"/>
+											<c:if test="${listValue.utilisateur.sexe == 1}">
+													<img class="avatar"	src="<c:url value="/resources/images/avatars/male.png"/>" />
+												</c:if>
+												<c:if test="${listValue.utilisateur.sexe == 0}">
+													<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
+												</c:if>
 										</div>
 										<div class="col-xs-3 col-lg-2">
 											${listValue.published}
