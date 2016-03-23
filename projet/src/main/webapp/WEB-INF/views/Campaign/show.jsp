@@ -293,12 +293,12 @@
 						        $( document ).ready(function() {
 					        		$( "#formComment" ).hide();
 							        $( "#toggleComment" ).click(function() {
-							        	$( "#formComment" ).slideDown( "slow" );
-							        	$( "#toggleComment" ).slideUp( "slow" );
+							        	$( "#formComment" ).slideDown( "fast" );
+							        	$( "#toggleComment" ).hide();
 							        	});
 							        $( "#closeCommentForm" ).click(function() {
-							        	$( "#toggleComment" ).slideDown( "slow" );
-							        	$( "#formComment" ).slideUp( "slow" );
+							        	$( "#toggleComment" ).slideDown( "fast" );
+							        	$( "#formComment" ).hide();
 							        	});
 						        });
 					        </script>	
