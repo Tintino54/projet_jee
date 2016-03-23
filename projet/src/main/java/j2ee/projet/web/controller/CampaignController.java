@@ -85,30 +85,13 @@ public class CampaignController {
 	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
 	public ModelAndView show(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 		logger.info("Affichage de la campagne" + id);
- 
-		SecureRandom random = new SecureRandom();
-		List<String> user = new ArrayList<String>();
-		//List<String> texte = new ArrayList<String>();
-		List<Date> date = new ArrayList<Date>();
-		for (int i = 0; i < 50; i++) {
-			String u = new String(new BigInteger(130, random).toString(10));
-			user.add(u);
-			String t = new String(new BigInteger(130, random).toString(255));
-			//texte.add(t);
-			Calendar cal = Calendar.getInstance();
-			cal.set(1991, 01, 11);
-			Date d = new Date(cal.getTimeInMillis());
-			date.add(d);
-		}
 		
 		int _id = Integer.parseInt(id);
 
 		ModelAndView model = new ModelAndView("Campaign/show");
 		model.addObject("id", id);
-		model.addObject("users", user);
 		List<Commentaire> texte = comServ.getCommentaireFromIdProjet(_id);
 		model.addObject("textes", texte);
-		model.addObject("dates", date);
 
 		Campagne campagne =  campServ.getCampagneFromID(_id);
 		model.addObject("campagne", campagne);
@@ -145,6 +128,9 @@ public class CampaignController {
 		model.addObject("nombreDons100", nombreDons100);
 		
 		Double d = montantCollecte / campagne.getExpectedamount() * 100;
+		model.addObject("objectif", campagne.getExpectedamount());
+		model.addObject("montantCollecte", montantCollecte);
+		model.addObject("d", d);
 		Integer percent = d.intValue();
 		model.addObject("percent", percent);
 		Integer barWidth = percent;
@@ -163,7 +149,6 @@ public class CampaignController {
 			termine = true;
 		model.addObject("temps", jours.intValue());
 		model.addObject("termine", termine);
-		model.addObject("montantCollecte", montantCollecte.intValue());
 		model.addObject("barWidth", barWidth);
 		model.addObject("classBar", classBar);
 		
