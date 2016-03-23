@@ -12,6 +12,10 @@ public class CampagneBean {
 	private String description;
 
 	private Date deadline;
+	
+	private String imagePath;
+	
+	private String resume;
 
 	public int getId() {
 		return id;
@@ -51,5 +55,21 @@ public class CampagneBean {
 
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
+	}
+	
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
 	}
 }

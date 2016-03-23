@@ -40,9 +40,28 @@ public class CampaignController {
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView liste(HttpServletResponse response) throws IOException {
+		
+		
+		ModelAndView model = new ModelAndView("Campaign/list");
+		
 		List<Campagne> list = campServ.getList();
 
-		ModelAndView model = new ModelAndView("Campaign/list");
+		List<Integer> totaux = new ArrayList<Integer>();
+		for(int i = 0; i < list.size(); i++)
+		{
+			
+			List<Participation> dons = campServ.getDons(list.get(i).getId());
+			Double montantCollecte = 0.0;			
+			for(int j = 0; j < dons.size(); j++)
+			{
+				Double montant = dons.get(j).getDonation();
+				montantCollecte += montant;
+			}
+			Integer inte = montantCollecte.intValue();
+			totaux.add(inte);
+		}
+		model.addObject("totaux", totaux);		
+
 		model.addObject("lists", list);
 		return model;
 	}
