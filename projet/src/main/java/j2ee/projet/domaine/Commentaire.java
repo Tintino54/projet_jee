@@ -11,12 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "COMMENTS")
-@NamedQuery(name="rechercherCommentairesParCampagne", query="select c from Commentaire c where c.id_campaign like :id")
+@NamedQuery(name="rechercherCommentairesParCampagne", query="select c from Commentaire c where c.id_campaign like :id_campaign")
 public class Commentaire implements Serializable {
 
 	private static final long serialVersionUID = -5116225850894993173L;
 	
 	@Id
+	@Column(name = "ID_COMMENTS")
 	private int id;
 	
 	@Column(name = "TITLE")
