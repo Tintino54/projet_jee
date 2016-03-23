@@ -371,7 +371,7 @@
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">Répartition des dons</h4>
+													<h2 class="titre">Répartition des dons</h2>
 												</div>
 												<div class="modal-body">
 													<script src="https://code.highcharts.com/highcharts.js"></script>
