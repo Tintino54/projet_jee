@@ -13,7 +13,7 @@
 							<li class="active"><a data-toggle="pill" href="#home">Le projet</a></li>
 							<li><a data-toggle="pill" href="#news">News <span class="badge">5</span></a></li>
 							<li><a data-toggle="pill" href="#entries">Contributions <span class="badge">${dons.size()}</span></a></li>
-							<li><a data-toggle="pill" href="#comments">Commentaires <span class="badge">100</span></a></li>
+							<li><a data-toggle="pill" href="#comments">Commentaires <span class="badge">${textes.size()}</span></a></li>
 						</ul>
 					</div>
 					<div class="tab-content col-lg-12">
