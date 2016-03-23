@@ -24,18 +24,22 @@
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
 						<c:when test="${empty user}">
-							<li><a href="<c:url value="/connexion" />"><span
-									class="glyphicon glyphicon-user"></span> Connexion</a></li>
-							<li><a href="<c:url value="/inscription" />"><span
-									class="glyphicon glyphicon-log-in"></span> Inscription</a></li>
+							<ul class="nav navbar-nav navbar-right">	
+								<li><a href="<c:url value="/connexion" />"><span
+										class="glyphicon glyphicon-user"></span> Connexion</a></li>
+								<li><a href="<c:url value="/inscription" />"><span
+										class="glyphicon glyphicon-log-in"></span> Inscription</a></li>
+							</ul>
 						</c:when>
 						<c:otherwise>
-							<li><p>Bienvenue ${user.login}</p></li>
-							<li><a href="<c:url value="/deconnexion" />"><span
-									class="glyphicon glyphicon-log-out"></span> Deconnexion</a></li>
+							<p class="navbar-text">Bonjour ${user.login}</p>
+							<ul class="nav navbar-nav navbar-right">	
+								<li><a href="<c:url value="/deconnexion" />"><span
+										class="glyphicon glyphicon-log-out"></span> Deconnexion</a></li>
+							</ul>
 						</c:otherwise>
 					</c:choose>
-				</ul>
+				
 			</div>
 		</div>
 	</nav>

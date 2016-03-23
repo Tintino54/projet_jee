@@ -155,6 +155,7 @@ public class CampaignController {
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = DATE_FORMAT.format(campagne.getDeadline());
         model.addObject("dateString", dateString);
+        model.addObject("DATE_FORMAT", DATE_FORMAT);
 		return model;
 	}
 

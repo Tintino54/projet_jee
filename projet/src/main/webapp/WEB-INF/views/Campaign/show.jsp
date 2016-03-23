@@ -1,5 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
     <tiles:putAttribute name="title">Créer mon projet</tiles:putAttribute>
@@ -170,7 +171,8 @@
 													</c:if>
 											</div>
 											<div class="col-xs-3 col-lg-2">
-												${listValue.published}
+												 
+												${DATE_FORMAT.format(listValue.published)}
 											</div>
 											<div class="col-xs-12 col-lg-9">
 												<h3>${listValue.title}</h3>
@@ -268,7 +270,36 @@
 								    $('#current_page').val(page_num);  
 								}  
 								</script>
-							</c:if>					
+							</c:if>
+							<button class="btn btn-aqua" id="toggleComment">Ecrire un commentaire</button>
+							<div id="formComment">
+								<h2 class="titre">Poster un commentaire</h2>
+					        	<form method="POST" role="form">
+									<div class="form-group">
+										<label for="titrecom">Titre:</label>
+										<input type="text" class="form-control" id="titrecom">
+									</div>
+				  					<div class="form-group">
+										<label for="desc">Commentaire :</label>
+										<textarea class="form-control" rows="10" id="desc"></textarea>
+									</div>
+									<input type="submit" class="btn btn-aqua" value="Envoyer" />
+									<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
+						        </form>	
+							</div>
+					        <script>
+						        $( document ).ready(function() {
+					        		$( "#formComment" ).hide();
+							        $( "#toggleComment" ).click(function() {
+							        	$( "#formComment" ).slideDown( "slow" );
+							        	$( "#toggleComment" ).slideUp( "slow" );
+							        	});
+							        $( "#closeCommentForm" ).click(function() {
+							        	$( "#toggleComment" ).slideDown( "slow" );
+							        	$( "#formComment" ).slideUp( "slow" );
+							        	});
+						        });
+					        </script>	
 						</div>
 					</div>
 				</div>
@@ -314,13 +345,17 @@
 										<div class="modal-content">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">Faire une donation</h4>
+												<h2 class="titre">Faire une donation</h2>
 											</div>
 											<div class="modal-body">
-												<p>Mettre le formulaire ici</p>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-aqua" data-dismiss="modal">Fermer</button>
+												<!-- Formulaire de dons -->
+										        <form  method="POST" role="form">
+													<div class="form-group">
+														<label for="montant">Montant du don:</label>
+														<input type="number" min="5" step="0.01" class="form-control" id="montant">
+													</div>
+													<input type="submit" class="btn btn-aqua" value="Envoyer" />
+										        </form>
 											</div>
 										</div>
 									</div>
