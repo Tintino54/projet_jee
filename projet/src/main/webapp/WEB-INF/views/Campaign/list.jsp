@@ -14,8 +14,8 @@
 						<img class="fullwidth" src="<c:url value="/resources/images/avatars/unknown.jpg"/>"/>
 					</div>											
 					<p>${listValue.description}</p>
-					<div>${listValue.expectedamount}</div>
-					<div>${listValue.expectedamount}</div>
+					<div>${listValue.expectedamount} €</div>
+					<div>${listValue.expectedamount} €</div>
 					<a href="<c:url value="/show/${listValue.id}"/>" class="btn btn-full btn-aqua">Voir</a>
 				</div>
 				</div>

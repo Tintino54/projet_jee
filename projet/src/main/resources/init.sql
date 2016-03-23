@@ -59,7 +59,7 @@ INSERT INTO `USERS` (`LOGIN`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `MAILADRESS`,
 INSERT INTO `CAMPAIGNS` (`TITLE`,`EXPECTEDAMOUNT`,`DESCRIPTION`,`DEADLINE`,`ID_USER`) VALUES
 ('Croisiere',2000,'budget croisiere','2016-03-24',1),
 ('Album',900,'Pour la création de mon nouvel album','2016-04-12',2),
-('Court-métrage',15000,'Création d un court-métrage pour mon école','2016-05-12',1);
+('Court-métrage',15000,'Création d''un court-métrage pour mon école','2016-05-12',1);
 
 INSERT INTO `PARTICIPATIONS` (`ID_PROJET`,`ID_USER`,`DATEPARTICIPATION`,`DONATION`,`MESSAGE`) VALUES
 (1,1,'2016-03-22',4000,'Bon voyage les amoureux'),
