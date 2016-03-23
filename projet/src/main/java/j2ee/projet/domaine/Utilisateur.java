@@ -53,6 +53,9 @@ public class Utilisateur implements Serializable {
 	
 	@OneToMany(mappedBy="utilisateur")
 	private List<Participation> listDons;
+	
+	@OneToMany(mappedBy="utilisateur")
+	private List<Commentaire> listCom;
 
 	public int getId() {
 		return id;

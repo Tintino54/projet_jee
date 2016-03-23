@@ -6,6 +6,8 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -34,6 +36,18 @@ public class Commentaire implements Serializable {
 	
 	@Column(name = "ID_CAMPAIGN")
 	private int id_campaign;
+	
+	@ManyToOne
+	@JoinColumn(name="id_user")
+	private Utilisateur utilisateur;
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
 
 	public int getId() {
 		return id;
