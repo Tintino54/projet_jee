@@ -9,6 +9,7 @@
 			<c:set var="count" value="0" scope="page" />
 			<c:forEach var="listValue" items="${lists}">
 				<div class="col-lg-4">
+				
 					<div class="col-lg-12 project-square fadeInBlockList">
 						<h3 class="titre">${listValue.title}</h3>	
 						<div class="col-lg-12">
