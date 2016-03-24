@@ -72,17 +72,19 @@
 								    you can use divs, paragraphs, spans, or whatever you like mixed together). '-->
 								<div id='content_dons' class="row">
 									<c:forEach var="dons" items="${dons}">
-										<div class="don col-lg-2">
-											<div class="col-lg-12">${dons.utilisateur.login}</div>
-											<div class="col-lg-12">
-												<c:if test="${dons.utilisateur.sexe == 1}">
-													<img class="avatar"	src="<c:url value="/resources/images/avatars/male.png"/>" />
-												</c:if>
-												<c:if test="${dons.utilisateur.sexe == 0}">
-													<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
-												</c:if>
+										<div class="col-lg-2">
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 don fadeInBlockList">
+												<div class="col-lg-12 center username">${dons.utilisateur.login}</div>
+												<div class="col-lg-12">
+													<c:if test="${dons.utilisateur.sexe == 1}">
+														<img class="avatar"	src="<c:url value="/resources/images/avatars/male.png"/>" />
+													</c:if>
+													<c:if test="${dons.utilisateur.sexe == 0}">
+														<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
+													</c:if>
+												</div>
+												<div class="col-lg-12 center amount"><span class="label label-default">${dons.donation}€</span></div>
 											</div>
-											<div class="col-lg-12">${dons.donation}€</div>
 										</div>
 									</c:forEach>
 								</div>
