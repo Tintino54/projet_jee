@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Commentaire;
-import j2ee.projet.domaine.Utilisateur;
 
 @Repository
 @Transactional
