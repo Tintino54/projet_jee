@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Commentaire;
+import j2ee.projet.domaine.Utilisateur;
 
 @Repository
 @Transactional
@@ -23,5 +24,14 @@ public class CommentaireDAO extends BaseDAO<Commentaire> {
 		TypedQuery<Commentaire> query = getEntityManager().createNamedQuery("rechercherCommentairesParCampagne",Commentaire.class);
 		query.setParameter("id_campaign", id);
 		return query.getResultList();
+	}
+	
+	public void ajouterCommentaire(Commentaire com)
+	{
+		try {
+			insert(com);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

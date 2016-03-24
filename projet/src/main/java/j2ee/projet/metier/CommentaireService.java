@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import j2ee.projet.dao.CommentaireDAO;
 import j2ee.projet.domaine.Commentaire;
+import j2ee.projet.domaine.Utilisateur;
+import j2ee.projet.web.bean.UtilisateurBean;
 
 @Service
 public class CommentaireService {
@@ -19,4 +21,9 @@ public class CommentaireService {
 		List<Commentaire> res = commentaireDAO.rechercherCommentairesParCampagne(id);
 		return res;
 	}
+
+	public void ajouter(Commentaire commentaire) {
+		
+	}
+
 }

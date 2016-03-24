@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Campagne;
+import j2ee.projet.domaine.Utilisateur;
 
 @Repository
 @Transactional
@@ -34,6 +35,15 @@ public class CampagneDAO extends BaseDAO<Campagne> {
 		} else {
 			TypedQuery<Campagne> query = getEntityManager().createNamedQuery("rechercherCampagne", Campagne.class);
 			return query.getResultList();
+		}
+	}
+	
+	public void ajouterCampagne(Campagne campagne)
+	{
+		try {
+			insert(campagne);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
