@@ -350,14 +350,32 @@
 												<h2 class="titre">Faire une donation</h2>
 											</div>
 											<div class="modal-body">
-												<!-- Formulaire de dons -->
-										        <form  method="POST" role="form">
-													<div class="form-group">
-														<label for="montant">Montant du don:</label>
-														<input type="number" min="5" step="0.01" class="form-control" id="montant">
-													</div>
-													<input type="submit" class="btn btn-aqua" value="Envoyer" />
-										        </form>
+												<c:choose>
+													<c:when test="${!empty user}">
+														<!-- Formulaire de dons -->
+												        <form  method="POST" role="form">
+															<div class="form-group">
+																<label for="montant">Montant du don:</label>
+																<input type="number" min="5" step="0.01" class="form-control" id="montant">
+															</div>
+															<input type="submit" class="btn btn-aqua" value="Envoyer" />
+												        </form>
+													</c:when>
+													<c:otherwise>
+														<div class="row">
+															<div class="col-xs-12 col-lg-12">
+																<p>Pour faire une donation, vous devez d'abord vous connecter avec votre compte !</p>
+																<p>Si vous n'avez pas de compte, vous pouvez en créer un.</p>
+															</div>
+															<div class="col-xs-6 col-lg-6">
+																<a class="btn btn-aqua btn-full" href="<c:url value="/inscription" />">Créer mon compte</a>	
+															</div>
+															<div class="col-xs-6 col-lg-6">
+																<a class="btn btn-aqua btn-full" href="<c:url value="/connexion" />">Me connecter</a>
+															</div>	
+														</div>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 									</div>
