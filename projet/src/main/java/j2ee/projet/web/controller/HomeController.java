@@ -4,32 +4,26 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.web.bean.UtilisateurBean;
 
 @Controller
-@SessionAttributes( value="user", types={UtilisateurBean.class} ) 
 public class HomeController {
 
 	final static Logger logger = Logger.getLogger(HomeController.class);
+	
+	@Autowired
+	UtilisateurBean user;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(HttpServletResponse response) throws IOException{
 		logger.info("Affichage de home.jsp");
 		return "Home/home";
-	}
-	
-	@RequestMapping(value="/connexion", method=RequestMethod.GET)
-	@ModelAttribute("user")
-	public ModelAndView connexion(HttpServletResponse response) throws IOException{
-		logger.info("Affichage de la page de connexion");
-		return new ModelAndView("Home/connexion");
 	}
 	
 	@RequestMapping(value="/inscription", method=RequestMethod.GET)

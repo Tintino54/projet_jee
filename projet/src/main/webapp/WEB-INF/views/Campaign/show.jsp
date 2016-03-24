@@ -293,12 +293,12 @@
 						        $( document ).ready(function() {
 					        		$( "#formComment" ).hide();
 							        $( "#toggleComment" ).click(function() {
-							        	$( "#formComment" ).slideDown( "slow" );
-							        	$( "#toggleComment" ).slideUp( "slow" );
+							        	$( "#formComment" ).slideDown( "fast" );
+							        	$( "#toggleComment" ).hide();
 							        	});
 							        $( "#closeCommentForm" ).click(function() {
-							        	$( "#toggleComment" ).slideDown( "slow" );
-							        	$( "#formComment" ).slideUp( "slow" );
+							        	$( "#toggleComment" ).slideDown( "fast" );
+							        	$( "#formComment" ).hide();
 							        	});
 						        });
 					        </script>	
@@ -309,7 +309,7 @@
 					<div class="row">
 						<div class="row" id="stats-projet">
 							<div class="col-lg-6">
-								<div class="project-highlight">${montantCollecte} <i class="fa fa-eur"></i></div>
+								<div class="project-highlight"><span class="currency">${montantCollecte.intValue()}</span> <i class="fa fa-eur"></i></div>
 								<div class="project-highlight-down">Collectés</div>
 							</div>
 							<div class="col-lg-6">
@@ -317,7 +317,7 @@
 								<div class="project-highlight-down">Contributeurs</div>
 							</div>
 							<div class="col-lg-6">
-								<div class="project-highlight">${campagne.expectedamount.intValue()} <i class="fa fa-eur"></i></div>
+								<div class="project-highlight"><span class="currency">${campagne.expectedamount.intValue()}</span> <i class="fa fa-eur"></i></div>
 								<div class="project-highlight-down">Objectif</div>
 							</div>
 							<div class="col-lg-6">
@@ -362,16 +362,32 @@
 										</div>
 									</div>
 								</div>
-							</c:if>
+							</c:if>											
+						</div>
+						<div class="col-lg-12">
+							<ul>
+								<c:if test="${!termine && (percent < 100)}">
+									<li>Si la jauge n'atteint pas les <span class="currency">${campagne.expectedamount.intValue()}</span> € avant le <c:out value="${dateString}"/>, votre participation sera automatiquement recréditée</li>
+									<li>Vous pouvez annuler votre participation tant que la jauge n'a pas atteint les 100%</li>
+								</c:if>
+								<c:if test="${termine}">
+									<c:if test="${percent < 100}">
+										<li>Le projet n'ayant pas atteint 100%, votre donation vous sera resistuée si vous en avez fait une.</li>
+									</c:if>
+								</c:if>
+								<c:if test="${percent >= 100}">
+									<li>Le projet a atteint son objectif. Vous ne pouvez plus annuler votre participation.</li>
+								</c:if>
+							</ul>
 							<c:if test="${dons.size() > 0}">
-								<button type="button" class="btn btn-aqua" data-toggle="modal" data-target="#chart">Répartition des dons&nbsp;<i class="fa fa-bar-chart-o"></i></button>	
+								<button type="button" class="btn btn-aqua btn-full" data-toggle="modal" data-target="#chart"><i class="fa fa-bar-chart-o"></i>&nbsp;Statistiques sur les dons</button>	
 									<div id="chart" class="modal fade" role="dialog">
 										<div class="modal-dialog modal-lg">
 											<!-- Modal content-->
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">Répartition des dons</h4>
+													<h2 class="titre">Répartition des dons</h2>
 												</div>
 												<div class="modal-body">
 													<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -423,23 +439,7 @@
 											</div>
 										</div>
 									</div>
-							</c:if>							
-						</div>
-						<div class="col-lg-12">
-							<ul>
-								<c:if test="${!termine && (percent < 100)}">
-									<li>Si la jauge n'atteint pas les <c:out value="${campagne.expectedamount.intValue()}"/> € avant le <c:out value="${dateString}"/>, votre participation sera automatiquement recréditée</li>
-									<li>Vous pouvez annuler votre participation tant que la jauge n'a pas atteint les 100%</li>
-								</c:if>
-								<c:if test="${termine}">
-									<c:if test="${percent < 100}">
-										<li>Le projet n'ayant pas atteint 100%, votre donation vous sera resistuée si vous en avez fait une.</li>
-									</c:if>
-								</c:if>
-								<c:if test="${percent >= 100}">
-									<li>Le projet a atteint son objectif. Vous ne pouvez plus annuler votre participation.</li>
-								</c:if>
-							</ul>
+							</c:if>			
 						</div>
 					</div>
 

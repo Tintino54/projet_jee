@@ -25,7 +25,11 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 					Utilisateur.class);
 			query.setParameter("mail", mail);
 			query.setParameter("mdp", mdp);
-			return query.getSingleResult();
+			List<Utilisateur> list = query.getResultList();
+			if (list.size() == 0)
+				return null;
+			else
+				return list.get(0);
 		}
 	}
 
@@ -38,6 +42,22 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 					Utilisateur.class);
 			query.setParameter("id", idUser);
 			return query.getResultList();
+		}
+	}
+	
+	public Utilisateur rechercherUtilisateurParLogin(String login) {
+		if (getEntityManager() == null) {
+			logger.info("entityManager null");
+			return null;
+		} else {
+			TypedQuery<Utilisateur> query = getEntityManager().createNamedQuery("rechercherUtilisateurParLogin",
+					Utilisateur.class);
+			query.setParameter("login", login);
+			List<Utilisateur> list = query.getResultList();
+			if (list.size() == 0)
+				return null;
+			else
+				return list.get(0);
 		}
 	}
 	

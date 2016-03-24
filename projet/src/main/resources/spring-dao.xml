@@ -23,7 +23,7 @@
 		id="UserTransaction">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-
+ 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="packagesToScan" value="j2ee.projet.domaine"></property>
