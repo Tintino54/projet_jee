@@ -272,36 +272,38 @@
 								}  
 								</script>
 							</c:if>
-							<button class="btn btn-aqua btn-full" id="toggleComment">Ecrire un commentaire</button>
-							<div class="col-lg-12" id="formComment">
-								<hr>
-								<h2 class="titre">Poster un commentaire</h2>
-					        	<form method="POST" role="form">
-									<div class="form-group">
-										<label for="titrecom">Titre:</label>
-										<input type="text" class="form-control" id="titrecom">
-									</div>
-				  					<div class="form-group">
-										<label for="desc">Commentaire :</label>
-										<textarea class="form-control" rows="10" id="desc"></textarea>
-									</div>
-									<input type="submit" class="btn btn-aqua" value="Envoyer" />
-									<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
-						        </form>	
-							</div>
-					        <script>
-						        $( document ).ready(function() {
-					        		$( "#formComment" ).hide();
-							        $( "#toggleComment" ).click(function() {
-							        	$( "#formComment" ).slideDown( "fast" );
-							        	$( "#toggleComment" ).hide();
-							        	});
-							        $( "#closeCommentForm" ).click(function() {
-							        	$( "#toggleComment" ).slideDown( "fast" );
-							        	$( "#formComment" ).hide();
-							        	});
-						        });
-					        </script>	
+							<c:if test="${!empty user}">
+								<button class="btn btn-aqua btn-full" id="toggleComment">Ecrire un commentaire</button>
+								<div class="col-lg-12" id="formComment">
+									<hr>
+									<h2 class="titre">Poster un commentaire</h2>
+						        	<form method="POST" role="form">
+										<div class="form-group">
+											<label for="titrecom">Titre:</label>
+											<input type="text" class="form-control" id="titrecom">
+										</div>
+					  					<div class="form-group">
+											<label for="desc">Commentaire :</label>
+											<textarea class="form-control" rows="10" id="desc"></textarea>
+										</div>
+										<input type="submit" class="btn btn-aqua" value="Envoyer" />
+										<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
+							        </form>	
+								</div>
+						        <script>
+							        $( document ).ready(function() {
+						        		$( "#formComment" ).hide();
+								        $( "#toggleComment" ).click(function() {
+								        	$( "#formComment" ).slideDown( "fast" );
+								        	$( "#toggleComment" ).hide();
+								        	});
+								        $( "#closeCommentForm" ).click(function() {
+								        	$( "#toggleComment" ).slideDown( "fast" );
+								        	$( "#formComment" ).hide();
+								        	});
+							        });
+						        </script>
+							</c:if>	
 						</div>
 					</div>
 				</div>
