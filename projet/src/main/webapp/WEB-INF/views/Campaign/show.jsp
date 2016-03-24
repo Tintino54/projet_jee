@@ -12,9 +12,9 @@
 					<div class="row">
 						<ul class="nav nav-pills nav-justified">
 							<li class="active"><a data-toggle="pill" href="#home">Le projet</a></li>
-							<li><a data-toggle="pill" href="#news">News <span class="badge">5</span></a></li>
-							<li><a data-toggle="pill" href="#entries">Contributions <span class="badge">${dons.size()}</span></a></li>
-							<li><a data-toggle="pill" href="#comments">Commentaires <span class="badge">${textes.size()}</span></a></li>
+							<li><a data-toggle="pill" href="#news">News <span class="label label-pill">5</span></a></li>
+							<li><a data-toggle="pill" href="#entries">Contributions <span class="label label-pill">${dons.size()}</span></a></li>
+							<li><a data-toggle="pill" href="#comments">Commentaires <span class="label label-pill">${textes.size()}</span></a></li>
 						</ul>
 					</div>
 					<div class="tab-content col-lg-12">
@@ -83,7 +83,7 @@
 														<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
 													</c:if>
 												</div>
-												<div class="col-lg-12 center amount"><span class="label label-default">${dons.donation}€</span></div>
+												<div class="col-lg-12 center amount"><span class="label label-default currency">${dons.donation}€</span></div>
 											</div>
 										</div>
 									</c:forEach>
