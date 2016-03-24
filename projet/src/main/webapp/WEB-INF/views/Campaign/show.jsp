@@ -24,7 +24,38 @@
 						</div>
 						<div id="news" class="tab-pane fade">
 							<h2 class="titre">News</h2>
-							<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<c:if test="${!empty user}">
+								<button class="btn btn-aqua btn-full" id="toggleNews">Poster une news</button>
+								<div class="col-lg-12" id="formNews">
+									<hr>
+									<h2 class="titre">Poster une news</h2>
+									<form method="POST" role="form">
+										<div class="form-group">
+											<label for="titrenews">Titre:</label>
+											<input type="text" class="form-control" id="titrenews">
+										</div>
+											<div class="form-group">
+											<label for="desc">Contenu :</label>
+											<textarea class="form-control" rows="10" id="desc"></textarea>
+										</div>
+										<input type="submit" class="btn btn-aqua" value="Envoyer" />
+										<div class="btn btn-aqua" id="closeNewsForm">Annuler</div>
+								    </form>	
+								</div>
+								<script>
+								    $( document ).ready(function() {
+										$( "#formNews" ).hide();
+								        $( "#toggleNews" ).click(function() {
+								        	$( "#formNews" ).slideDown( "fast" );
+								        	$( "#toggleNews" ).hide();
+								        	});
+								        $( "#closeNewsForm" ).click(function() {
+								        	$( "#toggleNews" ).slideDown( "fast" );
+								        	$( "#formNews" ).hide();
+								        	});
+								    });
+								</script>
+							</c:if>	
 						</div>
 						<div id="entries" class="tab-pane fade">
 							<h2 class="titre">Contributions</h2>
