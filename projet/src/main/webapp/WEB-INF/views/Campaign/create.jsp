@@ -77,7 +77,7 @@
 			                var date = $('#datetimepicker').children('input').val();
 			                var splitted = date.split("/");
 			                var dateFormatted = splitted[2] + "-" + splitted[1] + "-" + splitted[0];
-			                $('#DOB').val(dateFormatted);
+			                $('#date_fin').val(dateFormatted);
 			            });
 
 
