@@ -93,14 +93,15 @@ public class CampaignController {
 
 	// Créer une campagne - Vue
 	@RequestMapping(value = "/nouveau", method = RequestMethod.GET)
-	public ModelAndView create(Model model) throws IOException {
+	public String create(Model model) throws IOException {
 		logger.info("Affichage de la page de cr�ation d'une campagne");
-		return new ModelAndView("Campaign/create", "campaign", new Campagne());
+		model.addAttribute("campagne", new Campagne());
+		return "Campaign/create";
 	}
 
 	// Créer une campagne - Action
 	@RequestMapping(value = "/nouveau", method = RequestMethod.POST)
-	public ModelAndView createSubmit(@ModelAttribute Campagne campaign) throws IOException {
+	public ModelAndView createSubmit(@ModelAttribute("campagne") Campagne campaign) throws IOException {
 		logger.info("Soumission du formulaire de cr�ation d'une campagne");
 		// Persister la campagne dans la BDD :
 		String sucessMessage ="Erreur";
