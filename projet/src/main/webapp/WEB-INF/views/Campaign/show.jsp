@@ -24,7 +24,38 @@
 						</div>
 						<div id="news" class="tab-pane fade">
 							<h2 class="titre">News</h2>
-							<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<c:if test="${!empty user}">
+								<button class="btn btn-aqua btn-full" id="toggleNews">Poster une news</button>
+								<div class="col-lg-12" id="formNews">
+									<hr>
+									<h2 class="titre">Poster une news</h2>
+									<form method="POST" role="form">
+										<div class="form-group">
+											<label for="titrenews">Titre:</label>
+											<input type="text" class="form-control" id="titrenews">
+										</div>
+											<div class="form-group">
+											<label for="desc">Contenu :</label>
+											<textarea class="form-control" rows="10" id="desc"></textarea>
+										</div>
+										<input type="submit" class="btn btn-aqua" value="Envoyer" />
+										<div class="btn btn-aqua" id="closeNewsForm">Annuler</div>
+								    </form>	
+								</div>
+								<script>
+								    $( document ).ready(function() {
+										$( "#formNews" ).hide();
+								        $( "#toggleNews" ).click(function() {
+								        	$( "#formNews" ).slideDown( "fast" );
+								        	$( "#toggleNews" ).hide();
+								        	});
+								        $( "#closeNewsForm" ).click(function() {
+								        	$( "#toggleNews" ).slideDown( "fast" );
+								        	$( "#formNews" ).hide();
+								        	});
+								    });
+								</script>
+							</c:if>	
 						</div>
 						<div id="entries" class="tab-pane fade">
 							<h2 class="titre">Contributions</h2>
@@ -272,36 +303,38 @@
 								}  
 								</script>
 							</c:if>
-							<button class="btn btn-aqua btn-full" id="toggleComment">Ecrire un commentaire</button>
-							<div class="col-lg-12" id="formComment">
-								<hr>
-								<h2 class="titre">Poster un commentaire</h2>
-					        	<form method="POST" role="form">
-									<div class="form-group">
-										<label for="titrecom">Titre:</label>
-										<input type="text" class="form-control" id="titrecom">
-									</div>
-				  					<div class="form-group">
-										<label for="desc">Commentaire :</label>
-										<textarea class="form-control" rows="10" id="desc"></textarea>
-									</div>
-									<input type="submit" class="btn btn-aqua" value="Envoyer" />
-									<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
-						        </form>	
-							</div>
-					        <script>
-						        $( document ).ready(function() {
-					        		$( "#formComment" ).hide();
-							        $( "#toggleComment" ).click(function() {
-							        	$( "#formComment" ).slideDown( "fast" );
-							        	$( "#toggleComment" ).hide();
-							        	});
-							        $( "#closeCommentForm" ).click(function() {
-							        	$( "#toggleComment" ).slideDown( "fast" );
-							        	$( "#formComment" ).hide();
-							        	});
-						        });
-					        </script>	
+							<c:if test="${!empty user}">
+								<button class="btn btn-aqua btn-full" id="toggleComment">Ecrire un commentaire</button>
+								<div class="col-lg-12" id="formComment">
+									<hr>
+									<h2 class="titre">Poster un commentaire</h2>
+						        	<form method="POST" role="form">
+										<div class="form-group">
+											<label for="titrecom">Titre:</label>
+											<input type="text" class="form-control" id="titrecom">
+										</div>
+					  					<div class="form-group">
+											<label for="desc">Commentaire :</label>
+											<textarea class="form-control" rows="10" id="desc"></textarea>
+										</div>
+										<input type="submit" class="btn btn-aqua" value="Envoyer" />
+										<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
+							        </form>	
+								</div>
+						        <script>
+							        $( document ).ready(function() {
+						        		$( "#formComment" ).hide();
+								        $( "#toggleComment" ).click(function() {
+								        	$( "#formComment" ).slideDown( "fast" );
+								        	$( "#toggleComment" ).hide();
+								        	});
+								        $( "#closeCommentForm" ).click(function() {
+								        	$( "#toggleComment" ).slideDown( "fast" );
+								        	$( "#formComment" ).hide();
+								        	});
+							        });
+						        </script>
+							</c:if>	
 						</div>
 					</div>
 				</div>
@@ -350,14 +383,32 @@
 												<h2 class="titre">Faire une donation</h2>
 											</div>
 											<div class="modal-body">
-												<!-- Formulaire de dons -->
-										        <form  method="POST" role="form">
-													<div class="form-group">
-														<label for="montant">Montant du don:</label>
-														<input type="number" min="5" step="0.01" class="form-control" id="montant">
-													</div>
-													<input type="submit" class="btn btn-aqua" value="Envoyer" />
-										        </form>
+												<c:choose>
+													<c:when test="${!empty user}">
+														<!-- Formulaire de dons -->
+												        <form  method="POST" role="form">
+															<div class="form-group">
+																<label for="montant">Montant du don:</label>
+																<input type="number" min="5" step="0.01" class="form-control" id="montant">
+															</div>
+															<input type="submit" class="btn btn-aqua" value="Envoyer" />
+												        </form>
+													</c:when>
+													<c:otherwise>
+														<div class="row">
+															<div class="col-xs-12 col-lg-12">
+																<p>Pour faire une donation, vous devez d'abord vous connecter avec votre compte !</p>
+																<p>Si vous n'avez pas de compte, vous pouvez en créer un.</p>
+															</div>
+															<div class="col-xs-6 col-lg-6">
+																<a class="btn btn-aqua btn-full" href="<c:url value="/inscription" />">Créer mon compte</a>	
+															</div>
+															<div class="col-xs-6 col-lg-6">
+																<a class="btn btn-aqua btn-full" href="<c:url value="/connexion" />">Me connecter</a>
+															</div>	
+														</div>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 									</div>

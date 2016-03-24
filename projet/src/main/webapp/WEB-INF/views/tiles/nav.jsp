@@ -18,7 +18,9 @@
 			<div class="collapse navbar-collapse" id="collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="<c:url value="/liste" />">Les projets</a></li>
-					<li><a href="<c:url value="/nouveau" />">Lancer mon projet</a></li>
+					<c:if test="${!empty user}">
+						<li><a href="<c:url value="/nouveau" />">Lancer mon projet</a></li>
+					</c:if>
 					<li><a href="<c:url value="/principe" />">Aide</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
