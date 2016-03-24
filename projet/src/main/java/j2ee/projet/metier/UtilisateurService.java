@@ -33,12 +33,4 @@ public class UtilisateurService {
 		}
 	}
 
-	public UtilisateurBean getUtilisateur(String mail, String mdp) {
-		Utilisateur res = uDao.rechercherUtilisateurParMailEtMdp(mail, mdp);
-		UtilisateurBean uBean = new UtilisateurBean();
-		uBean.setEmail(res.getMail());
-		uBean.setLogin(res.getLogin());
-		uBean.setPwd(res.getMdp());
-		return uBean;
-	}
 }

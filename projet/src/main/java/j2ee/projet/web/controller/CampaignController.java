@@ -24,6 +24,7 @@ import j2ee.projet.domaine.Commentaire;
 import j2ee.projet.domaine.Participation;
 import j2ee.projet.metier.CampagneService;
 import j2ee.projet.metier.CommentaireService;
+import j2ee.projet.web.bean.UtilisateurBean;
 
 @Controller
 public class CampaignController {
@@ -34,6 +35,9 @@ public class CampaignController {
 	
 	@Autowired
 	CommentaireService comServ;
+	
+	@Autowired
+	UtilisateurBean user;
 	
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
