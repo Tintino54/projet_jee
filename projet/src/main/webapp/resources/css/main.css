@@ -70,7 +70,7 @@ form h1.titre
 	text-align: center;
 }
 
-form input[type=submit]
+form input[type=submit], form div.btn-aqua
 {
 	margin-bottom: 10px;
 }
@@ -110,6 +110,11 @@ textarea.form-control
 .alert, .nav-pills>li>a 
 {
 	border-radius: 0;
+}
+
+.modal-content 
+{
+    border-radius: 0;
 }
 
 .btn-aqua, .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {

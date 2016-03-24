@@ -36,4 +36,13 @@ public class CampagneDAO extends BaseDAO<Campagne> {
 			return query.getResultList();
 		}
 	}
+	
+	public void ajouterCampagne(Campagne campagne)
+	{
+		try {
+			insert(campagne);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

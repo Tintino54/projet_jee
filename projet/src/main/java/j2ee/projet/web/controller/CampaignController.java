@@ -1,8 +1,6 @@
 package j2ee.projet.web.controller;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.domaine.Campagne;
+import j2ee.projet.domaine.Commentaire;
 import j2ee.projet.domaine.Participation;
 import j2ee.projet.metier.CampagneService;
-import j2ee.projet.dao.CampagneDAO;
+import j2ee.projet.metier.CommentaireService;
+import j2ee.projet.web.bean.UtilisateurBean;
 
 @Controller
 public class CampaignController {
@@ -33,12 +33,60 @@ public class CampaignController {
 	@Autowired
 	CampagneService campServ;
 	
+	@Autowired
+	CommentaireService comServ;
+	
+	@Autowired
+	UtilisateurBean user;
+	
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView liste(HttpServletResponse response) throws IOException {
+		
+		
+		ModelAndView model = new ModelAndView("Campaign/list");
+		
 		List<Campagne> list = campServ.getList();
 
-		ModelAndView model = new ModelAndView("Campaign/list");
+		List<Integer> totaux = new ArrayList<Integer>();
+		List<Integer> percent = new ArrayList<Integer>();
+		List<Integer> barWidth = new ArrayList<Integer>();
+		List<String> classBar = new ArrayList<String>();
+		for(int i = 0; i < list.size(); i++)
+		{
+			
+			List<Participation> dons = campServ.getDons(list.get(i).getId());
+			Double montantCollecte = 0.0;			
+			for(int j = 0; j < dons.size(); j++)
+			{
+				Double montant = dons.get(j).getDonation();
+				montantCollecte += montant;
+			}
+			Integer inte = montantCollecte.intValue();
+			totaux.add(inte);
+			
+			// Pourcentage
+			Double d = montantCollecte / list.get(i).getExpectedamount() * 100;
+			model.addObject("d", d);
+			percent.add(d.intValue());
+			model.addObject("percent", percent);
+			if(percent.get(i) >= 100)
+			{
+				barWidth.add(100);
+				classBar.add("progress-bar");
+			}
+			else
+			{
+				barWidth.add(percent.get(i));
+				classBar.add("progress-bar progress-bar-red");
+			}
+			
+		}
+		model.addObject("totaux", totaux);		
+		model.addObject("percent", percent);	
+		model.addObject("barWidth", barWidth);
+		model.addObject("classBar", classBar);		
+
 		model.addObject("lists", list);
 		return model;
 	}
@@ -47,8 +95,7 @@ public class CampaignController {
 	@RequestMapping(value = "/nouveau", method = RequestMethod.GET)
 	public ModelAndView create(Model model) throws IOException {
 		logger.info("Affichage de la page de cr�ation d'une campagne");
-		model.addAttribute("campaign", new Campagne());
-		return new ModelAndView("Campaign/create", model.asMap());
+		return new ModelAndView("Campaign/create", "campaign", new Campagne());
 	}
 
 	// Créer une campagne - Action
@@ -56,13 +103,16 @@ public class CampaignController {
 	public ModelAndView createSubmit(@ModelAttribute Campagne campaign) throws IOException {
 		logger.info("Soumission du formulaire de cr�ation d'une campagne");
 		// Persister la campagne dans la BDD :
+		String sucessMessage ="Erreur";
+		if (campaign == null)
+			logger.info("ModelAttribute campaign est null");
 		try {
 			campServ.ajouter(campaign);
+			sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien �t� cr��";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien �t� cr��";
-
+		
 		ModelAndView model = new ModelAndView("Campaign/create");
 		model.addObject("sucessMessage", sucessMessage);
 		return model;
@@ -81,34 +131,18 @@ public class CampaignController {
 	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
 	public ModelAndView show(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 		logger.info("Affichage de la campagne" + id);
-
-		SecureRandom random = new SecureRandom();
-		List<String> user = new ArrayList<String>();
-		List<String> texte = new ArrayList<String>();
-		List<Date> date = new ArrayList<Date>();
-		for (int i = 0; i < 50; i++) {
-			String u = new String(new BigInteger(130, random).toString(10));
-			user.add(u);
-			String t = new String(new BigInteger(130, random).toString(255));
-			texte.add(t);
-			Calendar cal = Calendar.getInstance();
-			cal.set(1991, 01, 11);
-			Date d = new Date(cal.getTimeInMillis());
-			date.add(d);
-		}
 		
-		
+		int _id = Integer.parseInt(id);
 
 		ModelAndView model = new ModelAndView("Campaign/show");
 		model.addObject("id", id);
-		model.addObject("users", user);
+		List<Commentaire> texte = comServ.getCommentaireFromIdProjet(_id);
 		model.addObject("textes", texte);
-		model.addObject("dates", date);
 
-		Campagne campagne =  campServ.getCampagneFromID(Integer.parseInt(id));
+		Campagne campagne =  campServ.getCampagneFromID(_id);
 		model.addObject("campagne", campagne);
 		
-		List<Participation> dons = campServ.getDons(Integer.parseInt(id));
+		List<Participation> dons = campServ.getDons(_id);
 		model.addObject("dons", dons);
 		
 		Double montantCollecte = 0.0;
@@ -140,6 +174,9 @@ public class CampaignController {
 		model.addObject("nombreDons100", nombreDons100);
 		
 		Double d = montantCollecte / campagne.getExpectedamount() * 100;
+		model.addObject("objectif", campagne.getExpectedamount());
+		model.addObject("montantCollecte", montantCollecte);
+		model.addObject("d", d);
 		Integer percent = d.intValue();
 		model.addObject("percent", percent);
 		Integer barWidth = percent;
@@ -154,17 +191,17 @@ public class CampaignController {
 		long diff = campagne.getDeadline().getTime( ) - today.getTime()  ;
 		Long jours = diff / (1000*60*60*24);
 		jours += 1;
-		if(jours < 0)
+		if(jours <= 0)
 			termine = true;
 		model.addObject("temps", jours.intValue());
 		model.addObject("termine", termine);
-		model.addObject("montantCollecte", montantCollecte.intValue());
 		model.addObject("barWidth", barWidth);
 		model.addObject("classBar", classBar);
 		
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = DATE_FORMAT.format(campagne.getDeadline());
         model.addObject("dateString", dateString);
+        model.addObject("DATE_FORMAT", DATE_FORMAT);
 		return model;
 	}
 

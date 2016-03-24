@@ -2,19 +2,23 @@ package j2ee.projet.domaine;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
 @NamedQueries(value={
-		@NamedQuery(name="rechercherUtilisateurParMailEtMdp", query="select u.nom from Utilisateur u where u.mail like :mail and u.mdp like :mdp"),
-		@NamedQuery(name="rechercherUtilisateurParId", query="select u from Utilisateur u where u.id like :id")
+		@NamedQuery(name="rechercherUtilisateurParMailEtMdp", query="select u from Utilisateur u where u.mail like :mail and u.mdp like :mdp"),
+		@NamedQuery(name="rechercherUtilisateurParId", query="select u from Utilisateur u where u.id like :id"),
+		@NamedQuery(name="rechercherUtilisateurParLogin", query="select u from Utilisateur u where u.login like :login")
 })
 public class Utilisateur implements Serializable {
 
@@ -48,6 +52,47 @@ public class Utilisateur implements Serializable {
 	//0 pour les femmes, 1 pour les hommes
 	@Column(name = "SEX")
 	private int sexe;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
+	private List<Participation> listDons;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
+	private List<Commentaire> listCom;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
+	private List<News> listNews;
+
+	public List<Participation> getListDons() {
+		return listDons;
+	}
+
+	public List<Commentaire> getListCom() {
+		return listCom;
+	}
+
+	public void setListDons(List<Participation> listDons) {
+		this.listDons = listDons;
+	}
+
+	public void setListCom(List<Commentaire> listCom) {
+		this.listCom = listCom;
+	}
+	
+	public Utilisateur()
+	{}
+
+	public Utilisateur(int id, String login, String mdp, String prenom, String nom, String mail, Date dateNaiss,
+			int sexe) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.mdp = mdp;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.mail = mail;
+		this.dateNaiss = dateNaiss;
+		this.sexe = sexe;
+	}
 
 	public int getId() {
 		return id;

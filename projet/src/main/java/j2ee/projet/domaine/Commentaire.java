@@ -6,17 +6,20 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "COMMENTS")
-@NamedQuery(name="rechercherCommentairesParCampagne", query="select c from Commentaire c where c.id_campaign like :id")
+@NamedQuery(name="rechercherCommentairesParCampagne", query="select c from Commentaire c where c.id_campaign like :id_campaign")
 public class Commentaire implements Serializable {
 
 	private static final long serialVersionUID = -5116225850894993173L;
 	
 	@Id
+	@Column(name = "ID_COMMENTS")
 	private int id;
 	
 	@Column(name = "TITLE")
@@ -33,6 +36,18 @@ public class Commentaire implements Serializable {
 	
 	@Column(name = "ID_CAMPAIGN")
 	private int id_campaign;
+	
+	@ManyToOne
+	@JoinColumn(name="id_user")
+	private Utilisateur utilisateur;
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
 
 	public int getId() {
 		return id;

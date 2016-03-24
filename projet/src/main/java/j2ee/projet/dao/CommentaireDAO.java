@@ -24,4 +24,13 @@ public class CommentaireDAO extends BaseDAO<Commentaire> {
 		query.setParameter("id_campaign", id);
 		return query.getResultList();
 	}
+	
+	public void ajouterCommentaire(Commentaire com)
+	{
+		try {
+			insert(com);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
