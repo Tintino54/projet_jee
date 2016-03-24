@@ -310,18 +310,18 @@
 								<div class="col-lg-12" id="formComment">
 									<hr>
 									<h2 class="titre">Poster un commentaire</h2>
-						        	<form method="POST" role="form">
+						        	<form:form method="POST" role="form">
 										<div class="form-group">
-											<label for="titrecom">Titre:</label>
-											<input type="text" class="form-control" id="titrecom">
+											<form:label for="titrecom" path="title">Titre :</form:label>
+											<form:input type="text" class="form-control" id="titrecom" path="title" />
 										</div>
 					  					<div class="form-group">
-											<label for="desc">Commentaire :</label>
-											<textarea class="form-control" rows="10" id="desc"></textarea>
+											<form:label for="desc" path="message">Commentaire :</form:label>
+											<form:textarea class="form-control" rows="10" id="desc" path="message"></form:textarea>
 										</div>
 										<input type="submit" class="btn btn-aqua" value="Envoyer" />
 										<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
-							        </form>	
+							        </form:form>
 								</div>
 						        <script>
 							        $( document ).ready(function() {
