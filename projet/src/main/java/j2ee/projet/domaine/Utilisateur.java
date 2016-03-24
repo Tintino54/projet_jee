@@ -58,6 +58,9 @@ public class Utilisateur implements Serializable {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
 	private List<Commentaire> listCom;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
+	private List<News> listNews;
 
 	public List<Participation> getListDons() {
 		return listDons;

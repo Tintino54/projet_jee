@@ -60,3 +60,19 @@
 	}
 	
 }
+
+.label-default {
+    background-color: seagreen;
+    border-radius: 0;
+}
+
+div.amount
+{
+	margin-bottom: 5px;
+}
+
+div.username
+{
+	font-weight: bold;
+	color: lightslategray;
+}
