@@ -391,7 +391,7 @@
 												        <form  method="POST" role="form">
 															<div class="form-group">
 																<label for="montant">Montant du don:</label>
-																<input type="number" min="5" step="0.01" class="form-control" id="montant">
+																<input type="number" pattern="^\d+(\.|\,)\d{2}$" min="5" step="0.01" class="form-control" id="montant">
 															</div>
 															<input type="submit" class="btn btn-aqua" value="Envoyer" />
 												        </form>
