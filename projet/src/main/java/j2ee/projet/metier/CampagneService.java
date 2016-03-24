@@ -20,7 +20,7 @@ public class CampagneService {
 	private ParticipationDAO participationDAO;
 
 	public void ajouter(Campagne camp) {
-
+		campagneDAO.ajouterCampagne(camp);
 	}
 
 	public List<Campagne> getList() {

@@ -104,13 +104,14 @@ public class CampaignController {
 	public ModelAndView createSubmit(@ModelAttribute Campagne campaign) throws IOException {
 		logger.info("Soumission du formulaire de cr�ation d'une campagne");
 		// Persister la campagne dans la BDD :
+		String sucessMessage ="Erreur";
 		try {
 			campServ.ajouter(campaign);
+			sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien �t� cr��";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien �t� cr��";
-
+		
 		ModelAndView model = new ModelAndView("Campaign/create");
 		model.addObject("sucessMessage", sucessMessage);
 		return model;
