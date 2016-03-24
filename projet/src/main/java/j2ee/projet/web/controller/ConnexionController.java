@@ -40,10 +40,8 @@ public class ConnexionController {
 	@RequestMapping(value = "/check")
 	public ModelAndView identification(@ModelAttribute UtilisateurBean userParam) {
 
-		// String mail = request.getParameter("email");
 		String mail = userParam.getEmail();
 
-		// byte[] bytes = request.getParameter("pwd").getBytes();
 		byte[] bytes = userParam.getPwd().getBytes();
 
 		StringBuilder sb = new StringBuilder();

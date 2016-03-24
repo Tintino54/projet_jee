@@ -95,8 +95,7 @@ public class CampaignController {
 	@RequestMapping(value = "/nouveau", method = RequestMethod.GET)
 	public ModelAndView create(Model model) throws IOException {
 		logger.info("Affichage de la page de cr�ation d'une campagne");
-		model.addAttribute("campaign", new Campagne());
-		return new ModelAndView("Campaign/create", model.asMap());
+		return new ModelAndView("Campaign/create", "campaign", new Campagne());
 	}
 
 	// Créer une campagne - Action
@@ -105,6 +104,8 @@ public class CampaignController {
 		logger.info("Soumission du formulaire de cr�ation d'une campagne");
 		// Persister la campagne dans la BDD :
 		String sucessMessage ="Erreur";
+		if (campaign == null)
+			logger.info("ModelAttribute campaign est null");
 		try {
 			campServ.ajouter(campaign);
 			sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien �t� cr��";
