@@ -39,7 +39,7 @@
 			</div>
 			<script type="text/javascript">
 				$(document).ready(function() {
-					var delai = 250;
+					var delai = 180;
 					var t = delai;
 					$('.fadeInBlockList').each(function(i) {
 						var $this = $(this);
@@ -47,7 +47,7 @@
 						setTimeout(function() {
 							$this.animate({
 								'opacity' : '1'
-							}, 550);
+							}, 360);
 						}, t);
 
 						t += delai;

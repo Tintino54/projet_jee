@@ -83,7 +83,7 @@
 														<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
 													</c:if>
 												</div>
-												<div class="col-lg-12 center amount"><span class="label label-default currency">${dons.donation}€</span></div>
+												<div class="col-lg-12 center amount"><span class="label label-default currency">${dons.donation.intValue()}€</span></div>
 											</div>
 										</div>
 									</c:forEach>
