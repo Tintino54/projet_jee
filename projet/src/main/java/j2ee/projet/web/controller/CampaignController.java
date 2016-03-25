@@ -13,10 +13,12 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.domaine.Campagne;
@@ -24,9 +26,12 @@ import j2ee.projet.domaine.Commentaire;
 import j2ee.projet.domaine.Participation;
 import j2ee.projet.metier.CampagneService;
 import j2ee.projet.metier.CommentaireService;
+import j2ee.projet.metier.UtilisateurService;
+import j2ee.projet.web.bean.CampagneBean;
 import j2ee.projet.web.bean.UtilisateurBean;
 
 @Controller
+@SessionAttributes("user")
 public class CampaignController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
 	
@@ -37,7 +42,7 @@ public class CampaignController {
 	CommentaireService comServ;
 	
 	@Autowired
-	UtilisateurBean user;
+	UtilisateurService userServ;
 	
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
@@ -95,28 +100,38 @@ public class CampaignController {
 	@RequestMapping(value = "/nouveau", method = RequestMethod.GET)
 	public String create(Model model) throws IOException {
 		logger.info("Affichage de la page de cr�ation d'une campagne");
-		model.addAttribute("campagne", new Campagne());
+		model.addAttribute("campagne", new CampagneBean());
 		return "Campaign/create";
 	}
 
 	// Créer une campagne - Action
 	@RequestMapping(value = "/nouveau", method = RequestMethod.POST)
-	public ModelAndView createSubmit(@ModelAttribute("campagne") Campagne campaign) throws IOException {
+	public String createSubmit(@ModelAttribute("campagne")CampagneBean campaign,ModelMap modelMap,@ModelAttribute UtilisateurBean user) throws IOException {
 		logger.info("Soumission du formulaire de cr�ation d'une campagne");
 		// Persister la campagne dans la BDD :
 		String sucessMessage ="Erreur";
 		if (campaign == null)
 			logger.info("ModelAttribute campaign est null");
-		try {
-			campServ.ajouter(campaign);
-			sucessMessage = "Le projet <strong>" + campaign.getTitle() + "</strong> a bien �t� cr��";
-		} catch (Exception e) {
-			e.printStackTrace();
+		else
+		{
+			CampagneBean camp = new CampagneBean();
+			camp.setId(user.getId());
+			camp.setImagePath("");
+			camp.setResume("");
+			
+			camp.setTitle(campaign.getTitle());
+			camp.setExpectedamount(campaign.getExpectedamount());
+			camp.setDeadline(campaign.getDeadline());
+			camp.setDescription(campaign.getDescription());
+			
+			campServ.ajouter(camp);
+			logger.info("Campaign ajoutée "+camp.getTitle()+" "+camp.getExpectedamount());
+			sucessMessage = "Le projet <strong>" + camp.getTitle() + "</strong> a bien �t� cr��";
 		}
 		
-		ModelAndView model = new ModelAndView("Campaign/create");
-		model.addObject("sucessMessage", sucessMessage);
-		return model;
+		modelMap.remove("campagne");
+		modelMap.addAttribute("sucessMessage", sucessMessage);
+		return "Campaign/list";
 	}
 
 	// Modifier une campagne -Vue

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 @Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UtilisateurBean {
 
+	private int id;
+
 	private String login;
 
 	private String email;
@@ -15,6 +17,14 @@ public class UtilisateurBean {
 	private String pwd;
 	
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

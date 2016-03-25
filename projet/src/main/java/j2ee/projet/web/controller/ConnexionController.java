@@ -35,7 +35,7 @@ public class ConnexionController {
 		logger.info("Affichage de la page de deconnexion");
 		status.setComplete();
 		return "redirect:/";
-	}
+	} 
 
 	@RequestMapping(value = "/check")
 	public ModelAndView identification(@ModelAttribute UtilisateurBean userParam) {

@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3 white-bg fadeInBlock">
-				<form:form action="/nouveau" modelAttribute="campagne"  method="POST" >
+				<form:form action="/projet/nouveau" modelAttribute="campagne"  method="POST" >
 					<h1 class="titre">Créer mon projet</h1>
 
 					<div class="form-group">

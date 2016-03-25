@@ -13,17 +13,7 @@
 	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-	<mvc:annotation-driven />
-	<tx:annotation-driven transaction-manager="UserTransaction" />
-	<context:annotation-config />
 
-	<context:component-scan base-package="j2ee.projet" />
-
-	<bean class="org.springframework.orm.jpa.JpaTransactionManager"
-		id="UserTransaction">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
- 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="packagesToScan" value="j2ee.projet.domaine"></property>
@@ -41,12 +31,30 @@
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="org.h2.Driver" />
 		<property name="url"
-			value="jdbc:h2:db/aubergine;MODE=MYSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+			value="jdbc:h2:db/aubergine;TRACE_LEVEL_SYSTEM_OUT=1;DB_CLOSE_ON_EXIT=TRUE" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
 
+	<!-- Persistence Context Annotated -->
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"
+		id="persistenceAnnotationBeanPostProcessor" />
+
+	<!-- Transaction -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
 	<jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:init.sql" />
 	</jdbc:initialize-database>
+
+	<mvc:annotation-driven />
+	<context:annotation-config />
+	<context:component-scan base-package="j2ee.projet.metier" />
+	<context:component-scan base-package="j2ee.projet.dao" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

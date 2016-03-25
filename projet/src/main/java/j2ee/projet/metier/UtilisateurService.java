@@ -26,11 +26,28 @@ public class UtilisateurService {
 		} else {
 			logger.info("Resultat de la requete rechercherUtilisateurParMailEtMdp non null");
 			UtilisateurBean uBean = new UtilisateurBean();
+			uBean.setId(res.getId());
 			uBean.setEmail(res.getMail());
 			uBean.setLogin(res.getLogin());
 			uBean.setPwd(res.getMdp());
 			return uBean;
 		}
 	}
-
+	
+	public UtilisateurBean rechercherUtilisateurParLogin(String login)
+	{
+		Utilisateur user = uDao.rechercherUtilisateurParLogin(login);
+		if (user == null) {
+			logger.info("Resultat de la requete rechercherUtilisateurParLogin == null");
+			return null;
+		} else {
+			logger.info("Resultat de la requete rechercherUtilisateurParLogin non null");
+			UtilisateurBean uBean = new UtilisateurBean();
+			uBean.setId(user.getId());
+			uBean.setEmail(user.getMail());
+			uBean.setLogin(user.getLogin());
+			uBean.setPwd(user.getMdp());
+			return uBean;
+		}
+	}
 }

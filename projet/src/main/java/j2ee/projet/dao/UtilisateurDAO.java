@@ -44,7 +44,7 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 			return query.getResultList();
 		}
 	}
-	
+
 	public Utilisateur rechercherUtilisateurParLogin(String login) {
 		if (getEntityManager() == null) {
 			logger.info("entityManager null");
@@ -60,14 +60,8 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 				return list.get(0);
 		}
 	}
-	
-	public void ajouterUtilisateur(Utilisateur utilisateur)
-	{
-		try {
-			insert(utilisateur);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+	public void ajouterUtilisateur(Utilisateur utilisateur) {
+		insert(utilisateur);
 	}
 }
