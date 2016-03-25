@@ -1,5 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
 	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/campaign/create.css"></tiles:putAttribute>
@@ -19,20 +20,20 @@
 				</div>
 			</div>
 			<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3 white-bg fadeInBlock">
-				<form action="" th:action="@{/nouveau}" th:object="${campaign}" method="POST" role="form">
+				<form:form action="/projet/nouveau" modelAttribute="campagne"  method="POST" >
 					<h1 class="titre">Créer mon projet</h1>
 
 					<div class="form-group">
-						<label for="name">Nom du projet :</label>
-						<input type="text" class="form-control" th:field="*{nom}" id="name" path="name" />
+						<form:label for="title" path="title">Nom du projet :</form:label>
+						<form:input type="text" class="form-control" id="name" path="title" />
 					</div>
 					<div class="form-group">
-						<label for="amount">Montant attendu :</label>
-						<input type="number" class="form-control" th:field="*{expectedamount}" id="amount" path="amount" />
+						<form:label for="amount" path="expectedamount">Montant attendu :</form:label>
+						<form:input type="number" class="form-control" id="amount" path="expectedamount" />
 					</div>
        			 	<!-- Champ date de fin (datePicker) -->
 			        <div class="form-group">
-			        	<label for="datetimepicker">Date de fin :</label>
+			        	<form:label for="datetimepicker" path="deadline">Date de fin :</form:label>
 			            <div class='input-group date' id='datetimepicker'>
 
 			                <span class="input-group-addon">
@@ -44,7 +45,7 @@
 			        </div>
 			        <!-- Champ date de fin (auto-généré) -->
 			        <div class="form-group hidden">
-			            <input type="date_fin" class="form-control" th:field="*{deadline}" id="date_fin">
+			            <form:input path="deadline" type="date_fin" class="form-control" id="date_fin"/>
 			        </div>
 			        <script>
 			        $(function () {
@@ -76,7 +77,7 @@
 			                var date = $('#datetimepicker').children('input').val();
 			                var splitted = date.split("/");
 			                var dateFormatted = splitted[2] + "-" + splitted[1] + "-" + splitted[0];
-			                $('#DOB').val(dateFormatted);
+			                $('#date_fin').val(dateFormatted);
 			            });
 
 
@@ -84,11 +85,11 @@
 			        });
 			        </script>
      				<div class="form-group">
-						<label for="desc">Description du projet :</label>
-						<textarea class="form-control" th:field="*{description}" rows="10" id="desc"></textarea>
+						<form:label path="description" for="desc">Description du projet :</form:label>
+						<form:textarea path="description" class="form-control" rows="10" id="desc"></form:textarea>
 					</div>
 					<input type="submit" class="btn btn-aqua" value="Créer"/>
-				</form>
+				</form:form>
 			</div>
 		</div>
     </tiles:putAttribute>

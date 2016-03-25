@@ -12,9 +12,9 @@
 					<div class="row">
 						<ul class="nav nav-pills nav-justified">
 							<li class="active"><a data-toggle="pill" href="#home">Le projet</a></li>
-							<li><a data-toggle="pill" href="#news">News <span class="badge">5</span></a></li>
-							<li><a data-toggle="pill" href="#entries">Contributions <span class="badge">${dons.size()}</span></a></li>
-							<li><a data-toggle="pill" href="#comments">Commentaires <span class="badge">${textes.size()}</span></a></li>
+							<li><a data-toggle="pill" href="#news">News <span class="label label-pill">5</span></a></li>
+							<li><a data-toggle="pill" href="#entries">Contributions <span class="label label-pill">${dons.size()}</span></a></li>
+							<li><a data-toggle="pill" href="#comments">Commentaires <span class="label label-pill">${textes.size()}</span></a></li>
 						</ul>
 					</div>
 					<div class="tab-content col-lg-12">
@@ -83,7 +83,7 @@
 														<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
 													</c:if>
 												</div>
-												<div class="col-lg-12 center amount"><span class="label label-default">${dons.donation}€</span></div>
+												<div class="col-lg-12 center amount"><span class="label label-default currency">${dons.donation}€</span></div>
 											</div>
 										</div>
 									</c:forEach>
@@ -310,18 +310,18 @@
 								<div class="col-lg-12" id="formComment">
 									<hr>
 									<h2 class="titre">Poster un commentaire</h2>
-						        	<form method="POST" role="form">
+						        	<form:form method="POST" role="form">
 										<div class="form-group">
-											<label for="titrecom">Titre:</label>
-											<input type="text" class="form-control" id="titrecom">
+											<form:label for="titrecom" path="title">Titre :</form:label>
+											<form:input type="text" class="form-control" id="titrecom" path="title" />
 										</div>
 					  					<div class="form-group">
-											<label for="desc">Commentaire :</label>
-											<textarea class="form-control" rows="10" id="desc"></textarea>
+											<form:label for="desc" path="message">Commentaire :</form:label>
+											<form:textarea class="form-control" rows="10" id="desc" path="message"></form:textarea>
 										</div>
 										<input type="submit" class="btn btn-aqua" value="Envoyer" />
 										<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
-							        </form>	
+							        </form:form>
 								</div>
 						        <script>
 							        $( document ).ready(function() {

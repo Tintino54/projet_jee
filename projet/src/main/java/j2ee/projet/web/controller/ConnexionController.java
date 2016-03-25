@@ -35,15 +35,13 @@ public class ConnexionController {
 		logger.info("Affichage de la page de deconnexion");
 		status.setComplete();
 		return "redirect:/";
-	}
+	} 
 
 	@RequestMapping(value = "/check")
 	public ModelAndView identification(@ModelAttribute UtilisateurBean userParam) {
 
-		// String mail = request.getParameter("email");
 		String mail = userParam.getEmail();
 
-		// byte[] bytes = request.getParameter("pwd").getBytes();
 		byte[] bytes = userParam.getPwd().getBytes();
 
 		StringBuilder sb = new StringBuilder();

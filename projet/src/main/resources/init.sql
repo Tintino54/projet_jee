@@ -23,7 +23,7 @@ CREATE TABLE `CAMPAIGNS` (
   `DEADLINE` date NOT NULL,
   `ID_USER` int(30) NOT NULL,
   `IMAGE_PATH` varchar(255),
-  `RESUME` varchar(50) NOT NULL
+  `RESUME` varchar(50)
 );
 
 CREATE TABLE `PARTICIPATIONS` (
@@ -74,7 +74,7 @@ ALTER TABLE `NEWS`
 INSERT INTO `USERS` (`LOGIN`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `MAILADRESS`, `BIRTHDATE`, `SEX`) VALUES
 ('aubergine', '617562657267696e65', 'aubergine', '', 'aubergine@jardin.fr', '1989-02-12', 1),
 ('radis', '7261646973', 'radis', '', 'radis@jardin.fr', '1975-02-12', 0);
-  
+
 /*
  * CAMPAGNES
  */

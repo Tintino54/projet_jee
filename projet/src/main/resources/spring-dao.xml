@@ -14,26 +14,22 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<mvc:annotation-driven />
-	<tx:annotation-driven transaction-manager="UserTransaction" />
 	<context:annotation-config />
+	<context:component-scan base-package="j2ee.projet.metier" />
+	<context:component-scan base-package="j2ee.projet.dao" />
 
-	<context:component-scan base-package="j2ee.projet" />
-
-	<bean class="org.springframework.orm.jpa.JpaTransactionManager"
-		id="UserTransaction">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
- 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="packagesToScan" value="j2ee.projet.domaine"></property>
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="true" />
-				<property name="generateDdl" value="true" />
-				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
-			</bean>
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+			</props>
 		</property>
 	</bean>
 
@@ -41,10 +37,22 @@
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="org.h2.Driver" />
 		<property name="url"
-			value="jdbc:h2:db/aubergine;MODE=MYSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+			value="jdbc:h2:mem:db/aubergine;TRACE_LEVEL_SYSTEM_OUT=1;DB_CLOSE_ON_EXIT=TRUE" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
+
+	<!-- Persistence Context Annotated -->
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"
+		id="persistenceAnnotationBeanPostProcessor" />
+
+	<!-- Transaction -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<tx:annotation-driven />
+
 
 	<jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:init.sql" />
