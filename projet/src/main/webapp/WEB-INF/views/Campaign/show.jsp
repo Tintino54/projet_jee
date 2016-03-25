@@ -312,7 +312,7 @@
 								</script>
 							</c:if>
 							<!-- Ajax pour commentaires -->
-							<script type="text/javascript">
+							<!-- <script type="text/javascript">
 								$(document).ready(function() {
 								    // Lorsque je soumets le formulaire
 								 
@@ -379,7 +379,7 @@
 								
 								    
 								});
-								</script>
+								</script> -->
 							<c:if test="${!empty user}">
 								<button class="btn btn-aqua btn-full" id="toggleComment">Ecrire un commentaire</button>
 								<div class="col-lg-12" id="formComment">

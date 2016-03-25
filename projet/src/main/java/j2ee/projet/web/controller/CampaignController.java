@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -235,9 +234,8 @@ public class CampaignController {
 
 	// Poster un commentaire - action
 	@RequestMapping(value = "/postComment")
-	public String postComment(@ModelAttribute("commentaire") CommentaireBean comment, Model model,HttpServletRequest request) throws IOException {
+	public String postComment(@ModelAttribute("commentaire") CommentaireBean comment,@ModelAttribute("user") UtilisateurBean user, Model model) throws IOException {
 		logger.info("Soumission du formulaire de commentaire");
-		UtilisateurBean user = (UtilisateurBean) request.getSession(false).getAttribute("name");
 		if (comment == null)
 			logger.info("ModelAttribute commentaire est null");
 		else {

@@ -1,7 +1,5 @@
 package j2ee.projet.web.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.domaine.Commentaire;
-import j2ee.projet.domaine.Utilisateur;
-import j2ee.projet.metier.CampagneService;
 import j2ee.projet.metier.CommentaireService;
 import j2ee.projet.metier.UtilisateurService;
 import j2ee.projet.web.bean.UtilisateurBean;
-
-import java.util.Random;
  
 /**
  * @author Crunchify.com
