@@ -14,8 +14,6 @@ public class CommentaireBean {
 	
 	private Date published;
 	
-	private int id_user;
-	
 	private int id_campaign;
 	
 	private Utilisateur utilisateur;
@@ -24,8 +22,13 @@ public class CommentaireBean {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(UtilisateurBean utilisateur) {
+		Utilisateur user = new Utilisateur();
+		user.setId(utilisateur.getId());
+		user.setMail(utilisateur.getEmail());
+		user.setLogin(utilisateur.getLogin());
+		user.setMdp(utilisateur.getPwd());
+		this.utilisateur = user;
 	}
 
 	public int getId() {
@@ -42,10 +45,6 @@ public class CommentaireBean {
 
 	public Date getPublished() {
 		return published;
-	}
-
-	public int getId_user() {
-		return id_user;
 	}
 
 	public int getId_campaign() {
@@ -66,10 +65,6 @@ public class CommentaireBean {
 
 	public void setPublished(Date published) {
 		this.published = published;
-	}
-
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
 	}
 
 	public void setId_campaign(int id_campaign) {

@@ -310,7 +310,7 @@
 								<div class="col-lg-12" id="formComment">
 									<hr>
 									<h2 class="titre">Poster un commentaire</h2>
-						        	<form:form action="/projet/campaign/postComment" method="POST" role="form">
+						        	<form:form action="/projet/postComment" method="POST" modelAttribute="commentaire" role="form">
 										<div class="form-group">
 											<form:label for="titrecom" path="title">Titre :</form:label>
 											<form:input type="text" class="form-control" id="titrecom" path="title" />
@@ -388,13 +388,13 @@
 												<c:choose>
 													<c:when test="${!empty user}">
 														<!-- Formulaire de dons -->
-												        <form  method="POST" role="form">
+												        <form:form  method="POST" action="/projet/postParticip" commandName="participation">
 															<div class="form-group">
-																<label for="montant">Montant du don:</label>
-																<input type="number" pattern="^\d+(\.|\,)\d{2}$" min="5" step="0.01" class="form-control" id="montant">
+																<form:label for="montant" path="donation">Montant du don:</form:label>
+																<form:input type="number" path="donation" pattern="^\d+(\.|\,)\d{2}$" min="5" step="0.01" class="form-control" id="montant"/>
 															</div>
 															<input type="submit" class="btn btn-aqua" value="Envoyer" />
-												        </form>
+												        </form:form>
 													</c:when>
 													<c:otherwise>
 														<div class="row">

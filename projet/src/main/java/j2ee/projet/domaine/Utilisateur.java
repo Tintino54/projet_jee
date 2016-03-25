@@ -2,17 +2,14 @@ package j2ee.projet.domaine;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -56,13 +53,13 @@ public class Utilisateur implements Serializable {
 	@Column(name = "SEX")
 	private int sexe;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
+	/*@OneToMany(fetch = FetchType.LAZY)
 	private List<Participation> listDons;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Commentaire> listCom;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="utilisateur")
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<News> listNews;
 
 	public List<Participation> getListDons() {
@@ -79,7 +76,7 @@ public class Utilisateur implements Serializable {
 
 	public void setListCom(List<Commentaire> listCom) {
 		this.listCom = listCom;
-	}
+	}*/
 	
 	public Utilisateur()
 	{}

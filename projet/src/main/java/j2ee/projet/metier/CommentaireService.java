@@ -19,14 +19,14 @@ public class CommentaireService {
 	{
 		List<Commentaire> res = commentaireDAO.rechercherCommentairesParCampagne(id);
 		return res;
-	}
+	}	
 
 	public void ajouter(CommentaireBean commentaire) {
 		Commentaire comment = new Commentaire();
 		comment.setId(commentaire.getId());
 		comment.setTitle(commentaire.getTitle());
 		comment.setId_campaign(commentaire.getId_campaign());
-		comment.setId_user(commentaire.getId_user());
+		comment.setUtilisateur(commentaire.getUtilisateur());
 		commentaireDAO.ajouterCommentaire(comment);
 	}
 

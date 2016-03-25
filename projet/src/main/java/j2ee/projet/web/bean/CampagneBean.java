@@ -3,6 +3,9 @@ package j2ee.projet.web.bean;
 import java.sql.Date;
 
 public class CampagneBean {
+	
+	private int id;
+
 	private int id_user;
 
 	private String title;
@@ -17,6 +20,14 @@ public class CampagneBean {
 	
 	private String resume;
 
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getId_user() {
 		return id_user;

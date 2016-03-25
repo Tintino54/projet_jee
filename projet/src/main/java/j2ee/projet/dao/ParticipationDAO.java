@@ -31,4 +31,8 @@ public class ParticipationDAO extends BaseDAO<Participation> {
 			return res;
 		}
 	}
+	
+	public void ajouterParticipation(Participation participation) {
+		insert(participation);
+	}
 }

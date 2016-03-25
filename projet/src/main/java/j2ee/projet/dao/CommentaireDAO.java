@@ -34,10 +34,6 @@ public class CommentaireDAO extends BaseDAO<Commentaire> {
 	}
 
 	public void ajouterCommentaire(Commentaire com) {
-		try {
-			insert(com);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		insert(com);
 	}
 }

@@ -2,19 +2,21 @@ package j2ee.projet.web.bean;
 
 import java.sql.Date;
 
+import j2ee.projet.domaine.Utilisateur;
+
 public class ParticipantBean {
 
 	private int id;
 
 	private int id_projet;
 
-	private int id_user;
+	private Utilisateur utilisateur;
 
 	private Date dateParticipation;
 
 	private double donation;
 
-	private int message;
+	private String message;
 
 	public int getId() {
 		return id;
@@ -32,12 +34,19 @@ public class ParticipantBean {
 		this.id_projet = id_projet;
 	}
 
-	public int getId_user() {
-		return id_user;
+	
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setUtilisateur(UtilisateurBean utilisateur) {
+		Utilisateur user = new Utilisateur();
+		user.setId(utilisateur.getId());
+		user.setMail(utilisateur.getEmail());
+		user.setLogin(utilisateur.getLogin());
+		user.setMdp(utilisateur.getPwd());
+		this.utilisateur = user;
 	}
 
 	public Date getDateParticipation() {
@@ -56,11 +65,11 @@ public class ParticipantBean {
 		this.donation = donation;
 	}
 
-	public int getMessage() {
+	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(int message) {
+	public void setMessage(String message) {
 		this.message = message;
 	}
 }
