@@ -388,11 +388,11 @@
 						        	<form:form action="/projet/postComment" method="POST" commandName="commentaire" role="form">
 										<div class="form-group">
 											<form:label for="titrecom" path="title">Titre :</form:label>
-											<form:input type="text" class="form-control" id="titrecom" path="title" />
+											<form:input type="text" class="form-control" id="titrecom" path="title" required="required" />
 										</div>
 					  					<div class="form-group">
 											<form:label for="desc" path="message">Commentaire :</form:label>
-											<form:textarea class="form-control" rows="10" id="desc" path="message"></form:textarea>
+											<form:textarea class="form-control" rows="10" id="desc" path="message" required="required" ></form:textarea>
 										</div>
 										<input type="submit" class="btn btn-aqua" value="Envoyer" />
 										<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>
