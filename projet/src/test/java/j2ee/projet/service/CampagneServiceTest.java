@@ -35,7 +35,7 @@ public class CampagneServiceTest {
 		campaign.setExpectedamount(2000);
 		campaign.setDeadline(new Date(Calendar.getInstance().getTimeInMillis()));
 		campaign.setDescription("blabla");
-		campaign.setId(1);
+		campaign.setId_user(1);
 		campaign.setImagePath("");
 		campaign.setResume("");
 		

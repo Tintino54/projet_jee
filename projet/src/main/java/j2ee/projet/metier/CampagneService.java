@@ -28,7 +28,7 @@ public class CampagneService {
 		campagne.setExpectedamount(camp.getExpectedamount());
 		campagne.setDeadline(camp.getDeadline());
 		campagne.setDescription(camp.getDescription());
-		campagne.setId_user(camp.getId());
+		campagne.setId_user(camp.getId_user());
 		campagne.setImagePath(camp.getImagePath());
 		campagne.setResume(camp.getResume());
 		campagneDAO.ajouterCampagne(campagne);

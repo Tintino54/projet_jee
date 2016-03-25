@@ -114,7 +114,7 @@ public class CampaignController {
 		else
 		{
 			CampagneBean camp = new CampagneBean();
-			camp.setId(user.getId());
+			camp.setId_user(user.getId());
 			camp.setImagePath("");
 			camp.setResume("");
 			
