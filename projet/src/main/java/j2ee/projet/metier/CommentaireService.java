@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import j2ee.projet.dao.CommentaireDAO;
 import j2ee.projet.domaine.Commentaire;
+import j2ee.projet.web.bean.CommentaireBean;
 
 @Service
 public class CommentaireService {
@@ -20,8 +21,13 @@ public class CommentaireService {
 		return res;
 	}
 
-	public void ajouter(Commentaire commentaire) {
-		commentaireDAO.ajouterCommentaire(commentaire);
+	public void ajouter(CommentaireBean commentaire) {
+		Commentaire comment = new Commentaire();
+		comment.setId(commentaire.getId());
+		comment.setTitle(commentaire.getTitle());
+		comment.setId_campaign(commentaire.getId_campaign());
+		comment.setId_user(commentaire.getId_user());
+		commentaireDAO.ajouterCommentaire(comment);
 	}
 
 }
