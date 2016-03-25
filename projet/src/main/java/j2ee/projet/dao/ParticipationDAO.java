@@ -2,9 +2,10 @@ package j2ee.projet.dao;
 
 import java.util.List;
 
-import javax.persistence.TypedQuery;
-
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,15 +16,19 @@ import j2ee.projet.domaine.Participation;
 public class ParticipationDAO extends BaseDAO<Participation> {
 	final static Logger logger = Logger.getLogger(CommentaireDAO.class);
 
+	@SuppressWarnings("unchecked")
 	public List<Participation> rechercherParticipationParIdProjet(int idprojet) {
-		if (getEntityManager() == null) {
-			logger.info("entityManager null");
+		if (getSessionFactory() == null) {
+			logger.info("sessionFactory null");
 			return null;
 		} else {
-			TypedQuery<Participation> query = getEntityManager().createNamedQuery("rechercherParticipationParIdProjet",
-					Participation.class);
+			Session session = getSession();
+			Transaction tx = session.beginTransaction();
+			Query query = session.getNamedQuery("rechercherParticipationParIdProjet");
 			query.setParameter("idprojet", idprojet);
-			return query.getResultList();
+			List<Participation> res = query.list();
+			tx.commit();
+			return res;
 		}
 	}
 }
