@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.domaine.Commentaire;
+import j2ee.projet.domaine.Utilisateur;
 import j2ee.projet.metier.CampagneService;
 import j2ee.projet.metier.CommentaireService;
+import j2ee.projet.metier.UtilisateurService;
+import j2ee.projet.web.bean.UtilisateurBean;
 
 import java.util.Random;
  
@@ -29,6 +32,9 @@ public class CrunchifySpringAjaxJQuery {
 	
 	@Autowired
 	CommentaireService comServ;
+	
+	@Autowired
+	UtilisateurService userServ;
  
     @RequestMapping("/ajax")
     public ModelAndView helloAjaxTest() {
@@ -42,24 +48,27 @@ public class CrunchifySpringAjaxJQuery {
     	           
     	String result = "[";
 		List<Commentaire> texte = comServ.getCommentaireFromIdProjet(1);
+		UtilisateurBean user = null;
 		for(int i = 0; i < texte.size(); i++)
 		{
+			
+			user = userServ.rechercherUtilisateurParId(texte.get(i).getId_user());
 			if(i == (texte.size() - 1 ))
 			{
 				result += "{\"texte\": \"" + texte.get(i).getMessage() + "\""
-							+ ", \"sexe\": \"" + texte.get(i).getUtilisateur().getSexe() + "\""
+							+ ", \"sexe\": \"" + user.getSexe() + "\""
 							+ ", \"titre\": \"" + texte.get(i).getTitle() + "\""
 							+ ", \"date\": \"" + texte.get(i).getPublished() + "\""
-							+ ", \"nom\": \"" + texte.get(i).getUtilisateur().getLogin() + "\"}";
+							+ ", \"nom\": \"" + user.getLogin() + "\"}";
 			}
 
 			else
 			{
 				result += "{\"texte\": \"" + texte.get(i).getMessage() + "\""
-						+ ", \"sexe\": \"" + texte.get(i).getUtilisateur().getSexe() + "\""
+						+ ", \"sexe\": \"" + user.getSexe() + "\""
 						+ ", \"titre\": \"" + texte.get(i).getTitle() + "\""
 						+ ", \"date\": \"" + texte.get(i).getPublished() + "\""
-						+ ", \"nom\": \"" + texte.get(i).getUtilisateur().getLogin() + "\"},";
+						+ ", \"nom\": \"" + user.getLogin() + "\"},";
 			}
 		}
 		result += "]";
