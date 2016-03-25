@@ -29,6 +29,7 @@ import j2ee.projet.metier.CommentaireService;
 import j2ee.projet.metier.UtilisateurService;
 import j2ee.projet.web.bean.CampagneBean;
 import j2ee.projet.web.bean.UtilisateurBean;
+import j2ee.projet.web.bean.CommentaireBean;
 
 @Controller
 @SessionAttributes("user")
@@ -47,6 +48,7 @@ public class CampaignController {
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView liste(HttpServletResponse response) throws IOException {
+		
 		
 		ModelAndView model = new ModelAndView("Campaign/list");
 		
@@ -133,7 +135,7 @@ public class CampaignController {
 		return "Campaign/list";
 	}
 
-	// Modifier une campagne -Vue
+	// Modifier une campagne - Vue
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
 	public ModelAndView update(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 		ModelAndView mav = new ModelAndView("Campaign/update");
@@ -217,8 +219,33 @@ public class CampaignController {
         String dateString = DATE_FORMAT.format(campagne.getDeadline());
         model.addObject("dateString", dateString);
         model.addObject("DATE_FORMAT", DATE_FORMAT);
+        model.addObject("commentaire", new CommentaireBean());
 		return model;
 	}
 
-	
+	// Poster un commentaire - action
+	@RequestMapping(value = "/postComment", method = RequestMethod.GET)
+	public String postComment(@ModelAttribute("commentaire")CommentaireBean comment, @ModelAttribute("campagne")CampagneBean campaign, @ModelAttribute("utilisateur")UtilisateurBean user, ModelMap modelMap) throws IOException {
+		logger.info("Soumission du formulaire de commentaire");
+		String sucessMessage ="Erreur";
+		if (comment == null)
+			logger.info("ModelAttribute commentaire est null");
+		else
+		{
+			CommentaireBean com = new CommentaireBean();
+
+			com.setTitle(comment.getTitle());
+			com.setMessage(comment.getMessage());
+			com.setId_campaign(campaign.getId());
+			com.setId_user(user.getId());
+			
+			comServ.ajouter(com);
+			logger.info("Commentaire ajouté "+com.getTitle()+" "+com.getMessage());
+			sucessMessage = "Votre commentaire a bien été posté.";
+		}
+		
+		modelMap.remove("commentaire");
+		modelMap.addAttribute("sucessMessage", sucessMessage);
+		return "Campaign/show/" + campaign.getId();
+	}
 }
