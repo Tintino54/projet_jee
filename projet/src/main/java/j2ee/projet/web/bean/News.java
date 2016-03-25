@@ -5,31 +5,63 @@ import java.sql.Date;
 public class News {
 	private int id;
 
-	private Date date_creation;
-	
-	private String description;
+	private String title;
+
+	private String message;
+
+	private Date published;
+
+	private int id_user;
+
+	private int id_campaign;
 
 	public int getId() {
 		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public Date getPublished() {
+		return published;
+	}
+
+	public int getId_user() {
+		return id_user;
+	}
+
+	public int getId_campaign() {
+		return id_campaign;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Date getDate_creation() {
-		return date_creation;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public void setDate_creation(Date date_creation) {
-		this.date_creation = date_creation;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public String getDescription() {
-		return description;
+	public void setPublished(Date published) {
+		this.published = published;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
 	}
+
+	public void setId_campaign(int id_campaign) {
+		this.id_campaign = id_campaign;
+	}
+	
+	
 }

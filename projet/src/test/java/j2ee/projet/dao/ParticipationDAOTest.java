@@ -31,9 +31,6 @@ public class ParticipationDAOTest {
 		List<Participation> res = pDao.rechercherParticipationParIdProjet(id);
 		Assert.assertNotNull(res);
 		logger.info("Taille de la liste de retour : "+res.size());
-		for (Participation participation : res) {
-			logger.info(participation.getId()+" : "+participation.getUtilisateur().getLogin());;
-		}
 	}
 
 }

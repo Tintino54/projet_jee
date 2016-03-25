@@ -1,18 +1,14 @@
 package j2ee.projet.dao;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Utilisateur;
 
 @Repository
-@Transactional
 public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 
 	final static Logger logger = Logger.getLogger(UtilisateurDAO.class);
@@ -33,8 +29,7 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Utilisateur> rechercherUtilisateurParId(int idUser) {
+	public Utilisateur rechercherUtilisateurParId(int idUser) {
 		if (getSessionFactory() == null) {
 			logger.info("sessionFactory null");
 			return null;
@@ -43,7 +38,7 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 			Transaction tx = session.beginTransaction();
 			Query query = session.getNamedQuery("rechercherUtilisateurParId");
 			query.setParameter("id", idUser);
-			List<Utilisateur> res = query.list();
+			Utilisateur res = (Utilisateur) query.uniqueResult();
 			tx.commit();
 			return res;
 		}

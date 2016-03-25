@@ -1,7 +1,6 @@
 package j2ee.projet.dao;
 
 import java.sql.Date;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -37,7 +36,7 @@ public class UtilisateurDAOTest {
 	@Test
 	public void testRechercherUtilisateurParId() {
 		int id = 1;
-		List<Utilisateur> res = uDao.rechercherUtilisateurParId(id);
+		Utilisateur res = uDao.rechercherUtilisateurParId(id);
 		Assert.assertNotNull(res);
 	}
 	

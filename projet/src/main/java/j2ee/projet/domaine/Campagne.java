@@ -14,10 +14,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CAMPAIGNS")
-@NamedQueries(value={
-	@NamedQuery(name="rechercherCampagneParId", query="select c from Campagne c where c.id like :id"),
-	@NamedQuery(name="rechercherCampagne", query="select c from Campagne c")
-})
+@NamedQueries(value = {
+		@NamedQuery(name = "rechercherCampagneParId", query = "select c from Campagne c where c.id like :id"),
+		@NamedQuery(name = "rechercherCampagne", query = "select c from Campagne c") })
 public class Campagne implements Serializable {
 	/**
 	 * 
@@ -43,13 +42,13 @@ public class Campagne implements Serializable {
 
 	@Column(name = "ID_USER")
 	private int id_user;
-	
+
 	@Column(name = "IMAGE_PATH")
 	private String imagePath;
-	
+
 	@Column(name = "RESUME")
 	private String resume;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -89,7 +88,7 @@ public class Campagne implements Serializable {
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
-	
+
 	public String getImagePath() {
 		return imagePath;
 	}
@@ -97,7 +96,7 @@ public class Campagne implements Serializable {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
-	
+
 	public String getResume() {
 		return resume;
 	}

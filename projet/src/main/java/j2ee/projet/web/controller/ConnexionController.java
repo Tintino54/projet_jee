@@ -2,6 +2,9 @@ package j2ee.projet.web.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,14 +38,14 @@ public class ConnexionController {
 		logger.info("Affichage de la page de deconnexion");
 		status.setComplete();
 		return "redirect:/";
-	} 
+	}
 
 	@RequestMapping(value = "/check")
-	public ModelAndView identification(@ModelAttribute UtilisateurBean userParam) {
+	public ModelAndView identification(@ModelAttribute UtilisateurBean userParam, HttpServletRequest request) {
 
-		String mail = userParam.getEmail();
+		String mail = userParam.getMail();
 
-		byte[] bytes = userParam.getPwd().getBytes();
+		byte[] bytes = userParam.getMdp().getBytes();
 
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < bytes.length; i++) {
@@ -63,6 +66,8 @@ public class ConnexionController {
 			logger.info("Connexion réussie de " + mail);
 			modelAndView.setViewName("redirect:liste");
 			modelAndView.addObject("user", user);
+			HttpSession ses = request.getSession(true);
+			ses.setAttribute("user",user);
 		}
 
 		return modelAndView;

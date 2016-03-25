@@ -310,7 +310,7 @@
 								<div class="col-lg-12" id="formComment">
 									<hr>
 									<h2 class="titre">Poster un commentaire</h2>
-						        	<form:form action="/projet/postComment" method="POST" modelAttribute="commentaire" role="form">
+						        	<form:form action="/projet/postComment" method="POST" commandName="commentaire" role="form">
 										<div class="form-group">
 											<form:label for="titrecom" path="title">Titre :</form:label>
 											<form:input type="text" class="form-control" id="titrecom" path="title" />

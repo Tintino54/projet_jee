@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.domaine.Campagne;
 import j2ee.projet.domaine.Commentaire;
@@ -34,7 +34,7 @@ import j2ee.projet.web.bean.ParticipantBean;
 import j2ee.projet.web.bean.UtilisateurBean;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes({ "user" })
 public class CampaignController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
 
@@ -47,14 +47,14 @@ public class CampaignController {
 	@Autowired
 	UtilisateurService userServ;
 
-	@Autowired 
+	@Autowired
 	ParticipationService partServ;
+	
+	private int id_campagne;
 
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
-	public ModelAndView liste(HttpServletResponse response) throws IOException {
-
-		ModelAndView model = new ModelAndView("Campaign/list");
+	public String liste(HttpServletResponse response, Model model) throws IOException {
 
 		List<Campagne> list = campServ.getList();
 
@@ -75,9 +75,9 @@ public class CampaignController {
 
 			// Pourcentage
 			Double d = montantCollecte / list.get(i).getExpectedamount() * 100;
-			model.addObject("d", d);
+			model.addAttribute("d", d);
 			percent.add(d.intValue());
-			model.addObject("percent", percent);
+			model.addAttribute("percent", percent);
 			if (percent.get(i) >= 100) {
 				barWidth.add(100);
 				classBar.add("progress-bar");
@@ -87,13 +87,13 @@ public class CampaignController {
 			}
 
 		}
-		model.addObject("totaux", totaux);
-		model.addObject("percent", percent);
-		model.addObject("barWidth", barWidth);
-		model.addObject("classBar", classBar);
+		model.addAttribute("totaux", totaux);
+		model.addAttribute("percent", percent);
+		model.addAttribute("barWidth", barWidth);
+		model.addAttribute("classBar", classBar);
 
-		model.addObject("lists", list);
-		return model;
+		model.addAttribute("lists", list);
+		return "Campaign/list";
 	}
 
 	// Créer une campagne - Vue
@@ -136,31 +136,42 @@ public class CampaignController {
 
 	// Modifier une campagne - Vue
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-	public ModelAndView update(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
-		ModelAndView mav = new ModelAndView("Campaign/update");
-		mav.addObject("id", id);
-		mav.addObject("commentaire", new CommentaireBean());
+	public String update(HttpServletResponse response, @PathVariable("id") String id, Model model) throws IOException {
+		model.addAttribute("id", id);
+		model.addAttribute("commentaire", new CommentaireBean());
 		logger.info("Affichage de la page de modification de la campagne" + id);
-		return mav;
+		return "Campaign/update";
 	}
 
 	// Visualiser une campagne - Vue
 	@RequestMapping(value = "/show/{id}")
-	public ModelAndView show(@PathVariable("id") String id) throws IOException {
+	public String show(@PathVariable("id") String id, Model model) throws IOException {
 		logger.info("Affichage de la campagne" + id);
 
-		int _id = Integer.parseInt(id);
+		id_campagne = Integer.parseInt(id);
 
-		ModelAndView model = new ModelAndView("Campaign/show");
-		model.addObject("id", id);
-		List<Commentaire> texte = comServ.getCommentaireFromIdProjet(_id);
-		model.addObject("textes", texte);
+		model.addAttribute("id", id);
 
-		Campagne campagne = campServ.getCampagneFromID(_id);
-		model.addObject("campagne", campagne);
+		Campagne campagne = campServ.rechercherCampagneParId(id_campagne);
+		model.addAttribute("campagne", campagne);
 
-		List<Participation> dons = partServ.rechercherParticipationParIdProjet(_id);
-		model.addObject("dons", dons);
+		List<Commentaire> com = comServ.getCommentaireFromIdProjet(id_campagne);
+		List<CommentaireBean> texte = new ArrayList<CommentaireBean>(com.size());
+		for (int i = 0; i < com.size(); i++) {
+			CommentaireBean bean = new CommentaireBean(com.get(i));
+			bean.setUtilisateur(userServ.rechercherUtilisateurParId(com.get(i).getId_user()));
+			texte.add(bean);
+		}
+		model.addAttribute("textes", texte);
+
+		List<Participation> part = partServ.rechercherParticipationParIdProjet(id_campagne);
+		List<ParticipantBean> dons = new ArrayList<ParticipantBean>(part.size());
+		for (int i = 0; i < part.size(); i++) {
+			ParticipantBean bean = new ParticipantBean(part.get(i));
+			bean.setUtilisateur(userServ.rechercherUtilisateurParId(com.get(i).getId_user()));
+			dons.add(bean);
+		}
+		model.addAttribute("dons", dons);
 
 		Double montantCollecte = 0.0;
 		int nombreDons5 = 0;
@@ -183,18 +194,18 @@ public class CampaignController {
 			else
 				nombreDons100++;
 		}
-		model.addObject("nombreDons5", nombreDons5);
-		model.addObject("nombreDons5to20", nombreDons5to20);
-		model.addObject("nombreDons20to50", nombreDons20to50);
-		model.addObject("nombreDons50to100", nombreDons50to100);
-		model.addObject("nombreDons100", nombreDons100);
+		model.addAttribute("nombreDons5", nombreDons5);
+		model.addAttribute("nombreDons5to20", nombreDons5to20);
+		model.addAttribute("nombreDons20to50", nombreDons20to50);
+		model.addAttribute("nombreDons50to100", nombreDons50to100);
+		model.addAttribute("nombreDons100", nombreDons100);
 
 		Double d = montantCollecte / campagne.getExpectedamount() * 100;
-		model.addObject("objectif", campagne.getExpectedamount());
-		model.addObject("montantCollecte", montantCollecte);
-		model.addObject("d", d);
+		model.addAttribute("objectif", campagne.getExpectedamount());
+		model.addAttribute("montantCollecte", montantCollecte);
+		model.addAttribute("d", d);
 		Integer percent = d.intValue();
-		model.addObject("percent", percent);
+		model.addAttribute("percent", percent);
 		Integer barWidth = percent;
 		String classBar = "progress-bar progress-bar-red ";
 		if (percent >= 100) {
@@ -208,53 +219,49 @@ public class CampaignController {
 		jours += 1;
 		if (jours <= 0)
 			termine = true;
-		model.addObject("temps", jours.intValue());
-		model.addObject("termine", termine);
-		model.addObject("barWidth", barWidth);
-		model.addObject("classBar", classBar);
+		model.addAttribute("temps", jours.intValue());
+		model.addAttribute("termine", termine);
+		model.addAttribute("barWidth", barWidth);
+		model.addAttribute("classBar", classBar);
 
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
 		String dateString = DATE_FORMAT.format(campagne.getDeadline());
-		model.addObject("dateString", dateString);
-		model.addObject("DATE_FORMAT", DATE_FORMAT);
-		model.addObject("commentaire", new CommentaireBean());
-		model.addObject("participation", new ParticipantBean());
-		return model;
+		model.addAttribute("dateString", dateString);
+		model.addAttribute("DATE_FORMAT", DATE_FORMAT);
+		model.addAttribute("commentaire", new CommentaireBean());
+		model.addAttribute("participation", new ParticipantBean());
+		return "Campaign/show";
 	}
 
 	// Poster un commentaire - action
-	@RequestMapping(value = "/postComment", method = RequestMethod.POST)
-	public ModelAndView postComment(@ModelAttribute("commentaire") CommentaireBean comment,
-			@ModelAttribute("campagne") CampagneBean campaign, @ModelAttribute("utilisateur") UtilisateurBean user,
-			ModelAndView modelAndView) throws IOException {
+	@RequestMapping(value = "/postComment")
+	public String postComment(@ModelAttribute("commentaire") CommentaireBean comment, Model model,HttpServletRequest request) throws IOException {
 		logger.info("Soumission du formulaire de commentaire");
-		String sucessMessage = "Erreur";
+		UtilisateurBean user = (UtilisateurBean) request.getSession(false).getAttribute("name");
 		if (comment == null)
 			logger.info("ModelAttribute commentaire est null");
 		else {
 			CommentaireBean com = new CommentaireBean();
-
 			com.setTitle(comment.getTitle());
 			com.setMessage(comment.getMessage());
-			com.setId_campaign(campaign.getId());
-			com.setUtilisateur(user);
-
+			com.setId_campagne(id_campagne);
+			com.setId_user(user.getId());
+			com.setPublished(new Date(Calendar.getInstance().getTimeInMillis()));
+			logger.info("Commentaire ajouté projet:" + id_campagne + " user:" + user.getId());
 			comServ.ajouter(com);
-			logger.info("Commentaire ajouté " + com.getTitle() + " " + com.getMessage());
-			sucessMessage = "Votre commentaire a bien été posté.";
+
 		}
 
-		modelAndView.getModel().remove("commentaire");
-		modelAndView.addObject("sucessMessage", sucessMessage);
-		modelAndView.setViewName("redirect:show/" + campaign.getId());
-		return modelAndView;
+		model.asMap().remove("commentaire");
+
+		return "redirect:show/" + id_campagne;
 	}
 
 	// Poster un commentaire - action
 	@RequestMapping(value = "/postParticip", method = RequestMethod.POST)
-	public ModelAndView postParticip(@ModelAttribute("participation") ParticipantBean participation,
+	public String postParticip(@ModelAttribute("participation") ParticipantBean participation,
 			@ModelAttribute("campagne") CampagneBean campaign, @ModelAttribute("utilisateur") UtilisateurBean user,
-			ModelAndView modelAndView) throws IOException {
+			Model model) throws IOException {
 		logger.info("Soumission du formulaire de participation");
 		String sucessMessage = "Erreur";
 		if (participation == null)
@@ -264,8 +271,8 @@ public class CampaignController {
 
 			participantBean.setDateParticipation(new Date(Calendar.getInstance().getTimeInMillis()));
 			participantBean.setDonation(participation.getDonation());
-			participantBean.setId_projet(campaign.getId());
-			participantBean.setUtilisateur(user);
+			participantBean.setId_campagne(campaign.getId());
+			participantBean.setId_user(user.getId());
 			participantBean.setMessage(participation.getMessage());
 
 			partServ.ajouter(participantBean);
@@ -273,9 +280,8 @@ public class CampaignController {
 			sucessMessage = "Votre commentaire a bien été posté.";
 		}
 
-		modelAndView.getModel().remove("participation");
-		modelAndView.addObject("sucessMessage", sucessMessage);
-		modelAndView.setViewName("redirect:show/" + campaign.getId());
-		return modelAndView;
+		model.asMap().remove("participation");
+		model.addAttribute("sucessMessage", sucessMessage);
+		return "redirect:show/" + campaign.getId();
 	}
 }

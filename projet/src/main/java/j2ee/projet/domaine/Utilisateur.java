@@ -53,31 +53,7 @@ public class Utilisateur implements Serializable {
 	@Column(name = "SEX")
 	private int sexe;
 	
-	/*@OneToMany(fetch = FetchType.LAZY)
-	private List<Participation> listDons;
-	
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Commentaire> listCom;
-	
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<News> listNews;
 
-	public List<Participation> getListDons() {
-		return listDons;
-	}
-
-	public List<Commentaire> getListCom() {
-		return listCom;
-	}
-
-	public void setListDons(List<Participation> listDons) {
-		this.listDons = listDons;
-	}
-
-	public void setListCom(List<Commentaire> listCom) {
-		this.listCom = listCom;
-	}*/
-	
 	public Utilisateur()
 	{}
 

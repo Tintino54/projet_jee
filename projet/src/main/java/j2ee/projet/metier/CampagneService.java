@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.dao.CampagneDAO;
 import j2ee.projet.dao.ParticipationDAO;
@@ -13,6 +14,7 @@ import j2ee.projet.domaine.Participation;
 import j2ee.projet.web.bean.CampagneBean;
 
 @Service
+@Transactional
 public class CampagneService {
 	final static Logger logger = Logger.getLogger(CampagneService.class);
 
@@ -41,11 +43,18 @@ public class CampagneService {
 		return list;
 	}
 
-	public Campagne getCampagneFromID(int id) {
+	public Campagne rechercherCampagneParId(int id) {
 		Campagne campagne;
-		campagne = campagneDAO.rechercherCampagneParId(id).get(0);
-
-		return campagne;
+		campagne = campagneDAO.rechercherCampagneParId(id);
+		if (campagne == null)
+		{
+			logger.info("rechercherCampagneParId returned null");
+			return null;
+		}
+		else
+		{
+			return campagne;
+		}
 	}
 
 	public List<Participation> getDons(int idprojet) {

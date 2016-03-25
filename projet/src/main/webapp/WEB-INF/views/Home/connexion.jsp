@@ -16,12 +16,12 @@
 				<form:form action="/projet/check" commandName="user-entity" method="POST">
 					<h1 class="titre">Connexion</h1>
 					<div class="form-group">
-						<form:label for="email" path="email">Adresse mail :</form:label> <form:input type="email"
-							class="form-control" id="email" name="email" path="email"/>
+						<form:label for="email" path="mail">Adresse mail :</form:label> <form:input type="email"
+							class="form-control" id="email" name="email" path="mail"/>
 					</div>
 					<div class="form-group">
-						<form:label for="pwd" path="pwd">Mot de passe :</form:label> <form:input type="password"
-							class="form-control" id="pwd" name="pwd" path="pwd" />
+						<form:label for="pwd" path="mdp">Mot de passe :</form:label> <form:input type="password"
+							class="form-control" id="pwd" name="pwd" path="mdp" />
 					</div>
 					<input type="submit" class="btn btn-aqua" value="Connexion" />
 				</form:form>

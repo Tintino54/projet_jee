@@ -8,10 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,10 +31,10 @@ public class Participation implements Serializable {
 	private int id;
 
 	@Column(name = "ID_PROJET")
-	private int id_projet;
+	private int id_campagne;
 
-	/*@Column(name = "ID_USER")
-	private int id_user;*/
+	@Column(name = "ID_USER")
+	private int id_user;
 
 	@Column(name = "DATEPARTICIPATION")
 	private Date dateParticipation;
@@ -47,18 +45,6 @@ public class Participation implements Serializable {
 	@Column(name = "MESSAGE")
 	private String message;
 	
-	@OneToOne
-	@JoinColumn(name="id_user")
-	Utilisateur utilisateur;
-	
-	
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
-	}
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
 
 	public int getId() {
 		return id;
@@ -69,20 +55,20 @@ public class Participation implements Serializable {
 	}
 
 	public int getId_projet() {
-		return id_projet;
+		return id_campagne;
 	}
 
 	public void setId_projet(int id_projet) {
-		this.id_projet = id_projet;
+		this.id_campagne = id_projet;
 	}
 
-/*	public int getId_user() {
+	public int getId_user() {
 		return id_user;
 	}
 
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
-	}*/
+	}
 
 	public Date getDateParticipation() {
 		return dateParticipation;

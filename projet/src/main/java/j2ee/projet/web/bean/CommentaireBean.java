@@ -2,33 +2,42 @@ package j2ee.projet.web.bean;
 
 import java.sql.Date;
 
-import j2ee.projet.domaine.Utilisateur;
+import j2ee.projet.domaine.Commentaire;
 
 public class CommentaireBean {
-	
 	private int id;
-	
-	private String title;
-	
-	private String message;
-	
-	private Date published;
-	
-	private int id_campaign;
-	
-	private Utilisateur utilisateur;
 
-	public Utilisateur getUtilisateur() {
+	private String title;
+
+	private String message;
+
+	private Date published;
+
+	private int id_user;
+	
+	private int id_campagne;
+
+	private UtilisateurBean utilisateur;
+
+	public CommentaireBean() {
+	}
+
+	public CommentaireBean(Commentaire com) {
+		super();
+		this.id = com.getId();
+		this.title = com.getTitle();
+		this.message = com.getMessage();
+		this.published = com.getPublished();
+		this.id_user = com.getId_user();
+		this.id_campagne = com.getId_campagne();
+	}
+
+	public UtilisateurBean getUtilisateur() {
 		return utilisateur;
 	}
 
 	public void setUtilisateur(UtilisateurBean utilisateur) {
-		Utilisateur user = new Utilisateur();
-		user.setId(utilisateur.getId());
-		user.setMail(utilisateur.getEmail());
-		user.setLogin(utilisateur.getLogin());
-		user.setMdp(utilisateur.getPwd());
-		this.utilisateur = user;
+		this.utilisateur = utilisateur;
 	}
 
 	public int getId() {
@@ -47,8 +56,12 @@ public class CommentaireBean {
 		return published;
 	}
 
-	public int getId_campaign() {
-		return id_campaign;
+	public int getId_user() {
+		return id_user;
+	}
+
+	public int getId_campagne() {
+		return id_campagne;
 	}
 
 	public void setId(int id) {
@@ -67,7 +80,12 @@ public class CommentaireBean {
 		this.published = published;
 	}
 
-	public void setId_campaign(int id_campaign) {
-		this.id_campaign = id_campaign;
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
 	}
+
+	public void setId_campagne(int id_campagne) {
+		this.id_campagne = id_campagne;
+	}
+
 }

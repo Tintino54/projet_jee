@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -38,18 +36,6 @@ private static final long serialVersionUID = -5116225850894993173L;
 	
 	@Column(name = "ID_CAMPAIGN")
 	private int id_campaign;
-	
-	@ManyToOne
-	@JoinColumn(name="id_user")
-	private Utilisateur utilisateur;
-
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
-	}
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
 
 	public int getId() {
 		return id;

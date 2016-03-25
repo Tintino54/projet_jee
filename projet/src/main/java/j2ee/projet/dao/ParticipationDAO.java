@@ -7,12 +7,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Participation;
 
 @Repository
-@Transactional
 public class ParticipationDAO extends BaseDAO<Participation> {
 	final static Logger logger = Logger.getLogger(CommentaireDAO.class);
 

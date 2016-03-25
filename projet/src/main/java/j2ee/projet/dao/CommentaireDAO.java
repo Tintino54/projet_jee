@@ -7,12 +7,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.domaine.Commentaire;
 
 @Repository
-@Transactional
 public class CommentaireDAO extends BaseDAO<Commentaire> {
 
 	final static Logger logger = Logger.getLogger(CommentaireDAO.class);
