@@ -18,7 +18,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:db/aubergine;" />
+		<property name="url" value="jdbc:h2:mem:db/aubergine;" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
