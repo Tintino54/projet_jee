@@ -48,7 +48,6 @@ public class CampaignController {
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView liste(HttpServletResponse response) throws IOException {
 		
-		
 		ModelAndView model = new ModelAndView("Campaign/list");
 		
 		List<Campagne> list = campServ.getList();

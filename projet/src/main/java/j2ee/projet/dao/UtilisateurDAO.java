@@ -2,9 +2,10 @@ package j2ee.projet.dao;
 
 import java.util.List;
 
-import javax.persistence.TypedQuery;
-
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,47 +18,49 @@ public class UtilisateurDAO extends BaseDAO<Utilisateur> {
 	final static Logger logger = Logger.getLogger(UtilisateurDAO.class);
 
 	public Utilisateur rechercherUtilisateurParMailEtMdp(String mail, String mdp) {
-		if (getEntityManager() == null) {
-			logger.info("entityManager null");
+		if (getSessionFactory() == null) {
+			logger.info("sessionFactory null");
 			return null;
 		} else {
-			TypedQuery<Utilisateur> query = getEntityManager().createNamedQuery("rechercherUtilisateurParMailEtMdp",
-					Utilisateur.class);
+			Session session = getSession();
+			Transaction tx = session.beginTransaction();
+			Query query = session.getNamedQuery("rechercherUtilisateurParMailEtMdp");
 			query.setParameter("mail", mail);
 			query.setParameter("mdp", mdp);
-			List<Utilisateur> list = query.getResultList();
-			if (list.size() == 0)
-				return null;
-			else
-				return list.get(0);
+			Utilisateur res = (Utilisateur) query.uniqueResult();
+			tx.commit();
+			return res;
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Utilisateur> rechercherUtilisateurParId(int idUser) {
-		if (getEntityManager() == null) {
-			logger.info("entityManager null");
+		if (getSessionFactory() == null) {
+			logger.info("sessionFactory null");
 			return null;
 		} else {
-			TypedQuery<Utilisateur> query = getEntityManager().createNamedQuery("rechercherUtilisateurParId",
-					Utilisateur.class);
+			Session session = getSession();
+			Transaction tx = session.beginTransaction();
+			Query query = session.getNamedQuery("rechercherUtilisateurParId");
 			query.setParameter("id", idUser);
-			return query.getResultList();
+			List<Utilisateur> res = query.list();
+			tx.commit();
+			return res;
 		}
 	}
 
 	public Utilisateur rechercherUtilisateurParLogin(String login) {
-		if (getEntityManager() == null) {
-			logger.info("entityManager null");
+		if (getSessionFactory() == null) {
+			logger.info("sessionFactory null");
 			return null;
 		} else {
-			TypedQuery<Utilisateur> query = getEntityManager().createNamedQuery("rechercherUtilisateurParLogin",
-					Utilisateur.class);
+			Session session = getSession();
+			Transaction tx = session.beginTransaction();
+			Query query = session.getNamedQuery("rechercherUtilisateurParLogin");
 			query.setParameter("login", login);
-			List<Utilisateur> list = query.getResultList();
-			if (list.size() == 0)
-				return null;
-			else
-				return list.get(0);
+			Utilisateur res = (Utilisateur) query.uniqueResult();
+			tx.commit();
+			return res;
 		}
 	}
 

@@ -15,44 +15,45 @@
 
 	<mvc:annotation-driven />
 	<context:annotation-config />
-	<context:component-scan base-package="j2ee.projet.metier" />
-	<context:component-scan base-package="j2ee.projet.dao" />
+	<context:component-scan base-package="j2ee.projet" />
 
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="packagesToScan" value="j2ee.projet.domaine"></property>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-		</property>
-		<property name="jpaProperties">
+		<property name="packagesToScan" value="j2ee.projet.domaine" />
+		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+
 	</bean>
 
-	<bean id="dataSource"
+	<!-- <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="org.h2.Driver" />
 		<property name="url"
-			value="jdbc:h2:mem:db/aubergine;TRACE_LEVEL_SYSTEM_OUT=1;DB_CLOSE_ON_EXIT=TRUE" />
+			value="jdbc:h2:db/aubergine;TRACE_LEVEL_SYSTEM_OUT=1;DB_CLOSE_ON_EXIT=TRUE" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
-
+ -->
 	<!-- Persistence Context Annotated -->
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"
 		id="persistenceAnnotationBeanPostProcessor" />
 
 	<!-- Transaction -->
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<tx:annotation-driven />
 
+	<jdbc:embedded-database id="dataSource" type="H2" />
 
 	<jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:init.sql" />

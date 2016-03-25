@@ -2,33 +2,38 @@ package j2ee.projet.dao;
 
 import java.io.Serializable;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.apache.log4j.Logger;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Propagation;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional(propagation = Propagation.REQUIRED)
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@Transactional
 public class BaseDAO<T extends Serializable> {
 	final static Logger logger = Logger.getLogger(BaseDAO.class);
+
+	@Autowired
+	private SessionFactory sessionFactory;
 	
-	private EntityManager entityManager;
-
-	public EntityManager getEntityManager() {
-		return entityManager;
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
 	}
 
-	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
+	public Session getSession()
+	{
+		return this.sessionFactory.getCurrentSession();
 	}
-
-	public void insert(T object){
-		logger.info("Persist entity : "+object.getClass());
-		EntityManager entityManager = getEntityManager();
-		entityManager.persist(object);
+	
+	public void insert(T object) {
+		logger.info("Persist entity : " + object.getClass());
+		Session session = getSession();
+		Transaction tx = session.beginTransaction();
+        session.persist(object);
+        tx.commit();
 	}
 }
