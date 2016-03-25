@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import j2ee.projet.domaine.Commentaire;
 import j2ee.projet.metier.CommentaireService;
+import j2ee.projet.web.bean.CommentaireBean;
 
 public class FormController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
@@ -20,7 +20,7 @@ public class FormController {
 	
 	// Poster un commentaire - Action
 	@RequestMapping(value = "/nouveaucommentaire", method = RequestMethod.POST)
-	public ModelAndView createSubmit(@ModelAttribute Commentaire commentaire) throws IOException {
+	public ModelAndView createSubmit(@ModelAttribute CommentaireBean commentaire) throws IOException {
 		logger.info("Soumission du formulaire de création d'un commentaire");
 		// Persister la campagne dans la BDD :
 		try {
