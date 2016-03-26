@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <tiles:insertDefinition name="myapp.homepage">
    	<tiles:putAttribute name="pagecss"><link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/home/about.css"></tiles:putAttribute>
-    <tiles:putAttribute name="title">Inscription</tiles:putAttribute>
+    <tiles:putAttribute name="title">À propos</tiles:putAttribute>
     <tiles:putAttribute name="body">
 		<div id="body" class="container-fluid friendship-bg">
 			<div class="col-xs-12 col-xs-push-0 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 white-bg fadeInBlock">
@@ -14,7 +14,7 @@
 					</div>
 					<div class="col-lg-8">
 						<h3>Valentin GINISTY</h3>
-						<p>Conception des modèles</p>
+						<p>Conception des modèles et des vannes vaseuses</p>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 staff">
@@ -23,7 +23,7 @@
 					</div>
 					<div class="col-lg-8">
 						<h3>Kenny GUIOUGOU</h3>
-						<p>Front-end (Bootstrap/CSS/JQuery)</p>
+						<p>Responsable du joli Front-end (Bootstrap/CSS/JQuery)</p>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 staff">
@@ -32,7 +32,7 @@
 					</div>
 					<div class="col-lg-8">
 						<h3>Florentin NOËL</h3>
-						<p>Configuration Maven/Hibernate/Spring</p>
+						<p>Configuration Hibernate/Maven/Spring et dresseur de coccinelle</p>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 staff">
@@ -50,7 +50,7 @@
 					</div>
 					<div class="col-lg-8">
 						<h3>Morgane TROYSI</h3>
-						<p>Conception des controllers</p>
+						<p>Conception des controllers et embassadrice Eggplant©</p>
 					</div>
 				</div>
 			</div>
