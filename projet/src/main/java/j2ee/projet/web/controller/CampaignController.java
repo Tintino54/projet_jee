@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import j2ee.projet.domaine.Campagne;
 import j2ee.projet.domaine.Commentaire;
@@ -31,7 +34,9 @@ import j2ee.projet.metier.ParticipationService;
 import j2ee.projet.metier.UtilisateurService;
 import j2ee.projet.web.bean.CampagneBean;
 import j2ee.projet.web.bean.CommentaireBean;
+import j2ee.projet.web.bean.NewsBean;
 import j2ee.projet.web.bean.ParticipantBean;
+import j2ee.projet.web.bean.UtilisateurBean;
 import j2ee.projet.web.bean.UtilisateurSessionBean;
 
 @Controller
@@ -50,14 +55,63 @@ public class CampaignController {
 
 	@Autowired
 	ParticipationService partServ;
-	
+
 	@Autowired
 	NewsService newsServ;
-	
+
 	@Autowired
 	UtilisateurSessionBean user;
 
 	private int id_campagne;
+
+	@RequestMapping(value = "/connexion", method = RequestMethod.GET)
+	public ModelAndView connexion() throws IOException {
+		logger.info("Affichage de la page de connexion");
+		ModelAndView modelAndView = new ModelAndView("Home/connexion");
+		modelAndView.addObject("user-entity", new UtilisateurBean());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/deconnexion")
+	public String deconnexion(HttpSession session,Model model) throws IOException {
+		logger.info("Affichage de la page de deconnexion");
+		session.invalidate();
+		model.asMap().remove("user");
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/check")
+	public ModelAndView identification(@ModelAttribute UtilisateurBean u, HttpServletRequest request) {
+
+		logger.info("Tentative de connexion de : " + u.getMail());
+		String mail = u.getMail();
+
+		byte[] bytes = u.getMdp().getBytes();
+
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < bytes.length; i++) {
+			sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+		}
+		String mdp = sb.toString();
+
+		ModelAndView modelAndView = new ModelAndView();
+
+		UtilisateurBean bean = userServ.verification(mail, mdp);
+		
+		
+		if (bean == null) {
+			logger.info("Echec de connexion de " + mail);
+			modelAndView.setViewName("redirect:connexion");
+		} else {
+			logger.info("Connexion réussie de " + bean.getId());
+			user.setId(bean.getId());
+			user.setLogin(bean.getLogin());
+			modelAndView.setViewName("redirect:liste");
+			modelAndView.addObject("user", user);
+		}
+
+		return modelAndView;
+	}
 
 	// Lister les campagnes - Vue
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
@@ -98,7 +152,7 @@ public class CampaignController {
 		model.addAttribute("percent", percent);
 		model.addAttribute("barWidth", barWidth);
 		model.addAttribute("classBar", classBar);
-		model.addAttribute("user", user);
+		
 		model.addAttribute("lists", list);
 		return "Campaign/list";
 	}
@@ -113,7 +167,8 @@ public class CampaignController {
 
 	// Créer une campagne - Action
 	@RequestMapping(value = "/nouveau", method = RequestMethod.POST)
-	public String createSubmit(@ModelAttribute("campagne") CampagneBean campaign, ModelMap modelMap) throws IOException {
+	public String createSubmit(@ModelAttribute("campagne") CampagneBean campaign, ModelMap modelMap)
+			throws IOException {
 		logger.info("Soumission du formulaire de cr�ation d'une campagne");
 		// Persister la campagne dans la BDD :
 		if (campaign == null)
@@ -161,7 +216,7 @@ public class CampaignController {
 
 		List<News> news = newsServ.getNewsFromIdProjet(id_campagne);
 		model.addAttribute("news", news);
-		
+
 		List<Commentaire> com = comServ.getCommentaireFromIdProjet(id_campagne);
 		List<CommentaireBean> texte = new ArrayList<CommentaireBean>(com.size());
 		for (int i = 0; i < com.size(); i++) {
@@ -237,6 +292,7 @@ public class CampaignController {
 		model.addAttribute("DATE_FORMAT", DATE_FORMAT);
 		model.addAttribute("commentaire", new CommentaireBean());
 		model.addAttribute("participation", new ParticipantBean());
+		model.addAttribute("newsBean", new NewsBean());
 		return "Campaign/show";
 	}
 
@@ -265,7 +321,8 @@ public class CampaignController {
 
 	// Poster un commentaire - action
 	@RequestMapping(value = "/postParticip")
-	public String postParticip(@ModelAttribute("participation") ParticipantBean participation, Model model) throws IOException {
+	public String postParticip(@ModelAttribute("participation") ParticipantBean participation, Model model)
+			throws IOException {
 		logger.info("Soumission du formulaire de participation");
 		if (participation == null)
 			logger.info("ModelAttribute participation est null");
@@ -282,6 +339,29 @@ public class CampaignController {
 		}
 
 		model.asMap().remove("participation");
+		return "redirect:show/" + id_campagne;
+	}
+
+	// Poster un commentaire - action
+	@RequestMapping(value = "/postNews")
+	public String postNews(@ModelAttribute("news") NewsBean news, Model model) throws IOException {
+		logger.info("Soumission du formulaire de news");
+		if (news == null)
+			logger.info("ModelAttribute news est null");
+		else {
+			NewsBean com = new NewsBean();
+			com.setTitle(news.getTitle());
+			com.setMessage(news.getMessage());
+			com.setId_campaign(id_campagne);
+			com.setId_user(user.getId());
+			com.setPublished(new Date(Calendar.getInstance().getTimeInMillis()));
+			logger.info("Commentaire ajouté projet:" + id_campagne + " user:" + user.getId());
+			newsServ.ajouter(com);
+
+		}
+
+		model.asMap().remove("news");
+
 		return "redirect:show/" + id_campagne;
 	}
 }

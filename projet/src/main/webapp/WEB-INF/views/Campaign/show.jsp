@@ -12,7 +12,7 @@
 					<div class="row">
 						<ul class="nav nav-pills nav-justified">
 							<li class="active"><a data-toggle="pill" href="#home">Le projet</a></li>
-							<li><a data-toggle="pill" href="#news">News <span class="label label-pill">5</span></a></li>
+							<li><a data-toggle="pill" href="#news">News <span class="label label-pill">${news.size()}</span></a></li>
 							<li><a data-toggle="pill" href="#entries">Contributions <span class="label label-pill" id="nbDons">${dons.size()}</span></a></li>
 							<li><a data-toggle="pill" href="#comments">Commentaires <span class="label label-pill" id="nbComments">${textes.size()}</span></a></li>
 						</ul>
@@ -40,18 +40,18 @@
 								<div class="col-lg-12" id="formNews">
 									<hr>
 									<h2 class="titre">Poster une news</h2>
-									<form method="POST" role="form">
+									<form:form action="/projet/postNews" method="POST" commandName="newsBean" role="form">
 										<div class="form-group">
-											<label for="titrenews">Titre:</label>
-											<input type="text" class="form-control" id="titrenews">
+											<form:label for="titrenews" path="title">Titre:</form:label>
+											<form:input type="text" class="form-control" path="title" id="titrenews"/>
 										</div>
 											<div class="form-group">
-											<label for="desc">Contenu :</label>
-											<textarea class="form-control" rows="10" id="desc"></textarea>
+											<form:label path="message" for="desc">Contenu :</form:label>
+											<form:textarea path="message" class="form-control" rows="10" id="desc"></form:textarea>
 										</div>
 										<input type="submit" class="btn btn-aqua" value="Envoyer" />
 										<div class="btn btn-aqua" id="closeNewsForm">Annuler</div>
-								    </form>	
+								    </form:form>	
 								</div>
 								<script>
 								    $( document ).ready(function() {

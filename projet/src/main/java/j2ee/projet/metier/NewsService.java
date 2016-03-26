@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.projet.dao.NewsDAO;
 import j2ee.projet.domaine.News;
+import j2ee.projet.web.bean.NewsBean;
 
 @Service
 @Transactional
@@ -22,7 +23,13 @@ public class NewsService {
 		return res;
 	}
 
-	public void ajouter(News news) {
-		newsDAO.ajouterNews(news);
+	public void ajouter(NewsBean news) {
+		News n = new News();
+		n.setTitle(news.getTitle());
+		n.setMessage(news.getMessage());
+		n.setPublished(news.getPublished());
+		n.setId_user(news.getId_user());
+		n.setId_campaign(news.getId_campaign());
+		newsDAO.ajouterNews(n);
 	}
 }

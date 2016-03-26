@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("user")
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UtilisateurSessionBean {
 

@@ -10,6 +10,9 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="j2ee.projet.web" />
 
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
 	<!-- Used to serve static resources like css, images and javascript files -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 

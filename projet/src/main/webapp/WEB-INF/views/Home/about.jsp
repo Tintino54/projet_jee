@@ -32,7 +32,7 @@
 					</div>
 					<div class="col-lg-8">
 						<h3>Florentin NOËL</h3>
-						<p>Configuration Maven/Hibernate</p>
+						<p>Configuration Maven/Hibernate/Spring</p>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 staff">

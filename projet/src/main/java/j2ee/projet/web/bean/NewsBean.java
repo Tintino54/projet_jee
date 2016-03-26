@@ -2,7 +2,7 @@ package j2ee.projet.web.bean;
 
 import java.sql.Date;
 
-public class News {
+public class NewsBean {
 	private int id;
 
 	private String title;
@@ -62,6 +62,6 @@ public class News {
 	public void setId_campaign(int id_campaign) {
 		this.id_campaign = id_campaign;
 	}
-	
+
 	
 }
