@@ -24,6 +24,17 @@
 						</div>
 						<div id="news" class="tab-pane fade">
 							<h2 class="titre">News</h2>
+							<div class="col-lg-12" id="content_news">
+									<c:forEach var="news" items="${news}">
+										<div class="col-lg-2">
+										${news.published}
+										</div>
+										<div class="col-lg-10">
+											<div class="col-lg-12">${news.title}</div>
+											<div class="col-lg-12">${news.message}</div>
+										</div>
+									</c:forEach>
+							</div>
 							<c:if test="${!empty user}">
 								<button class="btn btn-aqua btn-full" id="toggleNews">Poster une news</button>
 								<div class="col-lg-12" id="formNews">
@@ -83,7 +94,7 @@
 														<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
 													</c:if>
 												</div>
-												<div class="col-lg-12 center amount"><span class="label label-default currency">${dons.donation}€</span></div>
+												<div class="col-lg-12 center amount"><span class="label label-default currency">${dons.donation.intValue()}€</span></div>
 											</div>
 										</div>
 									</c:forEach>
@@ -319,11 +330,11 @@
 						        	<form:form action="/projet/postComment" method="POST" commandName="commentaire" role="form">
 										<div class="form-group">
 											<form:label for="titrecom" path="title">Titre :</form:label>
-											<form:input type="text" class="form-control" id="titrecom" path="title" />
+											<form:input type="text" class="form-control" id="titrecom" path="title" required="required" />
 										</div>
 					  					<div class="form-group">
 											<form:label for="desc" path="message">Commentaire :</form:label>
-											<form:textarea class="form-control" rows="10" id="desc" path="message"></form:textarea>
+											<form:textarea class="form-control" rows="10" id="desc" path="message" required="required" ></form:textarea>
 										</div>
 										<input type="submit" class="btn btn-aqua" value="Envoyer" />
 										<div class="btn btn-aqua" id="closeCommentForm">Annuler</div>

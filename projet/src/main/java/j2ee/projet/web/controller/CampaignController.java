@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import j2ee.projet.domaine.Campagne;
 import j2ee.projet.domaine.Commentaire;
+import j2ee.projet.domaine.News;
 import j2ee.projet.domaine.Participation;
 import j2ee.projet.metier.CampagneService;
 import j2ee.projet.metier.CommentaireService;
+import j2ee.projet.metier.NewsService;
 import j2ee.projet.metier.ParticipationService;
 import j2ee.projet.metier.UtilisateurService;
 import j2ee.projet.web.bean.CampagneBean;
@@ -48,6 +50,9 @@ public class CampaignController {
 
 	@Autowired
 	ParticipationService partServ;
+	
+	@Autowired
+	NewsService newsServ;
 	
 	@Autowired
 	UtilisateurSessionBean user;
@@ -154,6 +159,9 @@ public class CampaignController {
 
 		model.addAttribute("campagne", campagne);
 
+		List<News> news = newsServ.getNewsFromIdProjet(id_campagne);
+		model.addAttribute("news", news);
+		
 		List<Commentaire> com = comServ.getCommentaireFromIdProjet(id_campagne);
 		List<CommentaireBean> texte = new ArrayList<CommentaireBean>(com.size());
 		for (int i = 0; i < com.size(); i++) {
