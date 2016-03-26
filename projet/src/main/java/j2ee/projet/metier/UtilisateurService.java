@@ -55,7 +55,7 @@ public class UtilisateurService {
 	public UtilisateurBean rechercherUtilisateurParId(int id) {
 		Utilisateur user = uDao.rechercherUtilisateurParId(id);
 		if (user == null) {
-			logger.info("Resultat de la requete rechercherUtilisateurParId == null");
+			logger.info("Resultat de la requete rechercherUtilisateurParId("+id+") == null");
 			return null;
 		} else {
 			logger.info("Resultat de la requete rechercherUtilisateurParId non null");

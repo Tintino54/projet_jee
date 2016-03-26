@@ -41,9 +41,6 @@ public class Participation implements Serializable {
 
 	@Column(name = "DONATION")
 	private double donation;
-
-	@Column(name = "MESSAGE")
-	private String message;
 	
 
 	public int getId() {
@@ -85,13 +82,4 @@ public class Participation implements Serializable {
 	public void setDonation(double donation) {
 		this.donation = donation;
 	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	
 }

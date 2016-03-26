@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import j2ee.projet.web.bean.UtilisateurBean;
+import j2ee.projet.web.bean.UtilisateurSessionBean;
 
 @Controller
 public class HomeController {
@@ -18,7 +18,7 @@ public class HomeController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
 	
 	@Autowired
-	UtilisateurBean user;
+	UtilisateurSessionBean user;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(HttpServletResponse response) throws IOException{

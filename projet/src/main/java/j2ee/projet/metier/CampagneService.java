@@ -46,13 +46,10 @@ public class CampagneService {
 	public Campagne rechercherCampagneParId(int id) {
 		Campagne campagne;
 		campagne = campagneDAO.rechercherCampagneParId(id);
-		if (campagne == null)
-		{
-			logger.info("rechercherCampagneParId returned null");
+		if (campagne == null) {
+			logger.info("Resultat de la requete rechercherCampagneParId("+id+") == null");
 			return null;
-		}
-		else
-		{
+		} else {
 			return campagne;
 		}
 	}

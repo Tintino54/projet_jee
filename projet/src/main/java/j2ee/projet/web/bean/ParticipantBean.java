@@ -16,8 +16,6 @@ public class ParticipantBean {
 
 	private double donation;
 
-	private String message;
-	
 	private UtilisateurBean utilisateur;
 
 	
@@ -38,7 +36,6 @@ public class ParticipantBean {
 		this.id_user = part.getId_user();
 		this.dateParticipation = part.getDateParticipation();
 		this.donation = part.getDonation();
-		this.message = part.getMessage();
 	}
 
 	public int getId() {
@@ -61,10 +58,6 @@ public class ParticipantBean {
 		return donation;
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -84,9 +77,4 @@ public class ParticipantBean {
 	public void setDonation(double donation) {
 		this.donation = donation;
 	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	
 }

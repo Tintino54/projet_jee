@@ -15,7 +15,7 @@
 
 	<mvc:annotation-driven />
 	<context:annotation-config />
-	<context:component-scan base-package="j2ee.projet" />
+	<context:component-scan base-package="j2ee.projet" scoped-proxy="targetClass"/>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -30,16 +30,7 @@
 		</property>
 
 	</bean>
-
-	<!-- <bean id="dataSource"
-		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-		<property name="driverClass" value="org.h2.Driver" />
-		<property name="url"
-			value="jdbc:h2:db/aubergine;TRACE_LEVEL_SYSTEM_OUT=1;DB_CLOSE_ON_EXIT=TRUE" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
-	</bean>
- -->
+	
 	<!-- Persistence Context Annotated -->
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"

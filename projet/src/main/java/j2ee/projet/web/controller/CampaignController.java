@@ -30,10 +30,10 @@ import j2ee.projet.metier.UtilisateurService;
 import j2ee.projet.web.bean.CampagneBean;
 import j2ee.projet.web.bean.CommentaireBean;
 import j2ee.projet.web.bean.ParticipantBean;
-import j2ee.projet.web.bean.UtilisateurBean;
+import j2ee.projet.web.bean.UtilisateurSessionBean;
 
 @Controller
-@SessionAttributes({ "user" })
+@SessionAttributes("user")
 public class CampaignController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
 
@@ -49,6 +49,9 @@ public class CampaignController {
 	@Autowired
 	ParticipationService partServ;
 	
+	@Autowired
+	UtilisateurSessionBean user;
+
 	private int id_campagne;
 
 	// Lister les campagnes - Vue
@@ -90,7 +93,7 @@ public class CampaignController {
 		model.addAttribute("percent", percent);
 		model.addAttribute("barWidth", barWidth);
 		model.addAttribute("classBar", classBar);
-
+		model.addAttribute("user", user);
 		model.addAttribute("lists", list);
 		return "Campaign/list";
 	}
@@ -105,17 +108,15 @@ public class CampaignController {
 
 	// Créer une campagne - Action
 	@RequestMapping(value = "/nouveau", method = RequestMethod.POST)
-	public String createSubmit(@ModelAttribute("campagne") CampagneBean campaign, ModelMap modelMap,
-			@ModelAttribute UtilisateurBean user) throws IOException {
+	public String createSubmit(@ModelAttribute("campagne") CampagneBean campaign, ModelMap modelMap) throws IOException {
 		logger.info("Soumission du formulaire de cr�ation d'une campagne");
 		// Persister la campagne dans la BDD :
-		String sucessMessage = "Erreur";
 		if (campaign == null)
 			logger.info("ModelAttribute campaign est null");
 		else {
 			CampagneBean camp = new CampagneBean();
 			camp.setId_user(user.getId());
-			camp.setImagePath("");
+			camp.setImagePath("unknown.jpg");
 			camp.setResume("");
 
 			camp.setTitle(campaign.getTitle());
@@ -125,12 +126,10 @@ public class CampaignController {
 
 			campServ.ajouter(camp);
 			logger.info("Campaign ajoutée " + camp.getTitle() + " " + camp.getExpectedamount());
-			sucessMessage = "Le projet <strong>" + camp.getTitle() + "</strong> a bien �t� cr��";
 		}
 
 		modelMap.remove("campagne");
-		modelMap.addAttribute("sucessMessage", sucessMessage);
-		return "Campaign/list";
+		return "redirect:/liste";
 	}
 
 	// Modifier une campagne - Vue
@@ -152,6 +151,7 @@ public class CampaignController {
 		model.addAttribute("id", id);
 
 		Campagne campagne = campServ.rechercherCampagneParId(id_campagne);
+
 		model.addAttribute("campagne", campagne);
 
 		List<Commentaire> com = comServ.getCommentaireFromIdProjet(id_campagne);
@@ -167,7 +167,7 @@ public class CampaignController {
 		List<ParticipantBean> dons = new ArrayList<ParticipantBean>(part.size());
 		for (int i = 0; i < part.size(); i++) {
 			ParticipantBean bean = new ParticipantBean(part.get(i));
-			bean.setUtilisateur(userServ.rechercherUtilisateurParId(com.get(i).getId_user()));
+			bean.setUtilisateur(userServ.rechercherUtilisateurParId(part.get(i).getId_user()));
 			dons.add(bean);
 		}
 		model.addAttribute("dons", dons);
@@ -234,7 +234,7 @@ public class CampaignController {
 
 	// Poster un commentaire - action
 	@RequestMapping(value = "/postComment")
-	public String postComment(@ModelAttribute("commentaire") CommentaireBean comment,@ModelAttribute("user") UtilisateurBean user, Model model) throws IOException {
+	public String postComment(@ModelAttribute("commentaire") CommentaireBean comment, Model model) throws IOException {
 		logger.info("Soumission du formulaire de commentaire");
 		if (comment == null)
 			logger.info("ModelAttribute commentaire est null");
@@ -256,12 +256,9 @@ public class CampaignController {
 	}
 
 	// Poster un commentaire - action
-	@RequestMapping(value = "/postParticip", method = RequestMethod.POST)
-	public String postParticip(@ModelAttribute("participation") ParticipantBean participation,
-			@ModelAttribute("campagne") CampagneBean campaign, @ModelAttribute("utilisateur") UtilisateurBean user,
-			Model model) throws IOException {
+	@RequestMapping(value = "/postParticip")
+	public String postParticip(@ModelAttribute("participation") ParticipantBean participation, Model model) throws IOException {
 		logger.info("Soumission du formulaire de participation");
-		String sucessMessage = "Erreur";
 		if (participation == null)
 			logger.info("ModelAttribute participation est null");
 		else {
@@ -269,17 +266,14 @@ public class CampaignController {
 
 			participantBean.setDateParticipation(new Date(Calendar.getInstance().getTimeInMillis()));
 			participantBean.setDonation(participation.getDonation());
-			participantBean.setId_campagne(campaign.getId());
+			participantBean.setId_campagne(id_campagne);
 			participantBean.setId_user(user.getId());
-			participantBean.setMessage(participation.getMessage());
 
 			partServ.ajouter(participantBean);
-			logger.info("Participation ajouté " + participation.getDonation() + " " + participation.getMessage());
-			sucessMessage = "Votre commentaire a bien été posté.";
+			logger.info("Participation ajouté " + participation.getDonation() + " user:" + user.getId());
 		}
 
 		model.asMap().remove("participation");
-		model.addAttribute("sucessMessage", sucessMessage);
-		return "redirect:show/" + campaign.getId();
+		return "redirect:show/" + id_campagne;
 	}
 }

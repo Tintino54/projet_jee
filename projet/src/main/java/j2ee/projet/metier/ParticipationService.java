@@ -30,7 +30,6 @@ public class ParticipationService {
 		participation.setDateParticipation(part.getDateParticipation());
 		participation.setId_user(part.getId_user());
 		participation.setDonation(part.getDonation());
-		participation.setMessage(part.getMessage());
 		participationDAO.ajouterParticipation(participation);
 	}
 }
