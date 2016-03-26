@@ -30,7 +30,7 @@ public class CampagneDAOTest {
 	@Test
 	public void testRechercherCampagneParId()
 	{
-		int id = 0;
+		int id = 1;
 		Campagne res = campagneDAO.rechercherCampagneParId(id);
 		Assert.assertNotNull(res);
 	}

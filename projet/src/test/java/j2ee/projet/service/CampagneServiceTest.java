@@ -1,7 +1,5 @@
 package j2ee.projet.service;
 
-import static org.junit.Assert.fail;
-
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -50,19 +48,5 @@ public class CampagneServiceTest {
 		Assert.assertNotEquals(dep, arr);
 	}
 
-	@Test
-	public void testGetList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCampagneFromID() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDons() {
-		fail("Not yet implemented");
-	}
 
 }
