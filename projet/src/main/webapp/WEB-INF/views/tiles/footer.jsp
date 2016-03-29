@@ -4,7 +4,6 @@
         <div class="container-fluid">
 	        <ul class="nav navbar-nav">
 		      <li><a href="/projet/about">À propos</a></li>
-		      <li><a href="/projet/contact">Contact</a></li>
 	        </ul>
 	        <div class="navbar-brand navbar-right" >Copyright © 2016 My Eggplant Company</div>
         </div>

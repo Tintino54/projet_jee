@@ -67,4 +67,17 @@ public class UtilisateurService {
 			return uBean;
 		}
 	}
+	
+	public void ajouter(UtilisateurBean user)
+	{
+		Utilisateur u = new Utilisateur();
+		u.setLogin(user.getLogin());
+		u.setPrenom(user.getPrenom());
+		u.setNom(user.getNom());
+		u.setMdp(user.getMdp());
+		u.setMail(user.getMail());
+		u.setDateNaiss(user.getDateNaiss());
+		u.setSexe(user.getSexe());
+		uDao.ajouterUtilisateur(u);
+	}
 }

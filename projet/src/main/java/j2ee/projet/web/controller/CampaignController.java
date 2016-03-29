@@ -86,6 +86,7 @@ public class CampaignController {
 		logger.info("Tentative de connexion de : " + u.getMail());
 		String mail = u.getMail();
 
+		// Cryptage du mot de passe
 		byte[] bytes = u.getMdp().getBytes();
 
 		StringBuilder sb = new StringBuilder();
