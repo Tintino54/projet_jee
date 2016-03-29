@@ -39,6 +39,7 @@
 .don
 {
     box-shadow: 0px 0px 1px #777;
+    margin: 10px;
 }
 
 #stats-projet
@@ -80,4 +81,38 @@ div.username
 {
 	font-weight: bold;
 	color: lightslategray;
+}
+
+.news-published
+{
+	
+}
+
+.news-title
+{
+	color: salmon;
+    font-size: 2.5em;
+    font-weight: bold;	
+}
+
+.news-message
+{
+	
+}
+
+.single-news
+{
+	margin: 20px;
+}
+
+.date-com
+{
+	padding-top: 15px;
+}
+
+.titre-com
+{
+	font-size: 2em;
+	color: salmon;
+	margin-bottom: 5px;
 }

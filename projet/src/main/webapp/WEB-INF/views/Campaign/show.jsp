@@ -24,17 +24,23 @@
 						</div>
 						<div id="news" class="tab-pane fade">
 							<h2 class="titre">News</h2>
-							<div class="col-lg-12" id="content_news">
-									<c:forEach var="news" items="${news}">
-										<div class="col-lg-2">
-										${news.published}
-										</div>
-										<div class="col-lg-10">
-											<div class="col-lg-12">${news.title}</div>
-											<div class="col-lg-12">${news.message}</div>
-										</div>
-									</c:forEach>
-							</div>
+							<c:if test="${news.size() == 0}">
+								<p>Aucune news publiée.</p>
+							</c:if>
+							<c:if test="${news.size() > 0}">
+								<div class="col-lg-12" id="content_news">
+										<c:forEach var="news" items="${news}">
+											<div class="col-lg-12 single-news">																					
+												<div class="col-lg-2 news-published">${DATE_FORMAT.format(news.published)}</div>
+												<div class="col-lg-10">
+													<div class="col-lg-12 news-title">${news.title}</div>
+													<div class="col-lg-12 news-message">${news.message}</div>
+												</div>
+												<div class="col-lg-12"><hr></div>
+											</div>										
+										</c:forEach>
+								</div>
+							</c:if>
 							<c:if test="${!empty user}">
 								<button class="btn btn-aqua btn-full" id="toggleNews">Poster une news</button>
 								<div class="col-lg-12" id="formNews">
@@ -214,11 +220,11 @@
 														<img class="avatar"	src="<c:url value="/resources/images/avatars/female.png"/>" />
 													</c:if>
 											</div>
-											<div class="col-xs-3 col-lg-2">
+											<div class="col-xs-3 col-lg-2 date-com">
 												${DATE_FORMAT.format(listValue.published)}
 											</div>
 											<div class="col-xs-12 col-lg-9">
-												<h3>${listValue.title}</h3>
+												<div class="titre-com">${listValue.title}</div>
 												<p>par ${listValue.utilisateur.login}</p>
 												<div>${listValue.message}</div>
 											</div>
