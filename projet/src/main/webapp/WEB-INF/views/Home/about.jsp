@@ -50,7 +50,7 @@
 					</div>
 					<div class="col-lg-8">
 						<h3>Morgane TROYSI</h3>
-						<p>Conception des controllers et embassadrice Eggplant©</p>
+						<p>Conception des controllers et ambassadrice internationale Eggplant©</p>
 					</div>
 				</div>
 			</div>
